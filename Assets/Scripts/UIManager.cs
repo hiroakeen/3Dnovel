@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,11 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject characterButtonPrefab;
     [SerializeField] private Transform characterButtonParent;
 
-    [SerializeField] private Text dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Ending UI")]
-    [SerializeField] private Text endingTitleText;
-    [SerializeField] private Text endingDescriptionText;
+    [SerializeField] private TextMeshProUGUI endingTitleText;
+    [SerializeField] private TextMeshProUGUI endingDescriptionText;
 
     private void Awake()
     {
