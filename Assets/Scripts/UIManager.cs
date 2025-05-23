@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
         foreach (var character in characters)
         {
             GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<Text>().text = character.characterName;
+            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName;
             buttonObj.GetComponent<Button>().onClick.AddListener(() => {
                 characterSelectionPanel.SetActive(false);
                 onSelect(character);
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         foreach (var character in memorySources)
         {
             GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<Text>().text = character.characterName + " の記憶";
+            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName + " の記憶";
             buttonObj.GetComponent<Button>().onClick.AddListener(() => {
                 memorySelectionPanel.SetActive(false);
                 onMemoryChosen(character);
@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
         foreach (var character in targets)
         {
             GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<Text>().text = character.characterName + " に使わせる";
+            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName + " に使わせる";
             buttonObj.GetComponent<Button>().onClick.AddListener(() => {
                 targetSelectionPanel.SetActive(false);
                 onTargetChosen(character);
