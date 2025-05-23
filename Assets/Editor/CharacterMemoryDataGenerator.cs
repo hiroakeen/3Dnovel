@@ -7,11 +7,18 @@ public class CharacterMemoryDataGenerator
     [MenuItem("Tools/Generate Sample CharacterMemoryData")]
     public static void GenerateCharacters()
     {
-        string folderPath = "Assets/Story/Characters";
+        string storyPath = "Assets/Story";
+        if (!AssetDatabase.IsValidFolder(storyPath))
+        {
+            AssetDatabase.CreateFolder("Assets", "Story");
+        }
+
+        string folderPath = storyPath + "/Characters";
         if (!AssetDatabase.IsValidFolder(folderPath))
         {
-            AssetDatabase.CreateFolder("Assets/Story", "Characters");
+            AssetDatabase.CreateFolder(storyPath, "Characters");
         }
+
 
         CreateCharacter("雨宮 ユウカ", "私がスイッチを押すと、誰かが死ぬ", true, false, CharacterRoleType.Trigger,
             new string[] {
