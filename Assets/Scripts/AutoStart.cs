@@ -4,7 +4,7 @@ public class AutoStart : MonoBehaviour
 {
     void Start()
     {
-        var manager = FindObjectOfType<GameStateManager>();
+        var manager = FindAnyObjectByType<GameStateManager>();
         manager.ChangeState(new StartState(manager));
     }
 }
