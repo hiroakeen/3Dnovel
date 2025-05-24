@@ -1,13 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TalkTrigger : MonoBehaviour
 {
-    [Header("対象となるUIボタン")]
+    [Header("共通のTalkボタン")]
     [SerializeField] private GameObject talkButton;
     [Header("会話情報")]
     [SerializeField] private string npcName = "NPC";
     [TextArea]
     [SerializeField] private string dialogueLine = "こんにちは。何か用ですか？";
+    [Header("記憶使用対応")]
+    [SerializeField] private bool isMemoryUseTarget = false;
+    [Header("話しかけた時に取得する記憶（任意）")]
+    [SerializeField] private MemoryData memoryToGrant;
 
     private bool isPlayerNear = false;
     private Transform player;
@@ -17,7 +22,6 @@ public class TalkTrigger : MonoBehaviour
         if (talkButton != null)
         {
             talkButton.SetActive(false);
-            talkButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(TalkToNPC);
         }
     }
 
@@ -35,7 +39,14 @@ public class TalkTrigger : MonoBehaviour
         {
             player = other.transform;
             isPlayerNear = true;
-            if (talkButton != null) talkButton.SetActive(true);
+
+            if (talkButton != null)
+            {
+                talkButton.SetActive(true);
+                Button btn = talkButton.GetComponent<Button>();
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(TalkToNPC);
+            }
         }
     }
 
@@ -51,7 +62,26 @@ public class TalkTrigger : MonoBehaviour
     public void TalkToNPC()
     {
         if (talkButton != null) talkButton.SetActive(false);
-        UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
+
+        if (memoryToGrant != null)
+        {
+            var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
+            if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
+            {
+                inventory.AddMemory(memoryToGrant);
+                UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
+                return;
+            }
+        }
+
+        if (isMemoryUseTarget)
+        {
+            UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
+        }
+        else
+        {
+            UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
+        }
     }
 
     public void UseMemory(string memoryContent)
@@ -59,5 +89,4 @@ public class TalkTrigger : MonoBehaviour
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
         UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
     }
-
 }
