@@ -13,6 +13,10 @@ public class CharacterMemoryData : ScriptableObject
     public bool isMemoryTrue;
     public bool isLying;
     public CharacterRoleType roleType;
+    public MemoryData autoGrantedMemory;
+
+    [Header("記憶使用の対象かどうか")]
+    public bool isMemoryUseTarget;
 
     [Header("ターン別セリフ（最大3ターン）")]
     public List<TurnDialogue> turnDialogues = new();
@@ -25,6 +29,12 @@ public class CharacterMemoryData : ScriptableObject
                 return dialogue.dialogueLine;
         }
         return "……（無言）";
+    }
+
+    public string GetDialogueForCurrentTurn()
+    {
+        int turn = GameManager.CurrentTurn;
+        return GetDialogueForTurn(turn);
     }
 }
 

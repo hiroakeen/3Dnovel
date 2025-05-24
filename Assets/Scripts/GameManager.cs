@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     [Header("ƒLƒƒƒ‰ƒNƒ^[“o˜^")]
     [SerializeField] private List<CharacterMemoryData> allCharacters;
 
     private List<TurnDecision> decisionLogs = new();
+
+    [SerializeField] private int currentTurn = 1;
+    public static int CurrentTurn => Instance != null ? Instance.currentTurn : 1;
 
     private void Awake()
     {
@@ -48,5 +51,17 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         decisionLogs.Clear();
+        currentTurn = 1;
+    }
+
+    public void SetTurn(int turn)
+    {
+        currentTurn = turn;
+    }
+
+    public int GetTurn()
+    {
+        return currentTurn;
     }
 }
+

@@ -5,14 +5,8 @@ public class TalkTrigger : MonoBehaviour
 {
     [Header("共通のTalkボタン")]
     [SerializeField] private GameObject talkButton;
-    [Header("会話情報")]
-    [SerializeField] private string npcName = "NPC";
-    [TextArea]
-    [SerializeField] private string dialogueLine = "こんにちは。何か用ですか？";
-    [Header("記憶使用対応")]
-    [SerializeField] private bool isMemoryUseTarget = false;
-    [Header("話しかけた時に取得する記憶（任意）")]
-    [SerializeField] private MemoryData memoryToGrant;
+    [Header("このNPCのキャラデータ")]
+    [SerializeField] private CharacterMemoryData characterData;
 
     private bool isPlayerNear = false;
     private Transform player;
@@ -63,6 +57,17 @@ public class TalkTrigger : MonoBehaviour
     {
         if (talkButton != null) talkButton.SetActive(false);
 
+        if (characterData == null)
+        {
+            Debug.LogWarning("characterData が設定されていません。");
+            return;
+        }
+
+        string npcName = characterData.characterName;
+        string dialogueLine = characterData.GetDialogueForCurrentTurn();
+        bool isMemoryUseTarget = characterData.isMemoryUseTarget;
+        MemoryData memoryToGrant = characterData.autoGrantedMemory;
+
         if (memoryToGrant != null)
         {
             var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
@@ -86,6 +91,7 @@ public class TalkTrigger : MonoBehaviour
 
     public void UseMemory(string memoryContent)
     {
+        string npcName = characterData != null ? characterData.characterName : "NPC";
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
         UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
     }

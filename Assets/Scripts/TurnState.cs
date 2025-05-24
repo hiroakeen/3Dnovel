@@ -68,14 +68,7 @@ public class TurnState : IGameState
         selectedActionTarget = target;
 
         // ログとして記録
-        var log = new TurnDecision
-        {
-            turn = turnNumber,
-            talkedCharacters = selectedCharacters.ToArray(),
-            selectedMemoryOwner = selectedMemorySource,
-            targetCharacter = selectedActionTarget
-        };
-
+        var log = new TurnDecision(turnNumber, selectedMemorySource, selectedActionTarget);
         GameManager.Instance.AddDecisionLog(log);
 
         // 次のターンへ
@@ -90,11 +83,17 @@ public class TurnState : IGameState
     }
 }
 
-// 参考：DecisionLog構造
+// 簡略化された TurnDecision クラス
 public class TurnDecision
 {
     public int turn;
-    public CharacterMemoryData[] talkedCharacters;
     public CharacterMemoryData selectedMemoryOwner;
     public CharacterMemoryData targetCharacter;
+
+    public TurnDecision(int turn, CharacterMemoryData owner, CharacterMemoryData target)
+    {
+        this.turn = turn;
+        this.selectedMemoryOwner = owner;
+        this.targetCharacter = target;
+    }
 }

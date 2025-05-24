@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endingTitleText;
     [SerializeField] private TextMeshProUGUI endingDescriptionText;
 
+    [SerializeField] private Canvas mainGameplayCanvas;
+    [SerializeField] private Canvas dialogueCanvas;
+
+
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
     private PlayerMemoryInventory playerMemoryInventory;
@@ -44,6 +48,18 @@ public class UIManager : MonoBehaviour
         playerController = FindAnyObjectByType<PlayerControllerManager>();
         playerMemoryInventory = FindAnyObjectByType<PlayerMemoryInventory>();
 
+        // 最初は移動状態なので、移動用Canvasを表示
+        if (mainGameplayCanvas != null)
+        {
+            mainGameplayCanvas.gameObject.SetActive(true);
+        }
+
+        // 会話Canvasは非表示
+        if (dialogueCanvas != null)
+        {
+            dialogueCanvas.gameObject.SetActive(false);
+        }
+
         if (grayOverlayPanel != null)
         {
             grayOverlayPanel.SetActive(false);
@@ -57,6 +73,7 @@ public class UIManager : MonoBehaviour
             memoryListPanel.SetActive(false);
         }
     }
+
 
     public void ShowCharacterSelection(List<CharacterMemoryData> characters, Action<CharacterMemoryData> onSelect)
     {
@@ -77,13 +94,23 @@ public class UIManager : MonoBehaviour
     public void ShowDialogue(string dialogueLine)
     {
         if (playerController != null) playerController.PauseControl();
-        if (grayOverlayPanel != null) grayOverlayPanel.SetActive(true);
+        mainGameplayCanvas.gameObject.SetActive(false);
+        dialogueCanvas.gameObject.SetActive(true);
 
         dialoguePanel.SetActive(true);
         dialogueText.text = dialogueLine;
-
-        if (memoryUseButton != null) memoryUseButton.SetActive(false);
     }
+
+    public void HideDialogue()
+    {
+        if (playerController != null) playerController.ResumeControl();
+        mainGameplayCanvas.gameObject.SetActive(true);
+        dialogueCanvas.gameObject.SetActive(false);
+
+        dialoguePanel.SetActive(false);
+    }
+
+
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
     {
@@ -119,16 +146,6 @@ public class UIManager : MonoBehaviour
                 });
             }
         }
-    }
-
-    public void HideDialogue()
-    {
-        if (playerController != null) playerController.ResumeControl();
-        if (grayOverlayPanel != null) grayOverlayPanel.SetActive(false);
-
-        dialoguePanel.SetActive(false);
-        if (memoryUseButton != null) memoryUseButton.SetActive(false);
-        if (memoryListPanel != null) memoryListPanel.SetActive(false);
     }
 
     public void ShowMemorySelection(List<CharacterMemoryData> memorySources, Action<CharacterMemoryData> onMemoryChosen)

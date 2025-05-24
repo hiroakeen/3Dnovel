@@ -19,6 +19,8 @@ MonoBehaviour:
   isMemoryTrue: 1
   isLying: 0
   roleType: 0
+  autoGrantedMemory: {fileID: 0}
+  isMemoryUseTarget: 0
   turnDialogues:
   - turn: 1
     dialogueLine: "\u90E8\u5C4B\u306E\u69CB\u9020\u3001\u5999\u306B\u4E0D\u81EA\u7136\u3060\u3068\u601D\u308F\u306A\u3044\u304B\uFF1F"
