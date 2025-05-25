@@ -1,25 +1,26 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class MemoryPanelController : MonoBehaviour
 {
-    [SerializeField] private GameObject memoryPanel;
-    [SerializeField] private GameObject descriptionBox;
-    [SerializeField] private GameObject closePanelButtonObject;
     [SerializeField] private GameObject closeDescriptionButtonObject;
+    [SerializeField] private GameObject descriptionBox;
     [SerializeField] private TextMeshProUGUI descriptionText;
-    [SerializeField] private Button memoryButton;
-    [SerializeField] private Button closePanelButton;
     [SerializeField] private Button closeDescriptionButton;
+
+    [SerializeField] private Button memoryButton;
+    [SerializeField] private GameObject memoryPanel;
     [SerializeField] private Transform memoryGrid;
+    [SerializeField] private Button closePanelButton;
+    [SerializeField] private GameObject closePanelButtonObject;
     [SerializeField] private GameObject memoryItemPrefab;
 
     private bool isPaused = false;
 
     private void Start()
     {
-        // èâä˙èÛë‘Ç≈ëSUIÇîÒï\é¶Ç…ÇµÇƒà¿ëSÉXÉ^Å[Ég
+        // ÂàùÊúüÁä∂ÊÖã„ÅßÂÖ®UI„ÇíÈùûË°®Á§∫„Å´„Åó„Å¶ÂÆâÂÖ®„Çπ„Çø„Éº„Éà
         memoryPanel.SetActive(false);
         descriptionBox.SetActive(false);
         closePanelButtonObject.SetActive(false);
@@ -27,10 +28,11 @@ public class MemoryPanelController : MonoBehaviour
 
         closePanelButton.onClick.AddListener(CloseMemoryPanel);
         closeDescriptionButton.onClick.AddListener(CloseDescriptionBox);
+        memoryButton.onClick.RemoveAllListeners();
         memoryButton.onClick.AddListener(OpenMemoryPanel);
     }
 
-    private void OpenMemoryPanel()
+    public void OpenMemoryPanel()
     {
         memoryPanel.SetActive(true);
         closePanelButtonObject.SetActive(true);
@@ -67,12 +69,14 @@ public class MemoryPanelController : MonoBehaviour
 
     public void CloseMemoryPanel()
     {
+        Debug.Log("CloseMemoryPanel: memoryPanel false „Å´„Åô„Çã");
         memoryPanel.SetActive(false);
-        descriptionBox.SetActive(false);
         closePanelButtonObject.SetActive(false);
+        descriptionBox.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
     }
+
 
     private void ShowDescription(string desc)
     {
