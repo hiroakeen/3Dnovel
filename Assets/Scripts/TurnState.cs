@@ -7,10 +7,10 @@ public class TurnState : IGameState
     private int turnNumber;
 
     private List<CharacterMemoryData> selectedCharacters = new();
-    private List<CharacterMemoryData> availableCharacters;
-
     private CharacterMemoryData selectedMemorySource;
     private CharacterMemoryData selectedActionTarget;
+
+    private bool memoryUsed = false;
 
     public TurnState(GameStateManager manager, int turnNumber)
     {
@@ -22,10 +22,7 @@ public class TurnState : IGameState
     {
         Debug.Log($"Turn {turnNumber} 開始");
         selectedCharacters.Clear();
-        availableCharacters = GameManager.Instance.GetAllCharacters();
-
-        // UIでキャラクター選択を開始
-        UIManager.Instance.ShowCharacterSelection(availableCharacters, OnCharacterSelected);
+        memoryUsed = false;
     }
 
     public void Exit()
@@ -33,52 +30,43 @@ public class TurnState : IGameState
         Debug.Log($"Turn {turnNumber} 終了");
     }
 
-    private void OnCharacterSelected(CharacterMemoryData character)
+    public void NotifyCharacterTalked(CharacterMemoryData character)
     {
         if (!selectedCharacters.Contains(character))
         {
             selectedCharacters.Add(character);
-            string dialogue = character.GetDialogueForTurn(turnNumber);
-            UIManager.Instance.ShowDialogue(dialogue);
+            Debug.Log($"{character.characterName} と会話（ターン {turnNumber}）");
         }
 
-        if (selectedCharacters.Count >= 3)
-        {
-            PromptForMemoryUsage();
-        }
+        CheckTurnProgress();
     }
 
-    private void PromptForMemoryUsage()
+    public void NotifyMemoryUsed(CharacterMemoryData memorySource, CharacterMemoryData target)
     {
-        // UIで記憶選択画面に遷移
-        UIManager.Instance.ShowMemorySelection(selectedCharacters, OnMemoryChosen);
-    }
+        if (memoryUsed) return; // 1回のみ有効
 
-    private void OnMemoryChosen(CharacterMemoryData memoryOwner)
-    {
-        selectedMemorySource = memoryOwner;
-        List<CharacterMemoryData> targets = new(availableCharacters);
-        targets.Remove(memoryOwner); // 自分自身以外に使わせる前提
-
-        UIManager.Instance.ShowTargetSelection(targets, OnTargetChosen);
-    }
-
-    private void OnTargetChosen(CharacterMemoryData target)
-    {
+        selectedMemorySource = memorySource;
         selectedActionTarget = target;
+        memoryUsed = true;
 
-        // ログとして記録
-        var log = new TurnDecision(turnNumber, selectedMemorySource, selectedActionTarget);
+        var log = new TurnDecision(turnNumber, memorySource, target);
         GameManager.Instance.AddDecisionLog(log);
 
-        // 次のターンへ
-        if (turnNumber >= 3)
+        CheckTurnProgress();
+    }
+
+    private void CheckTurnProgress()
+    {
+        if (selectedCharacters.Count >= 3 && memoryUsed)
         {
-            manager.ChangeState(new EvaluateState(manager));
-        }
-        else
-        {
-            manager.ChangeState(new TurnState(manager, turnNumber + 1));
+            if (turnNumber >= 3)
+            {
+                manager.ChangeState(new EvaluateState(manager));
+            }
+            else
+            {
+                manager.ChangeState(new TurnState(manager, turnNumber + 1));
+            }
         }
     }
 }

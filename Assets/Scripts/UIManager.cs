@@ -9,29 +9,19 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [Header("UI Panels")]
-    [SerializeField] private GameObject characterSelectionPanel;
-    [SerializeField] private GameObject memorySelectionPanel;
-    [SerializeField] private GameObject targetSelectionPanel;
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private GameObject endingPanel;
-    [SerializeField] private GameObject grayOverlayPanel;
-    [SerializeField] private GameObject memoryUseButton;
     [SerializeField] private GameObject memoryListPanel;
     [SerializeField] private Transform memoryButtonParent;
+    [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject grayOverlayPanel;
+    [SerializeField] private GameObject memoryUseButton;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject characterButtonPrefab;
-    [SerializeField] private Transform characterButtonParent;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
 
-    [Header("Ending UI")]
-    [SerializeField] private TextMeshProUGUI endingTitleText;
-    [SerializeField] private TextMeshProUGUI endingDescriptionText;
-
     [SerializeField] private Canvas mainGameplayCanvas;
     [SerializeField] private Canvas dialogueCanvas;
-
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
@@ -48,47 +38,20 @@ public class UIManager : MonoBehaviour
         playerController = FindAnyObjectByType<PlayerControllerManager>();
         playerMemoryInventory = FindAnyObjectByType<PlayerMemoryInventory>();
 
-        // 最初は移動状態なので、移動用Canvasを表示
         if (mainGameplayCanvas != null)
-        {
             mainGameplayCanvas.gameObject.SetActive(true);
-        }
 
-        // 会話Canvasは非表示
         if (dialogueCanvas != null)
-        {
             dialogueCanvas.gameObject.SetActive(false);
-        }
 
         if (grayOverlayPanel != null)
-        {
             grayOverlayPanel.SetActive(false);
-        }
+
         if (memoryUseButton != null)
-        {
             memoryUseButton.SetActive(false);
-        }
+
         if (memoryListPanel != null)
-        {
             memoryListPanel.SetActive(false);
-        }
-    }
-
-
-    public void ShowCharacterSelection(List<CharacterMemoryData> characters, Action<CharacterMemoryData> onSelect)
-    {
-        ClearCharacterButtons();
-        characterSelectionPanel.SetActive(true);
-
-        foreach (var character in characters)
-        {
-            GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName;
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => {
-                characterSelectionPanel.SetActive(false);
-                onSelect(character);
-            });
-        }
     }
 
     public void ShowDialogue(string dialogueLine)
@@ -109,8 +72,6 @@ public class UIManager : MonoBehaviour
 
         dialoguePanel.SetActive(false);
     }
-
-
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
     {
@@ -133,65 +94,30 @@ public class UIManager : MonoBehaviour
             ClearMemoryButtons();
 
             List<MemoryData> memories = playerMemoryInventory.GetAllMemories();
-
-            foreach (var memory in memories)
+            for (int i = memories.Count - 1; i >= 0; i--)
             {
+                var memory = memories[i];
+
                 GameObject buttonObj = Instantiate(characterButtonPrefab, memoryButtonParent);
-                buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = memory.memoryText;
-                buttonObj.GetComponent<Button>().onClick.AddListener(() => {
+                var label = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
+                if (label != null)
+                    label.text = memory.memoryText;
+
+                buttonObj.GetComponent<Button>().onClick.AddListener(() =>
+                {
                     memoryListPanel.SetActive(false);
                     memoryUseButton.SetActive(false);
-                    currentTalkTrigger?.UseMemory(memory.memoryText);
                     playerMemoryInventory.RemoveMemory(memory);
+
+                    if (currentTalkTrigger != null)
+                    {
+                        currentTalkTrigger.UseMemory(memory.memoryText);
+                        currentTalkTrigger = null;
+                    }
+
+                    HideDialogue();
                 });
             }
-        }
-    }
-
-    public void ShowMemorySelection(List<CharacterMemoryData> memorySources, Action<CharacterMemoryData> onMemoryChosen)
-    {
-        memorySelectionPanel.SetActive(true);
-        ClearCharacterButtons();
-
-        foreach (var character in memorySources)
-        {
-            GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName + " の記憶";
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => {
-                memorySelectionPanel.SetActive(false);
-                onMemoryChosen(character);
-            });
-        }
-    }
-
-    public void ShowTargetSelection(List<CharacterMemoryData> targets, Action<CharacterMemoryData> onTargetChosen)
-    {
-        targetSelectionPanel.SetActive(true);
-        ClearCharacterButtons();
-
-        foreach (var character in targets)
-        {
-            GameObject buttonObj = Instantiate(characterButtonPrefab, characterButtonParent);
-            buttonObj.GetComponentInChildren<TextMeshProUGUI>().text = character.characterName + " に使わせる";
-            buttonObj.GetComponent<Button>().onClick.AddListener(() => {
-                targetSelectionPanel.SetActive(false);
-                onTargetChosen(character);
-            });
-        }
-    }
-
-    public void ShowEnding(string title, string description)
-    {
-        endingPanel.SetActive(true);
-        endingTitleText.text = title;
-        endingDescriptionText.text = description;
-    }
-
-    private void ClearCharacterButtons()
-    {
-        foreach (Transform child in characterButtonParent)
-        {
-            Destroy(child.gameObject);
         }
     }
 

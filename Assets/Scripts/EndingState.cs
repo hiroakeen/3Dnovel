@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingState : IGameState
 {
@@ -15,28 +16,9 @@ public class EndingState : IGameState
     {
         Debug.Log($"EndingState: エンディング {endingId} を表示中");
 
-        // 仮データで表示（本番では ScriptableObject から参照）
-        string title = "";
-        string description = "";
-
-        switch (endingId)
-        {
-            case "TRUE_END":
-                title = "真実の脱出";
-                description = "あなたは全ての嘘を見抜き、皆と共に部屋を出た。";
-                break;
-            case "GOOD_END":
-                title = "一部脱出";
-                description = "あなたは助かったが、他の誰かが犠牲になった。";
-                break;
-            case "BAD_END":
-            default:
-                title = "閉ざされた終焉";
-                description = "何も知らないまま、あなたたちは閉じ込められた。";
-                break;
-        }
-
-        UIManager.Instance.ShowEnding(title, description);
+        // エンディング情報を渡してシーン遷移
+        EndingResultHolder.endingId = endingId;
+        SceneManager.LoadScene("EndingScene");
     }
 
     public void Exit()

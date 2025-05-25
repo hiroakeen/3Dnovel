@@ -68,6 +68,7 @@ public class TalkTrigger : MonoBehaviour
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
         MemoryData memoryToGrant = characterData.autoGrantedMemory;
 
+        // 記憶の自動取得
         if (memoryToGrant != null)
         {
             var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
@@ -75,10 +76,13 @@ public class TalkTrigger : MonoBehaviour
             {
                 inventory.AddMemory(memoryToGrant);
                 UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
+
+                NotifyTalked(); // ← TurnStateに通知を追加
                 return;
             }
         }
 
+        // 記憶を使う対象なら
         if (isMemoryUseTarget)
         {
             UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
@@ -87,6 +91,8 @@ public class TalkTrigger : MonoBehaviour
         {
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
+
+        NotifyTalked(); // ← TurnStateに通知
     }
 
     public void UseMemory(string memoryContent)
@@ -94,5 +100,23 @@ public class TalkTrigger : MonoBehaviour
         string npcName = characterData != null ? characterData.characterName : "NPC";
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
         UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
+
+        // 対象キャラと使った記憶を TurnState に通知
+        var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
+        var memory = FindAnyObjectByType<PlayerMemoryInventory>()?.FindMemoryByText(memoryContent);
+
+        if (activeState != null && characterData != null && memory != null)
+        {
+            activeState.NotifyMemoryUsed(memory.ownerCharacter, characterData);
+        }
+    }
+
+    private void NotifyTalked()
+    {
+        var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
+        if (activeState != null && characterData != null)
+        {
+            activeState.NotifyCharacterTalked(characterData);
+        }
     }
 }
