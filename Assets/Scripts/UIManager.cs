@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,19 +8,17 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [Header("UI Panels")]
-    [SerializeField] private GameObject memorySelectPanel;       // Å© ãå: memoryListPanel
-    [SerializeField] private Transform memoryButtonParent;
+    [SerializeField] private GameObject gameplayPanel;    
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private GameObject memorySelectPanel;
     [SerializeField] private GameObject grayOverlayPanel;
-    [SerializeField] private GameObject useMemoryButton;         // Å© ãå: memoryUseButton
+    [SerializeField] private GameObject useMemoryButton;
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject memoryButtonPrefab;      // Å© ãå: characterButtonPrefab
+    [SerializeField] private GameObject memoryButtonPrefab;
+    [SerializeField] private Transform memoryButtonParent;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
-
-    [SerializeField] private Canvas mainGameplayCanvas;
-    [SerializeField] private Canvas dialogueCanvas;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
@@ -38,38 +35,29 @@ public class UIManager : MonoBehaviour
         playerController = FindAnyObjectByType<PlayerControllerManager>();
         playerMemoryInventory = FindAnyObjectByType<PlayerMemoryInventory>();
 
-        if (mainGameplayCanvas != null)
-            mainGameplayCanvas.gameObject.SetActive(true);
-
-        if (dialogueCanvas != null)
-            dialogueCanvas.gameObject.SetActive(false);
-
-        if (grayOverlayPanel != null)
-            grayOverlayPanel.SetActive(false);
-
-        if (useMemoryButton != null)
-            useMemoryButton.SetActive(false);
-
-        if (memorySelectPanel != null)
-            memorySelectPanel.SetActive(false);
+        gameplayPanel?.SetActive(true);
+        dialoguePanel?.SetActive(false);
+        memorySelectPanel?.SetActive(false);
+        grayOverlayPanel?.SetActive(false);
+        useMemoryButton?.SetActive(false);
     }
 
     public void ShowDialogue(string dialogueLine)
     {
         if (playerController != null) playerController.PauseControl();
-        mainGameplayCanvas.gameObject.SetActive(false);
-        dialogueCanvas.gameObject.SetActive(true);
 
-        dialoguePanel.SetActive(true);
+        gameplayPanel?.SetActive(false);
+        dialoguePanel?.SetActive(true);
+
         dialogueText.text = dialogueLine;
     }
 
     public void HideDialogue()
     {
         if (playerController != null) playerController.ResumeControl();
-        mainGameplayCanvas.gameObject.SetActive(true);
-        dialogueCanvas.gameObject.SetActive(false);
-        dialoguePanel.SetActive(false);
+
+        gameplayPanel?.SetActive(true);
+        dialoguePanel?.SetActive(false);
     }
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
