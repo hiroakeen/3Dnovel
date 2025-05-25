@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class MemoryGiveUIController : MonoBehaviour
 {
-    [Header("UIQÆ")]
+    [Header("UIå‚ç…§")]
     [SerializeField] private GameObject panel;
-    [SerializeField] private Transform memoryGrid; // 9ƒ}ƒX‚ÌGrid‚ÉMemoryItemƒvƒŒƒnƒu‚ğ”z’u
+    [SerializeField] private Transform memoryGrid; // 9ãƒã‚¹ã®Gridã«MemoryItemãƒ—ãƒ¬ãƒãƒ–ã‚’é…ç½®
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject memoryItemPrefab;
 
@@ -36,9 +36,9 @@ public class MemoryGiveUIController : MonoBehaviour
         var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
         if (inventory == null) return;
 
-        var memories = inventory.GetAllMemories();
-        var slots = memoryGrid.GetComponentsInChildren<Button>(true);
+        var memories = inventory.GetAllMemories(); // ã“ã“ã§æ¯å›å–å¾—
 
+        var slots = memoryGrid.GetComponentsInChildren<Button>(true);
         for (int i = 0; i < slots.Length; i++)
         {
             var button = slots[i];
@@ -54,29 +54,30 @@ public class MemoryGiveUIController : MonoBehaviour
             }
             else
             {
-                image.sprite = null; // ‚Ü‚½‚Í“§–¾ƒXƒvƒ‰ƒCƒg
-                button.gameObject.SetActive(false); // ‹óƒXƒƒbƒg‚Í”ñ•\¦
+                image.sprite = null;
+                button.gameObject.SetActive(false);
             }
         }
     }
 
+
     private void GiveMemory(MemoryData selectedMemory)
     {
-        // “n‚µ‚½‹L‰¯‚ªŠú‘Ò‚³‚ê‚½‚à‚Ì‚©‚ğŠm”F
+        // æ¸¡ã—ãŸè¨˜æ†¶ãŒæœŸå¾…ã•ã‚ŒãŸã‚‚ã®ã‹ã‚’ç¢ºèª
         if (targetCharacter.expectedMemory != null &&
             selectedMemory == targetCharacter.expectedMemory)
         {
-            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} ‚É³‚µ‚¢‹L‰¯‚ğ“n‚µ‚½I");
-            // TODO: ³‚µ‚¢”½‰‚âƒtƒ‰ƒOˆ—‚ğ‚±‚±‚É
+            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} ã«æ­£ã—ã„è¨˜æ†¶ã‚’æ¸¡ã—ãŸï¼");
+            // TODO: æ­£ã—ã„åå¿œã‚„ãƒ•ãƒ©ã‚°å‡¦ç†ã‚’ã“ã“ã«
         }
         else
         {
-            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} ‚É‹L‰¯‚ğ“n‚µ‚½‚ªA”½‰‚Í‚È‚©‚Á‚½c");
+            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} ã«è¨˜æ†¶ã‚’æ¸¡ã—ãŸãŒã€åå¿œã¯ãªã‹ã£ãŸâ€¦");
         }
 
         Close();
 
-        // ó‘ÔXV
+        // çŠ¶æ…‹æ›´æ–°
         var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
         if (activeState != null)
         {

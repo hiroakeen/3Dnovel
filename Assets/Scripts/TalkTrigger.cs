@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class TalkTrigger : MonoBehaviour
 {
-    [Header("‹¤’Ê‚ÌƒAƒNƒVƒ‡ƒ“ƒ{ƒ^ƒ“i˜b‚·^‹L‰¯‚ğ“n‚·j")]
-    [SerializeField] private GameObject talkActionButton; // 1‚Â‚É“‡
-    [SerializeField] private TMP_Text actionButtonText;   // Text: "˜b‚·" or "‹L‰¯‚ğ“n‚·"
+    [Header("å…±é€šã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãƒœã‚¿ãƒ³ï¼ˆè©±ã™ï¼è¨˜æ†¶ã‚’æ¸¡ã™ï¼‰")]
+    [SerializeField] private GameObject talkActionButton; // 1ã¤ã«çµ±åˆ
+    [SerializeField] private TMP_Text actionButtonText;   // Text: "è©±ã™" or "è¨˜æ†¶ã‚’æ¸¡ã™"
 
-    [Header("‚±‚ÌNPC‚ÌƒLƒƒƒ‰ƒf[ƒ^")]
+    [Header("ã“ã®NPCã®ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿")]
     [SerializeField] private CharacterMemoryData characterData;
 
-    [Header("‹L‰¯“n‚µUI‚Ì§ŒäƒXƒNƒŠƒvƒg")]
+    [Header("è¨˜æ†¶æ¸¡ã—UIã®åˆ¶å¾¡ã‚¹ã‚¯ãƒªãƒ—ãƒˆ")]
     [SerializeField] private MemoryGiveUIController memoryGiveUI;
 
     private bool isPlayerNear = false;
@@ -32,7 +32,7 @@ public class TalkTrigger : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
@@ -40,13 +40,13 @@ public class TalkTrigger : MonoBehaviour
 
         if (talkActionButton == null)
         {
-            Debug.LogError("talkActionButton ‚ª null ‚Å‚·");
+            Debug.LogError("talkActionButton ãŒ null ã§ã™");
             return;
         }
 
         if (actionButtonText == null)
         {
-            Debug.LogError("actionButtonText ‚ª null ‚Å‚·");
+            Debug.LogError("actionButtonText ãŒ null ã§ã™");
             return;
         }
 
@@ -55,7 +55,7 @@ public class TalkTrigger : MonoBehaviour
         Button btn = talkActionButton.GetComponent<Button>();
         if (btn == null)
         {
-            Debug.LogError("talkActionButton ‚É Button ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª•t‚¢‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogError("talkActionButton ã« Button ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒä»˜ã„ã¦ã„ã¾ã›ã‚“ï¼");
             return;
         }
 
@@ -63,17 +63,17 @@ public class TalkTrigger : MonoBehaviour
 
         if (GameTurnStateManager.Instance.CurrentState == GameTurnState.TalkPhase)
         {
-            actionButtonText.text = "˜b‚·";
+            actionButtonText.text = "è©±ã™";
             btn.onClick.AddListener(TalkToNPC);
         }
         else if (GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
         {
-            actionButtonText.text = "‹L‰¯‚ğ“n‚·";
+            actionButtonText.text = "è¨˜æ†¶ã‚’æ¸¡ã™";
             btn.onClick.AddListener(() => GiveMemoryToNPC(characterData));
         }
     }
 
-private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
@@ -81,7 +81,7 @@ private void OnTriggerExit(Collider other)
         talkActionButton?.SetActive(false);
     }
 
-    // SubmitƒL[‚Å‚àŒÄ‚Ño‚¹‚é‹¤’Êˆ—
+    // Submitã‚­ãƒ¼ã§ã‚‚å‘¼ã³å‡ºã›ã‚‹å…±é€šå‡¦ç†
     private void HandleInteraction()
     {
         if (GameTurnStateManager.Instance.CurrentState == GameTurnState.TalkPhase)
@@ -100,7 +100,7 @@ private void OnTriggerExit(Collider other)
 
         if (characterData == null)
         {
-            Debug.LogWarning("characterData ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.LogWarning("characterData ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             return;
         }
 
@@ -109,32 +109,36 @@ private void OnTriggerExit(Collider other)
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
         MemoryData memoryToGrant = characterData.autoGrantedMemory;
 
-        // ‹L‰¯‚Ì©“®æ“¾
+        // è¨˜æ†¶ã®è‡ªå‹•å–å¾—
         if (memoryToGrant != null)
         {
             var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
             if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
             {
                 inventory.AddMemory(memoryToGrant);
-                UIManager.Instance.ShowDialogue($"{npcName}F{dialogueLine}\ni{memoryToGrant.memoryText} ‚ğv‚¢o‚µ‚½j");
+                UIManager.Instance.ShowDialogue($"{npcName}ï¼š{dialogueLine}\nï¼ˆ{memoryToGrant.memoryText} ã‚’æ€ã„å‡ºã—ãŸï¼‰");
 
                 NotifyTalked();
                 return;
             }
         }
 
-        // ‹L‰¯g—p‘ÎÛ‚È‚çA‘I‘ğUI‚Â‚«‚Å•\¦
-        if (isMemoryUseTarget)
+        // ä¿®æ­£ã“ã“ã‹ã‚‰
+        if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
         {
+            // ãƒ•ã‚§ãƒ¼ã‚ºãŒè¨˜æ†¶ãƒ•ã‚§ãƒ¼ã‚ºã®ã¨ãã ã‘ã€è¨˜æ†¶ä½¿ç”¨UIã¤ãã§è¡¨ç¤º
             UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
         }
         else
         {
-            UIManager.Instance.ShowDialogue($"{npcName}F{dialogueLine}");
+            // é€šå¸¸ã®ä¼šè©±ã¨ã—ã¦è¡¨ç¤º
+            UIManager.Instance.ShowDialogue($"{npcName}ï¼š{dialogueLine}");
         }
+        // ä¿®æ­£ã“ã“ã¾ã§
 
         NotifyTalked();
     }
+
 
     public void GiveMemoryToNPC(CharacterMemoryData target)
     {
@@ -145,8 +149,8 @@ private void OnTriggerExit(Collider other)
     public void UseMemory(string memoryContent)
     {
         string npcName = characterData != null ? characterData.characterName : "NPC";
-        Debug.Log($"{npcName} ‚É‹L‰¯‚ğg—pF{memoryContent}");
-        UIManager.Instance.ShowDialogue($"{npcName} ‚Éu{memoryContent}v‚ğg‚Á‚½B");
+        Debug.Log($"{npcName} ã«è¨˜æ†¶ã‚’ä½¿ç”¨ï¼š{memoryContent}");
+        UIManager.Instance.ShowDialogue($"{npcName} ã«ã€Œ{memoryContent}ã€ã‚’ä½¿ã£ãŸã€‚");
 
         var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
         var memory = FindAnyObjectByType<PlayerMemoryInventory>()?.FindMemoryByText(memoryContent);

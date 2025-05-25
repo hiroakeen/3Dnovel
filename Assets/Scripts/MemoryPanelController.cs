@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Buffers;
 
 public class MemoryPanelController : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public class MemoryPanelController : MonoBehaviour
     [SerializeField] private Button closeDescriptionButton;
     [SerializeField] private Transform memoryGrid;
     [SerializeField] private GameObject memoryItemPrefab;
-    [SerializeField] private TextMeshProUGUI noMemoryText;
 
     private bool isPaused = false;
 
@@ -23,9 +21,9 @@ public class MemoryPanelController : MonoBehaviour
         descriptionBox.SetActive(false);
         memoryButton.onClick.AddListener(OpenMemoryPanel);
         closePanelButton.onClick.AddListener(CloseMemoryPanel);
-        closeDescriptionButton.onClick.AddListener(() => descriptionBox.SetActive(false));
+        closeDescriptionButton.onClick.AddListener(CloseDescriptionBox);
 
-        PopulateMemoryItems();
+        //PopulateMemoryItems();
     }
 
     private void OpenMemoryPanel()
@@ -33,15 +31,13 @@ public class MemoryPanelController : MonoBehaviour
         memoryPanel.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
+        PopulateMemoryItems();
     }
 
     private void PopulateMemoryItems()
     {
-        var allSlots = memoryGrid.GetComponentsInChildren<Button>(true); // 非アクティブ含む
+        var allSlots = memoryGrid.GetComponentsInChildren<Button>(true);
         var memories = MemoryManager.Instance.GetCollectedMemories();
-
-        bool hasMemory = memories != null && memories.Count > 0;
-        noMemoryText.gameObject.SetActive(!hasMemory);
 
         for (int i = 0; i < allSlots.Length; i++)
         {
@@ -51,20 +47,20 @@ public class MemoryPanelController : MonoBehaviour
                 var memory = memories[i];
                 image.sprite = memory.image;
                 allSlots[i].gameObject.SetActive(true);
-                int index = i; // クロージャ対策
+                int index = i;
                 allSlots[i].onClick.RemoveAllListeners();
                 allSlots[i].onClick.AddListener(() => ShowDescription(memories[index].description));
             }
             else
             {
-                image.sprite = null; // 透明などにして空スロット感
+                image.sprite = null;
+                allSlots[i].gameObject.SetActive(false);
                 allSlots[i].onClick.RemoveAllListeners();
             }
         }
     }
 
-
-    private void CloseMemoryPanel()
+    public void CloseMemoryPanel()
     {
         memoryPanel.SetActive(false);
         descriptionBox.SetActive(false);
@@ -72,12 +68,14 @@ public class MemoryPanelController : MonoBehaviour
         isPaused = false;
     }
 
-
-
     private void ShowDescription(string desc)
     {
         descriptionText.text = desc;
         descriptionBox.SetActive(true);
     }
 
+    public void CloseDescriptionBox()
+    {
+        descriptionBox.SetActive(false);
+    }
 }

@@ -9,14 +9,14 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [Header("UI Panels")]
-    [SerializeField] private GameObject memoryListPanel;
+    [SerializeField] private GameObject memorySelectPanel;       // Å© ãå: memoryListPanel
     [SerializeField] private Transform memoryButtonParent;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject grayOverlayPanel;
-    [SerializeField] private GameObject memoryUseButton;
+    [SerializeField] private GameObject useMemoryButton;         // Å© ãå: memoryUseButton
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject characterButtonPrefab;
+    [SerializeField] private GameObject memoryButtonPrefab;      // Å© ãå: characterButtonPrefab
 
     [SerializeField] private TextMeshProUGUI dialogueText;
 
@@ -47,11 +47,11 @@ public class UIManager : MonoBehaviour
         if (grayOverlayPanel != null)
             grayOverlayPanel.SetActive(false);
 
-        if (memoryUseButton != null)
-            memoryUseButton.SetActive(false);
+        if (useMemoryButton != null)
+            useMemoryButton.SetActive(false);
 
-        if (memoryListPanel != null)
-            memoryListPanel.SetActive(false);
+        if (memorySelectPanel != null)
+            memorySelectPanel.SetActive(false);
     }
 
     public void ShowDialogue(string dialogueLine)
@@ -69,7 +69,6 @@ public class UIManager : MonoBehaviour
         if (playerController != null) playerController.ResumeControl();
         mainGameplayCanvas.gameObject.SetActive(true);
         dialogueCanvas.gameObject.SetActive(false);
-
         dialoguePanel.SetActive(false);
     }
 
@@ -78,19 +77,19 @@ public class UIManager : MonoBehaviour
         currentTalkTrigger = trigger;
         ShowDialogue($"{npcName}ÅF{dialogueLine}");
 
-        if (memoryUseButton != null)
+        if (useMemoryButton != null)
         {
-            memoryUseButton.SetActive(true);
-            memoryUseButton.GetComponent<Button>().onClick.RemoveAllListeners();
-            memoryUseButton.GetComponent<Button>().onClick.AddListener(ShowMemoryList);
+            useMemoryButton.SetActive(true);
+            useMemoryButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            useMemoryButton.GetComponent<Button>().onClick.AddListener(ShowMemoryList);
         }
     }
 
     public void ShowMemoryList()
     {
-        if (memoryListPanel != null && playerMemoryInventory != null)
+        if (memorySelectPanel != null && playerMemoryInventory != null)
         {
-            memoryListPanel.SetActive(true);
+            memorySelectPanel.SetActive(true);
             ClearMemoryButtons();
 
             List<MemoryData> memories = playerMemoryInventory.GetAllMemories();
@@ -98,15 +97,15 @@ public class UIManager : MonoBehaviour
             {
                 var memory = memories[i];
 
-                GameObject buttonObj = Instantiate(characterButtonPrefab, memoryButtonParent);
+                GameObject buttonObj = Instantiate(memoryButtonPrefab, memoryButtonParent);
                 var label = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
                 if (label != null)
                     label.text = memory.memoryText;
 
                 buttonObj.GetComponent<Button>().onClick.AddListener(() =>
                 {
-                    memoryListPanel.SetActive(false);
-                    memoryUseButton.SetActive(false);
+                    memorySelectPanel.SetActive(false);
+                    useMemoryButton.SetActive(false);
                     playerMemoryInventory.RemoveMemory(memory);
 
                     if (currentTalkTrigger != null)

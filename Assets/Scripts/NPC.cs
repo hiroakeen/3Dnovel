@@ -1,21 +1,40 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public void ReceiveMemory(MemoryData_SO memory)
+    [SerializeField] private CharacterMemoryData characterData;
+
+    public void ReceiveMemory(MemoryData memory)
     {
-        // ‹L‰¯‚ªğŒ‚ğ–‚½‚µ‚Ä‚¢‚é‚©”»’è‚µ‚Ä•ªŠò‚È‚Ç
-        if (memory.memoryId == expectedMemoryId)
+        if (characterData == null || memory == null)
         {
-            Debug.Log("³‚µ‚¢‹L‰¯‚ğó‚¯æ‚Á‚½I");
-            // DŠ´“xƒAƒbƒvEƒGƒ“ƒfƒBƒ“ƒOƒtƒ‰ƒO etc.
+            Debug.LogWarning("NPCã¾ãŸã¯è¨˜æ†¶ãƒ‡ãƒ¼ã‚¿ãŒ null ã§ã™");
+            return;
+        }
+
+        string npcName = characterData.characterName;
+        var expected = characterData.expectedMemory;
+
+        if (expected != null && memory == expected)
+        {
+            // æ­£è§£ï¼
+            UIManager.Instance.ShowDialogue($"{npcName} ã«æ­£ã—ã„è¨˜æ†¶ã‚’æ¸¡ã—ãŸï¼");
+
+            // è¨˜æ†¶ã‚’å‰Šé™¤
+            var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
+            inventory?.RemoveMemory(memory);
+
+            // ã‚¿ãƒ¼ãƒ³çµ‚äº†ã‚’é€šçŸ¥
+            var turnState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
+            turnState?.NotifyMemoryUsed(memory.ownerCharacter, characterData);
         }
         else
         {
-            Debug.Log("‡‚Á‚Ä‚È‚¢‹L‰¯‚¾‚Á‚½c");
-            // –³”½‰EŒë”½‰‚È‚Ç
+            // ä¸æ­£è§£ï¼šä½•ã‚‚èµ·ããªã„ï¼ˆå†æŒ‘æˆ¦å¯èƒ½ï¼‰
+            UIManager.Instance.ShowDialogue($"{npcName} ã¯è¨˜æ†¶ã‚’å—ã‘å–ã£ãŸãŒã€åå¿œãŒãªã„â€¦â€¦");
+
+            // UIã¯è‡ªå‹•çš„ã«é–‰ã˜ã‚‰ã‚Œã¦OKï¼ˆMemoryGiveUIControllerãŒClose()ã‚’å‘¼ã¶ï¼‰
+            // â†’ ã‚¿ãƒ¼ãƒ³ã¯ç¶™ç¶šã€ä½•ã‚‚ã—ãªã„
         }
     }
-
-    public string expectedMemoryId; // ğŒ‚Æ‚µ‚Äg‚¤‹L‰¯ID
 }
