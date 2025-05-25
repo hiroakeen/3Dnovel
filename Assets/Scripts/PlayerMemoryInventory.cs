@@ -5,7 +5,8 @@ public class PlayerMemoryInventory : MonoBehaviour
 {
     [Header("現在プレイヤーが所持している記憶")]
     public List<MemoryData> currentMemories = new List<MemoryData>();
-
+    [Header("このプレイヤーのキャラデータ")]
+    public CharacterMemoryData PlayerCharacterData;
     public void AddMemory(MemoryData memory)
     {
         if (!currentMemories.Contains(memory))

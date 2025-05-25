@@ -1,10 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class InitialMemoryAssigner : MonoBehaviour
 {
-    [Header("�����L����⃊�X�g")]
-    [SerializeField] private List<MemoryData> memoryPool;
+    [Header("初期記憶の数")]
     [SerializeField] private int numberOfMemoriesToAssign = 2;
 
     private void Start()
@@ -18,10 +17,36 @@ public class InitialMemoryAssigner : MonoBehaviour
 
     private void AssignInitialMemories(PlayerMemoryInventory inventory)
     {
-        List<MemoryData> selected = new List<MemoryData>();
+        var playerCharacter = inventory.PlayerCharacterData;
+        if (playerCharacter == null)
+        {
+            Debug.LogWarning("❗ PlayerCharacterData が設定されていません。");
+            return;
+        }
 
-        int count = Mathf.Min(numberOfMemoriesToAssign, memoryPool.Count);
-        List<MemoryData> tempPool = new List<MemoryData>(memoryPool);
+        // Resources や Addressables でも可（すべての MemoryData を取得）
+        MemoryData[] allMemories = Resources.LoadAll<MemoryData>("ScriptableObjects/MemoryData");
+
+        // プレイヤーの記憶だけを抽出
+        List<MemoryData> playerMemories = new List<MemoryData>();
+        foreach (var memory in allMemories)
+        {
+            if (memory.ownerCharacter == playerCharacter)
+            {
+                playerMemories.Add(memory);
+            }
+        }
+
+        if (playerMemories.Count == 0)
+        {
+            Debug.LogWarning("⚠ プレイヤーの記憶が1つも見つかりませんでした。");
+            return;
+        }
+
+        // ランダムに抽出
+        int count = Mathf.Min(numberOfMemoriesToAssign, playerMemories.Count);
+        List<MemoryData> selected = new List<MemoryData>();
+        List<MemoryData> tempPool = new List<MemoryData>(playerMemories);
 
         for (int i = 0; i < count; i++)
         {
@@ -30,11 +55,12 @@ public class InitialMemoryAssigner : MonoBehaviour
             tempPool.RemoveAt(index);
         }
 
+        // 登録
         foreach (var memory in selected)
         {
             inventory.AddMemory(memory);
         }
 
-        Debug.Log($"�����L���� {selected.Count} �ǉ����܂����B");
+        Debug.Log($"プレイヤーの記憶を {selected.Count} 個追加しました。");
     }
 }

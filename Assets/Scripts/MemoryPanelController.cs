@@ -6,6 +6,8 @@ public class MemoryPanelController : MonoBehaviour
 {
     [SerializeField] private GameObject memoryPanel;
     [SerializeField] private GameObject descriptionBox;
+    [SerializeField] private GameObject closePanelButtonObject;
+    [SerializeField] private GameObject closeDescriptionButtonObject;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Button memoryButton;
     [SerializeField] private Button closePanelButton;
@@ -17,18 +19,21 @@ public class MemoryPanelController : MonoBehaviour
 
     private void Start()
     {
+        // 初期状態で全UIを非表示にして安全スタート
         memoryPanel.SetActive(false);
         descriptionBox.SetActive(false);
-        memoryButton.onClick.AddListener(OpenMemoryPanel);
+        closePanelButtonObject.SetActive(false);
+        closeDescriptionButtonObject.SetActive(false);
+
         closePanelButton.onClick.AddListener(CloseMemoryPanel);
         closeDescriptionButton.onClick.AddListener(CloseDescriptionBox);
-
-        //PopulateMemoryItems();
+        memoryButton.onClick.AddListener(OpenMemoryPanel);
     }
 
     private void OpenMemoryPanel()
     {
         memoryPanel.SetActive(true);
+        closePanelButtonObject.SetActive(true);
         Time.timeScale = 0;
         isPaused = true;
         PopulateMemoryItems();
@@ -64,6 +69,7 @@ public class MemoryPanelController : MonoBehaviour
     {
         memoryPanel.SetActive(false);
         descriptionBox.SetActive(false);
+        closePanelButtonObject.SetActive(false);
         Time.timeScale = 1;
         isPaused = false;
     }
@@ -77,5 +83,6 @@ public class MemoryPanelController : MonoBehaviour
     public void CloseDescriptionBox()
     {
         descriptionBox.SetActive(false);
+        closeDescriptionButtonObject.SetActive(false);
     }
 }

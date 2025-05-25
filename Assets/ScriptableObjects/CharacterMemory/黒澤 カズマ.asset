@@ -19,7 +19,8 @@ MonoBehaviour:
   isMemoryTrue: 1
   isLying: 0
   roleType: 0
-  autoGrantedMemory: {fileID: 0}
+  autoGrantedMemory: {fileID: 11400000, guid: 9034252dcb3c7d84ea1aa1fdc2800f01, type: 2}
+  expectedMemory: {fileID: 11400000, guid: 9034252dcb3c7d84ea1aa1fdc2800f01, type: 2}
   isMemoryUseTarget: 0
   turnDialogues:
   - turn: 1
