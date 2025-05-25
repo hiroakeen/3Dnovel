@@ -15,6 +15,11 @@ public class GameStateManager : MonoBehaviour
             currentState.Enter();
     }
 
+    public IGameState GetCurrentState()
+    {
+        return currentState;
+    }
+
     private void Start()
     {
         ChangeState(new StartState(this)); // Å‰‚Ìó‘Ô‚É‘JˆÚ

@@ -6,11 +6,6 @@ public class PlayerMemoryInventory : MonoBehaviour
     [Header("現在プレイヤーが所持している記憶")]
     public List<MemoryData> currentMemories = new List<MemoryData>();
 
-    public List<MemoryData> GetAllMemories()
-    {
-        return new List<MemoryData>(currentMemories);
-    }
-
     public void AddMemory(MemoryData memory)
     {
         if (!currentMemories.Contains(memory))
@@ -29,4 +24,13 @@ public class PlayerMemoryInventory : MonoBehaviour
         }
     }
 
+    public List<MemoryData> GetAllMemories()
+    {
+        return new List<MemoryData>(currentMemories);
+    }
+
+    public MemoryData FindMemoryByText(string text)
+    {
+        return currentMemories.Find(m => m.memoryText == text);
+    }
 }

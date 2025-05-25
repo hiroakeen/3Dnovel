@@ -542,7 +542,7 @@ Transform:
   m_GameObject: {fileID: 208214802}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18910755, y: 0.000000014632293, z: -0.0000000028179223, w: 0.9819564}
-  m_LocalPosition: {x: -7.813688, y: -14.519798, z: -3.7379122}
+  m_LocalPosition: {x: -7.813688, y: -14.519798, z: 3.5720873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1224,7 +1224,7 @@ Transform:
   m_GameObject: {fileID: 492539766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7.31}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3727,20 +3727,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0a9b48fcdd39542a4d40ddfbf155fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSelectionPanel: {fileID: 0}
-  memorySelectionPanel: {fileID: 1368931243}
-  targetSelectionPanel: {fileID: 0}
-  dialoguePanel: {fileID: 91225660}
-  endingPanel: {fileID: 0}
-  grayOverlayPanel: {fileID: 478494511}
-  memoryUseButton: {fileID: 1161171131}
   memoryListPanel: {fileID: 1936595132}
   memoryButtonParent: {fileID: 2074179468}
+  dialoguePanel: {fileID: 91225660}
+  grayOverlayPanel: {fileID: 478494511}
+  memoryUseButton: {fileID: 1161171131}
   characterButtonPrefab: {fileID: 4983792242770533116, guid: 798e464187a6baf4a9203509d1a2a112, type: 3}
-  characterButtonParent: {fileID: 1295700626}
   dialogueText: {fileID: 2065959724}
-  endingTitleText: {fileID: 0}
-  endingDescriptionText: {fileID: 0}
   mainGameplayCanvas: {fileID: 870670049}
   dialogueCanvas: {fileID: 1314536000}
 --- !u!4 &1771155654
