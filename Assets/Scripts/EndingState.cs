@@ -16,9 +16,18 @@ public class EndingState : IGameState
     {
         Debug.Log($"EndingState: エンディング {endingId} を表示中");
 
-        // エンディング情報を渡してシーン遷移
+        // エンディング情報を保持
         EndingResultHolder.endingId = endingId;
-        SceneManager.LoadScene("EndingScene");
+
+        // エンディングIDに応じてシーンを切り替え
+        string sceneName = endingId switch
+        {
+            "TRUE_END" => "TrueEndingScene",
+            "GOOD_END" => "NormalEndingScene",
+            _ => "BadEndingScene"
+        };
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Exit()

@@ -14,6 +14,7 @@ public class CharacterMemoryData : ScriptableObject
     public bool isLying;
     public CharacterRoleType roleType;
     public MemoryData autoGrantedMemory;
+    public MemoryData expectedMemory;
 
     [Header("記憶使用の対象かどうか")]
     public bool isMemoryUseTarget;
