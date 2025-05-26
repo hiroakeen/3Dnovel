@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 6961107}
   - component: {fileID: 6961108}
   m_Layer: 0
-  m_Name: NPC (2)
+  m_Name: "\u30B8\u30E7\u30FC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,8 +713,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208214802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18910755, y: 0.000000014632293, z: -0.0000000028179223, w: 0.9819564}
-  m_LocalPosition: {x: -7.813688, y: -14.519798, z: 3.5720873}
+  m_LocalRotation: {x: 0.18910751, y: -0.000000009579023, z: 0.0000000018447568, w: 0.9819564}
+  m_LocalPosition: {x: -7.813688, y: -14.519798, z: -5.1579123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1638,7 +1638,7 @@ GameObject:
   - component: {fileID: 472035262}
   - component: {fileID: 472035263}
   m_Layer: 0
-  m_Name: NPC (4)
+  m_Name: "\u30E6\u30A6\u30AB"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1729,7 +1729,7 @@ Transform:
   m_GameObject: {fileID: 472035257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.25, y: 0, z: -18.55}
+  m_LocalPosition: {x: 8.25, y: 0, z: -10.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1938,7 +1938,7 @@ Transform:
   m_GameObject: {fileID: 492539766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -8.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2471,7 +2471,7 @@ GameObject:
   - component: {fileID: 645013438}
   - component: {fileID: 645013439}
   m_Layer: 0
-  m_Name: NPC (5)
+  m_Name: "\u30AB\u30BA\u30DE"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3469,7 +3469,7 @@ GameObject:
   - component: {fileID: 912855927}
   - component: {fileID: 912855928}
   m_Layer: 0
-  m_Name: NPC (3)
+  m_Name: "\u30EC\u30CA"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3715,7 +3715,7 @@ GameObject:
   - component: {fileID: 919826354}
   - component: {fileID: 919826355}
   m_Layer: 0
-  m_Name: NPC (1)
+  m_Name: "\u30C6\u30AA"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
