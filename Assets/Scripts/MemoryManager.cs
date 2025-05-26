@@ -5,7 +5,7 @@ public class MemoryManager : MonoBehaviour
 {
     public static MemoryManager Instance { get; private set; }
 
-    private List<MemoryData_SO> collectedMemories = new();
+    private List<MemoryData> collectedMemories = new();
 
     private void Awake()
     {
@@ -13,11 +13,11 @@ public class MemoryManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void AddMemory(MemoryData_SO memory)
+    public void AddMemory(MemoryData memory)
     {
         if (!collectedMemories.Contains(memory))
             collectedMemories.Add(memory);
     }
 
-    public List<MemoryData_SO> GetCollectedMemories() => collectedMemories;
+    public List<MemoryData> GetCollectedMemories() => collectedMemories;
 }

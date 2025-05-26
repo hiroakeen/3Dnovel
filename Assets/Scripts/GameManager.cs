@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentTurn = 1;
     public static int CurrentTurn => Instance != null ? Instance.currentTurn : 1;
 
+    private bool isGameplayStarted = false;
+
+   
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -20,6 +24,20 @@ public class GameManager : MonoBehaviour
 
         LoadCharacterMemoryData();
     }
+
+    /// <summary>
+    /// ナレーション終了後に呼ばれる、ゲーム本編の開始処理
+    /// </summary>
+    public void StartGameplay()
+    {
+        if (isGameplayStarted) return;
+        isGameplayStarted = true;
+
+        Debug.Log("ゲーム本編スタート！");
+
+        currentTurn = 1;
+    }
+
 
     /// <summary>
     /// 指定フォルダからCharacterMemoryDataを自動読み込み

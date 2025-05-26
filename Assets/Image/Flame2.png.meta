@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b3b3f4e7ad61dfe41b9e26252243157e
+guid: c449b66c1efecf147a18e8771b8ac0c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_0
+      name: Flame2_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 41
-        width: 893
-        height: 935
+        x: 112
+        y: 96
+        width: 808
+        height: 832
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612aeca5bf6b23246bcff8ebf3489f5c
-      internalID: -189641964
+      spriteID: a850e35aa82c9374fa4dd5c3d4343192
+      internalID: -1903052202
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 79fa9e69a2d43414a89f2673c4fdfea9
+    spriteID: 68acf894a260f8a45a3a607b99154adf
     internalID: 0
     vertices: []
     indices: 
@@ -158,7 +158,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button_0: -189641964
+      Flame2_0: -1903052202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

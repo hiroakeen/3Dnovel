@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b3b3f4e7ad61dfe41b9e26252243157e
+guid: a3b915501246f7a4684db4c7eb6bb2d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_0
+      name: Flame_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 41
-        width: 893
-        height: 935
+        x: 8
+        y: 148
+        width: 1014
+        height: 788
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612aeca5bf6b23246bcff8ebf3489f5c
-      internalID: -189641964
+      spriteID: 498a4c48ac3092442b2ed0f1dd4ba168
+      internalID: 657904041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 89
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a95025efd6b61646abc2e6117272286
+      internalID: 1113216228
       vertices: []
       indices: 
       edges: []
@@ -148,7 +170,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 79fa9e69a2d43414a89f2673c4fdfea9
+    spriteID: 9f3c6c64274217a49966a4b624926a72
     internalID: 0
     vertices: []
     indices: 
@@ -158,7 +180,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Button_0: -189641964
+      Flame_0: 657904041
+      Flame_1: 1113216228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MemoryPickupTrigger : MonoBehaviour
 {
-    [SerializeField] private MemoryData_SO memoryData;
+    [SerializeField] private MemoryData memoryData;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -52,11 +52,11 @@ public class MemoryPanelController : MonoBehaviour
             if (i < memories.Count)
             {
                 var memory = memories[i];
-                image.sprite = memory.image;
+                image.sprite = memory.memoryImage;
                 allSlots[i].gameObject.SetActive(true);
                 int index = i;
                 allSlots[i].onClick.RemoveAllListeners();
-                allSlots[i].onClick.AddListener(() => ShowDescription(memories[index].description));
+                allSlots[i].onClick.AddListener(() => ShowDescription(memories[index].memoryText));
             }
             else
             {
@@ -81,6 +81,7 @@ public class MemoryPanelController : MonoBehaviour
     {
         descriptionText.text = desc;
         descriptionBox.SetActive(true);
+        closeDescriptionButtonObject.SetActive(true);
     }
 
     public void CloseDescriptionBox()

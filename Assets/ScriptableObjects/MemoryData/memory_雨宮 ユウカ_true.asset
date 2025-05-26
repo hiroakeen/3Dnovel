@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memoryId: "memory_\u96E8\u5BAE \u30E6\u30A6\u30AB_true"
   memoryText: "\u79C1\u304C\u30B9\u30A4\u30C3\u30C1\u3092\u62BC\u3059\u3068\u3001\u8AB0\u304B\u304C\u6B7B\u306C"
-  memoryImage: {fileID: 0}
+  memoryImage: {fileID: -813083129, guid: eca75030c3b995046bcb1f77e7b18e13, type: 3}
   ownerCharacter: {fileID: 11400000, guid: 9aaab366386226a4c9a095664067d2ed, type: 2}

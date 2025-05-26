@@ -5,7 +5,7 @@ using TMPro;
 public class TalkTrigger : MonoBehaviour
 {
     [Header("共通のアクションボタン（話す／記憶を渡す）")]
-    [SerializeField] private GameObject talkActionButton; // 1つに統合
+    [SerializeField] private GameObject talkActionButton; // プレハブにして使いまわし
     [SerializeField] private TMP_Text actionButtonText;   // Text: "話す" or "記憶を渡す"
 
     [Header("このNPCのキャラデータ")]
@@ -116,6 +116,8 @@ public class TalkTrigger : MonoBehaviour
             if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
             {
                 inventory.AddMemory(memoryToGrant);
+                // UI更新用にMemoryManagerにも登録（←必要！）
+                MemoryManager.Instance?.AddMemory(memoryToGrant);
                 UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
 
                 NotifyTalked();
@@ -123,7 +125,6 @@ public class TalkTrigger : MonoBehaviour
             }
         }
 
-        // 修正ここから
         if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
         {
             // フェーズが記憶フェーズのときだけ、記憶使用UIつきで表示
@@ -134,7 +135,6 @@ public class TalkTrigger : MonoBehaviour
             // 通常の会話として表示
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
-        // 修正ここまで
 
         NotifyTalked();
     }
