@@ -24,18 +24,23 @@ public class JsonCharacterLoader : MonoBehaviour
         }
 
         string json = File.ReadAllText(path);
+        Debug.Log($"JSON raw: {json}"); // ← ここを追加して中身確認
+
         CharacterListWrapper wrapper = JsonUtility.FromJson<CharacterListWrapper>(json);
         LoadedCharacters = wrapper.characters;
 
+        if (LoadedCharacters == null || LoadedCharacters.Count == 0)
+        {
+            Debug.LogError("JSONは読み込まれましたが、キャラクターが空または構文エラーです。");
+            return;
+        }
+
         Debug.Log($"キャラ数: {LoadedCharacters.Count} 件読み込み成功");
     }
+
 }
 
-[System.Serializable]
-public class CharacterListWrapper
-{
-    public List<CharacterDataJson> characters;
-}
+
 [System.Serializable]
 public class CharacterDataJson
 {
@@ -65,6 +70,13 @@ public class CharacterDataJson
     public string GetDialogueForCurrentTurn(Language lang)
     {
         int turn = GameManager.CurrentTurn;
+
+        if (turnDialogues == null)
+        {
+            Debug.LogWarning($"[GetDialogueForCurrentTurn] turnDialogues が null です（キャラ: {name}）");
+            return "…………?";
+        }
+
         foreach (var entry in turnDialogues)
         {
             if (entry.turn == turn)
@@ -72,6 +84,7 @@ public class CharacterDataJson
                 return lang == Language.Japanese ? entry.dialogueJP : entry.dialogueEN;
             }
         }
+
         return "…………?";
     }
 
@@ -100,3 +113,11 @@ public class LocalizedTurnDialogueJson
     public string dialogueJP;
     public string dialogueEN;
 }
+
+
+[System.Serializable]
+public class CharacterListWrapper
+{
+    public List<CharacterDataJson> characters;
+}
+
