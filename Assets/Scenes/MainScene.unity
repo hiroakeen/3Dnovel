@@ -2683,7 +2683,7 @@ GameObject:
   - component: {fileID: 807680678}
   - component: {fileID: 807680677}
   m_Layer: 5
-  m_Name: MemoryGrid_Select
+  m_Name: MemoryGrid_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2914,11 +2914,11 @@ RectTransform:
   - {fileID: 641726340}
   m_Father: {fileID: 1321445362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 370, y: -524}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 400, y: -150}
   m_SizeDelta: {x: 150, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &832137623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4841,7 +4841,7 @@ MonoBehaviour:
   closeDescriptionButton: {fileID: 1374765845}
   memoryButton: {fileID: 882985444}
   memoryPanel: {fileID: 1321445361}
-  memoryGrid: {fileID: 1321445362}
+  memoryGrid: {fileID: 332107034}
   closePanelButton: {fileID: 832137623}
   closePanelButtonObject: {fileID: 832137621}
   memoryItemPrefab: {fileID: 188336618754833359, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}

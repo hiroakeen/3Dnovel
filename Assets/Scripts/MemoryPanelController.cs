@@ -20,7 +20,7 @@ public class MemoryPanelController : MonoBehaviour
 
     private void Start()
     {
-        // 初期状態で全UIを非表示にして安全スタート
+        // 初期状態は全UIを非表示
         memoryPanel.SetActive(false);
         descriptionBox.SetActive(false);
         closePanelButtonObject.SetActive(false);
@@ -69,7 +69,6 @@ public class MemoryPanelController : MonoBehaviour
 
     public void CloseMemoryPanel()
     {
-        Debug.Log("CloseMemoryPanel: memoryPanel false にする");
         memoryPanel.SetActive(false);
         closePanelButtonObject.SetActive(false);
         descriptionBox.SetActive(false);
