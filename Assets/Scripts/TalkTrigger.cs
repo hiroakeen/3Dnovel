@@ -116,32 +116,34 @@ public class TalkTrigger : MonoBehaviour
         // 記憶の自動取得
         if (memoryToGrant != null)
         {
-            var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
+            var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
             if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
             {
                 inventory.AddMemory(memoryToGrant);
-                // UI更新用にMemoryManagerにも登録（←必要！）
                 MemoryManager.Instance?.AddMemory(memoryToGrant);
+
                 UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
 
+                // 話しかけ通知
                 NotifyTalked();
+
                 return;
             }
         }
 
+        // 通常の会話（記憶を持っていた or 取得なし）
         if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
         {
-            // フェーズが記憶フェーズのときだけ、記憶使用UIつきで表示
             UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
         }
         else
         {
-            // 通常の会話として表示
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
 
         NotifyTalked();
     }
+
 
 
     public void GiveMemoryToNPC(CharacterMemoryData target)

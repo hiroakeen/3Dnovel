@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using System;
 using UnityEngine;
@@ -24,11 +24,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject narrationPanel;
     [SerializeField] private TextMeshProUGUI narrationText;
     [SerializeField] private Button narrationNextButton;
+    [SerializeField] private TurnMessageTable messageTable;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
     private PlayerMemoryInventory playerMemoryInventory;
 
+    private bool hasShownMemoryNarration = false;
 
     private void Awake()
     {
@@ -65,18 +67,33 @@ public class UIManager : MonoBehaviour
         gameplayPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
 
-        // ��b���肪�����ꍇ�ATalkTrigger �ɒʒm
+        // 会話相手がいた場合、TalkTrigger に通知
         if (currentTalkTrigger != null)
         {
             currentTalkTrigger.EndTalk();
             currentTalkTrigger = null;
+        }
+
+        // 記憶が3つになったあと、まだナレーションを出していなければここで表示
+        var inventory = GameObject.FindFirstObjectByType<PlayerMemoryInventory>();
+        if (!hasShownMemoryNarration && inventory != null && inventory.GetAllMemories().Count >= 3)
+        {
+            hasShownMemoryNarration = true;
+
+            ShowNarration(
+                "謎の声：手に入れた記憶がそろった……渡す時間だ。",
+                () =>
+                {
+                    UIManager.Instance.SetTurnMessage("ひとりを選んで、手に入れた記憶を渡そう！");
+                    GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase);
+                });
         }
     }
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
     {
         currentTalkTrigger = trigger;
-        ShowDialogue($"{npcName}�F{dialogueLine}");
+        ShowDialogue($"{npcName}：{dialogueLine}");
 
         if (useMemoryButton != null)
         {
@@ -140,8 +157,8 @@ public class UIManager : MonoBehaviour
     }
     public void ShowNarration(string message, Action onComplete)
     {
-        if (playerController != null)
-            playerController.PauseControl();
+        if (playerController != null) playerController.PauseControl(); // プレイヤー停止
+        Time.timeScale = 0; // 一時停止（演出用）
 
         narrationPanel?.SetActive(true);
         narrationText.text = message;
@@ -150,10 +167,29 @@ public class UIManager : MonoBehaviour
         narrationNextButton.onClick.AddListener(() =>
         {
             narrationPanel?.SetActive(false);
-            if (playerController != null)
-                playerController.ResumeControl();
-
+            if (playerController != null) playerController.ResumeControl();
+            Time.timeScale = 1; // 再開
             onComplete?.Invoke();
         });
     }
+    public void ResetMemoryNarrationFlag()
+    {
+        hasShownMemoryNarration = false;
+    }
+    public void SetTurnMessage(string message)
+    {
+        if (turnMessageText != null)
+        {
+            turnMessageText.text = message;
+            turnMessageText.gameObject.SetActive(true);
+        }
+    }
+
+    public void SetTurnMessageByKeyWithTurn(TurnMessageKey key, int turn)
+    {
+        string msg = messageTable?.GetMessage(key);
+        if (!string.IsNullOrEmpty(msg))
+            SetTurnMessage(msg.Replace("{N}", turn.ToString()));
+    }
+
 }
