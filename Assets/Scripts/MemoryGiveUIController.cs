@@ -10,9 +10,9 @@ public class MemoryGiveUIController : MonoBehaviour
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject memoryItemPrefab;
 
-    private CharacterMemoryData targetCharacter;
+    private CharacterDataJson targetCharacter;
 
-    public void Open(CharacterMemoryData characterData)
+    public void Open(CharacterDataJson characterData)
     {
         targetCharacter = characterData;
         panel.SetActive(true);
@@ -75,12 +75,13 @@ public class MemoryGiveUIController : MonoBehaviour
         }
     }
 
-    private NPC FindMatchingNPC(CharacterMemoryData data)
+    private NPC FindMatchingNPC(CharacterDataJson data)
     {
         var allNPCs = Object.FindObjectsByType<NPC>(FindObjectsSortMode.None);
         foreach (var npc in allNPCs)
         {
-            if (npc.name == data.name || npc.GetCharacterData() == data)
+            var npcData = npc.GetCharacterData();
+            if (npcData != null && npcData.name == data.name)
             {
                 return npc;
             }

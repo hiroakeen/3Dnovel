@@ -1,0 +1,39 @@
+{
+  "characters": [
+    {
+      "name": "雨宮 ユウカ",
+      "portrait": "yuuka",
+      "isTrue": true,
+      "isLying": false,
+      "roleType": "Trigger",
+      "memory": {
+        "jp": "私がスイッチを押すと、誰かが死ぬ",
+        "en": "If I push the switch, someone will die"
+      },
+      "reactionTrue": {
+        "jp": "……思い出した。私が押せば、みんなが出られる……！",
+        "en": "...I remember. If I push it, everyone can escape..."
+      },
+      "reactionGood": {
+        "jp": "それは見た記憶があるわ",
+        "en": "I do remember seeing that"
+      },
+      "reactionFail": {
+        "jp": "……違う気がする",
+        "en": "That doesn't feel right"
+      },
+      "dialogues": [
+        {
+          "turn": 1,
+          "jp": "……話しかけないで。まだ、思い出せない",
+          "en": "Don't talk to me... I can't remember yet"
+        },
+        {
+          "turn": 2,
+          "jp": "少し……思い出してきた",
+          "en": "I'm starting to remember..."
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public enum GameTurnState
 {
     TalkPhase,
@@ -8,9 +10,8 @@ public enum GameTurnState
 public interface ITurnState
 {
     void OnStateEnter();
-    public void OnStateExit() { }
-    public void NotifyCharacterTalked(CharacterMemoryData character) { }
-    public void NotifyMemoryUsed(CharacterMemoryData from, CharacterMemoryData to) { }
-    public void NotifyTalkFinished(CharacterMemoryData character) { } 
-
+    void OnStateExit();
+    void NotifyCharacterTalked(CharacterDataJson character);
+    void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to);
+    void NotifyTalkFinished(CharacterDataJson character);
 }

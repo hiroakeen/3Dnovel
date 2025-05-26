@@ -1,8 +1,9 @@
-// TurnState_EndingPhase：記憶の評価に応じてTRUE／GOOD／BADエンディングを判定
-
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 記憶の評価に応じて TRUE / GOOD / BAD エンディングを判定
+/// </summary>
 public class TurnState_EndingPhase : ITurnState
 {
     public void OnStateEnter()
@@ -45,9 +46,12 @@ public class TurnState_EndingPhase : ITurnState
     }
 
     public void OnStateExit() { }
-    public void NotifyCharacterTalked(CharacterMemoryData character) { }
-    public void NotifyMemoryUsed(CharacterMemoryData from, CharacterMemoryData to) { }
-    public void NotifyTalkFinished(CharacterMemoryData character) { } 
+
+    public void NotifyCharacterTalked(CharacterDataJson character) { }
+
+    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to) { }
+
+    public void NotifyTalkFinished(CharacterDataJson character) { }
 
     private string GetNarrationForEnding(string id)
     {

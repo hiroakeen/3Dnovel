@@ -5,11 +5,11 @@ using TMPro;
 public class TalkTrigger : MonoBehaviour
 {
     [Header("共通のアクションボタン（話す／記憶を渡す）")]
-    [SerializeField] private GameObject talkActionButton; // プレハブにして使いまわし
-    [SerializeField] private TMP_Text actionButtonText;   // Text: "話す" or "記憶を渡す"
+    [SerializeField] private GameObject talkActionButton;
+    [SerializeField] private TMP_Text actionButtonText;
 
     [Header("このNPCのキャラデータ")]
-    [SerializeField] private CharacterMemoryData characterData;
+    [SerializeField] private CharacterDataJson characterData;
 
     [Header("記憶渡しUIの制御スクリプト")]
     [SerializeField] private MemoryGiveUIController memoryGiveUI;
@@ -81,7 +81,6 @@ public class TalkTrigger : MonoBehaviour
         talkActionButton?.SetActive(false);
     }
 
-    // Submitキーでも呼び出せる共通処理
     private void HandleInteraction()
     {
         if (GameTurnStateManager.Instance.CurrentState == GameTurnState.TalkPhase)
@@ -104,20 +103,17 @@ public class TalkTrigger : MonoBehaviour
             return;
         }
 
-        string npcName = characterData.characterName;
+        string npcName = characterData.name;
 
-        // ✅ 言語に応じたセリフ取得
         var lang = LocalizationManager.Instance.GetCurrentLanguage();
         string dialogueLine = characterData.GetDialogueForCurrentTurn(lang);
 
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
-        MemoryData memoryToGrant = characterData.autoGrantedMemory;
+        MemoryData memoryToGrant = MemoryManager.Instance?.FindMemoryById(characterData.autoGrantedMemoryId);
 
-        // NPC移動停止（SimpleNPCWalkerがアタッチされていれば）
         var walker = GetComponent<SimpleNPCWalker>();
         walker?.SetTalking(true);
 
-        // 記憶の自動取得
         if (memoryToGrant != null)
         {
             var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
@@ -128,14 +124,11 @@ public class TalkTrigger : MonoBehaviour
 
                 UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
 
-                // 話しかけ通知
                 NotifyTalked();
-
                 return;
             }
         }
 
-        // 通常の会話（記憶を持っていた or 取得なし）
         if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
         {
             UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
@@ -148,10 +141,7 @@ public class TalkTrigger : MonoBehaviour
         NotifyTalked();
     }
 
-
-
-
-    public void GiveMemoryToNPC(CharacterMemoryData target)
+    public void GiveMemoryToNPC(CharacterDataJson target)
     {
         talkActionButton?.SetActive(false);
         memoryGiveUI.Open(target);
@@ -159,7 +149,7 @@ public class TalkTrigger : MonoBehaviour
 
     public void UseMemory(string memoryContent)
     {
-        string npcName = characterData != null ? characterData.characterName : "NPC";
+        string npcName = characterData != null ? characterData.name : "NPC";
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
         UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
 
@@ -172,7 +162,6 @@ public class TalkTrigger : MonoBehaviour
         }
     }
 
-
     private void NotifyTalked()
     {
         var currentState = GameTurnStateManager.Instance.GetCurrentState();
@@ -184,14 +173,10 @@ public class TalkTrigger : MonoBehaviour
 
     public void EndTalk()
     {
-        // NPCの移動再開
         var walker = GetComponent<SimpleNPCWalker>();
         walker?.SetTalking(false);
 
-        // 最後に話し終わった通知（セリフ表示後）
         var currentState = GameTurnStateManager.Instance.GetCurrentState();
         currentState?.NotifyTalkFinished(characterData);
     }
-
-
 }
