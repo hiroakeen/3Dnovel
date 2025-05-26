@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 6961103}
   - component: {fileID: 6961107}
   - component: {fileID: 6961108}
+  - component: {fileID: 6961109}
   m_Layer: 0
   m_Name: "\u30B8\u30E7\u30FC"
   m_TagString: Untagged
@@ -365,6 +366,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6961109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050c61ba116ad741b4806446a2de0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 2
+  waitDuration: 3
+  rotateIn2D: 0
+  moveRange: 3
 --- !u!1001 &45022207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1637,6 +1655,7 @@ GameObject:
   - component: {fileID: 472035258}
   - component: {fileID: 472035262}
   - component: {fileID: 472035263}
+  - component: {fileID: 472035264}
   m_Layer: 0
   m_Name: "\u30E6\u30A6\u30AB"
   m_TagString: Untagged
@@ -1729,7 +1748,7 @@ Transform:
   m_GameObject: {fileID: 472035257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.25, y: 0, z: -10.83}
+  m_LocalPosition: {x: 4.8, y: 0, z: -15.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1772,6 +1791,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &472035264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472035257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050c61ba116ad741b4806446a2de0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 2
+  waitDuration: 3
+  rotateIn2D: 0
+  moveRange: 3
 --- !u!1 &478494511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2506,7 @@ GameObject:
   - component: {fileID: 645013434}
   - component: {fileID: 645013438}
   - component: {fileID: 645013439}
+  - component: {fileID: 645013440}
   m_Layer: 0
   m_Name: "\u30AB\u30BA\u30DE"
   m_TagString: Untagged
@@ -2562,7 +2599,7 @@ Transform:
   m_GameObject: {fileID: 645013433}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.22, y: 0, z: -9.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2605,6 +2642,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &645013440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645013433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050c61ba116ad741b4806446a2de0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 3
+  waitDuration: 2
+  rotateIn2D: 0
+  moveRange: 3
 --- !u!1 &742107655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,6 +3522,7 @@ GameObject:
   - component: {fileID: 912855923}
   - component: {fileID: 912855927}
   - component: {fileID: 912855928}
+  - component: {fileID: 912855929}
   m_Layer: 0
   m_Name: "\u30EC\u30CA"
   m_TagString: Untagged
@@ -3560,7 +3615,7 @@ Transform:
   m_GameObject: {fileID: 912855922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.84, y: 0, z: -8.370001}
+  m_LocalPosition: {x: 4.06, y: 0, z: -11.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3603,6 +3658,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &912855929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912855922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050c61ba116ad741b4806446a2de0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 3
+  waitDuration: 2
+  rotateIn2D: 0
+  moveRange: 3
 --- !u!1001 &917974779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3714,6 +3786,7 @@ GameObject:
   - component: {fileID: 919826350}
   - component: {fileID: 919826354}
   - component: {fileID: 919826355}
+  - component: {fileID: 919826356}
   m_Layer: 0
   m_Name: "\u30C6\u30AA"
   m_TagString: Untagged
@@ -3849,6 +3922,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &919826356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919826349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050c61ba116ad741b4806446a2de0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  moveDuration: 3
+  waitDuration: 2
+  rotateIn2D: 0
+  moveRange: 3
 --- !u!224 &943376122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}

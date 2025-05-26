@@ -109,6 +109,10 @@ public class TalkTrigger : MonoBehaviour
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
         MemoryData memoryToGrant = characterData.autoGrantedMemory;
 
+        // NPC移動停止（SimpleNPCWalkerがアタッチされていれば）
+        var walker = GetComponent<SimpleNPCWalker>();
+        walker?.SetTalking(true);
+
         // 記憶の自動取得
         if (memoryToGrant != null)
         {
