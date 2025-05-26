@@ -9,7 +9,7 @@ public class CharacterMemoryData : ScriptableObject
     [TextArea] public string personalityDescription;
 
     [Header("記憶と嘘設定")]
-    [TextArea] public string memoryFragment;
+    public LocalizedString memoryFragmentLocalized;
     public bool isMemoryTrue;
     public bool isLying;
     public CharacterRoleType roleType;
@@ -19,31 +19,41 @@ public class CharacterMemoryData : ScriptableObject
     [Header("記憶使用の対象かどうか")]
     public bool isMemoryUseTarget;
 
-    [Header("ターン別セリフ（最大3ターン）")]
-    public List<TurnDialogue> turnDialogues = new();
+    [Header("記憶を渡されたときのリアクション")]
+    public MemoryReactionType memoryReactionType;
+    public LocalizedString memoryReactionTrueLocalized;
+    public LocalizedString memoryReactionSuccessLocalized;
+    public LocalizedString memoryReactionFailLocalized;
 
-    public string GetDialogueForTurn(int turn)
+    [Header("ターン別セリフ（最大3ターン）")]
+    public List<LocalizedTurnDialogue> turnDialoguesLocalized = new();
+
+    public string GetDialogueForTurn(int turn, Language lang)
     {
-        foreach (var dialogue in turnDialogues)
+        foreach (var dialogue in turnDialoguesLocalized)
         {
             if (dialogue.turn == turn)
-                return dialogue.dialogueLine;
+                return dialogue.dialogueLine.GetLocalized(lang);
         }
-        return "……（無言）";
+        return lang == Language.Japanese ? "……（無言）" : "...(silent)";
     }
 
-    public string GetDialogueForCurrentTurn()
+    public string GetDialogueForCurrentTurn(Language lang)
     {
         int turn = GameManager.CurrentTurn;
-        return GetDialogueForTurn(turn);
+        return GetDialogueForTurn(turn, lang);
     }
-}
 
-[System.Serializable]
-public class TurnDialogue
-{
-    public int turn; // 1〜3
-    [TextArea] public string dialogueLine;
+    public string GetReactionForMemoryResult(MemoryReactionType resultType, Language lang)
+    {
+        return resultType switch
+        {
+            MemoryReactionType.True => memoryReactionTrueLocalized.GetLocalized(lang),
+            MemoryReactionType.Good => memoryReactionSuccessLocalized.GetLocalized(lang),
+            MemoryReactionType.Bad => memoryReactionFailLocalized.GetLocalized(lang),
+            _ => lang == Language.Japanese ? "……" : "..."
+        };
+    }
 }
 
 public enum CharacterRoleType
@@ -52,4 +62,12 @@ public enum CharacterRoleType
     Persuade,
     Trigger,
     Unknown
+}
+
+public enum MemoryReactionType
+{
+    None,
+    Bad,
+    Good,
+    True
 }

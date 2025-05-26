@@ -8,8 +8,9 @@ public enum GameTurnState
 public interface ITurnState
 {
     void OnStateEnter();
-    void OnStateExit();
-    void NotifyCharacterTalked(CharacterMemoryData character);
-    void NotifyMemoryUsed(CharacterMemoryData from, CharacterMemoryData to);
-    void NotifyTalkFinished(CharacterMemoryData character);
+    public void OnStateExit() { }
+    public void NotifyCharacterTalked(CharacterMemoryData character) { }
+    public void NotifyMemoryUsed(CharacterMemoryData from, CharacterMemoryData to) { }
+    public void NotifyTalkFinished(CharacterMemoryData character) { } 
+
 }

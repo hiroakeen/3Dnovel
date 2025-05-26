@@ -63,7 +63,7 @@ public class MemoryDataFromCharacterGenerator : EditorWindow
             // MemoryData 作成
             var memory = ScriptableObject.CreateInstance<MemoryData>();
             memory.memoryId = memoryId;
-            memory.memoryText = character.memoryFragment;
+            memory.memoryText = character.memoryFragmentLocalized.GetLocalized(LocalizationManager.Instance.GetCurrentLanguage());
             memory.memoryImage = character.portrait;
             memory.ownerCharacter = character;
 

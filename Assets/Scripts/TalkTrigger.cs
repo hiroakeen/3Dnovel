@@ -105,7 +105,11 @@ public class TalkTrigger : MonoBehaviour
         }
 
         string npcName = characterData.characterName;
-        string dialogueLine = characterData.GetDialogueForCurrentTurn();
+
+        // ✅ 言語に応じたセリフ取得
+        var lang = LocalizationManager.Instance.GetCurrentLanguage();
+        string dialogueLine = characterData.GetDialogueForCurrentTurn(lang);
+
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
         MemoryData memoryToGrant = characterData.autoGrantedMemory;
 
@@ -143,6 +147,7 @@ public class TalkTrigger : MonoBehaviour
 
         NotifyTalked();
     }
+
 
 
 
