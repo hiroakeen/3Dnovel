@@ -47,7 +47,7 @@ public class CharacterDataJson
     public string memoryFragmentJP;
     public string memoryFragmentEN;
 
-    public string memoryReactionType;
+    public MemoryReactionType memoryReactionType;
     public string reactionTrueJP;
     public string reactionTrueEN;
     public string reactionSuccessJP;

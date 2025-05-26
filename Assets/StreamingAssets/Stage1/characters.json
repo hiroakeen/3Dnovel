@@ -1,39 +1,74 @@
 {
   "characters": [
     {
-      "name": "雨宮 ユウカ",
-      "portrait": "yuuka",
-      "isTrue": true,
-      "isLying": false,
-      "roleType": "Trigger",
-      "memory": {
-        "jp": "私がスイッチを押すと、誰かが死ぬ",
-        "en": "If I push the switch, someone will die"
-      },
-      "reactionTrue": {
-        "jp": "……思い出した。私が押せば、みんなが出られる……！",
-        "en": "...I remember. If I push it, everyone can escape..."
-      },
-      "reactionGood": {
-        "jp": "それは見た記憶があるわ",
-        "en": "I do remember seeing that"
-      },
-      "reactionFail": {
-        "jp": "……違う気がする",
-        "en": "That doesn't feel right"
-      },
-      "dialogues": [
-        {
-          "turn": 1,
-          "jp": "……話しかけないで。まだ、思い出せない",
-          "en": "Don't talk to me... I can't remember yet"
-        },
-        {
-          "turn": 2,
-          "jp": "少し……思い出してきた",
-          "en": "I'm starting to remember..."
-        }
-      ]
+      "characterName": "テオ",
+      "memoryReactionType": "True",
+      "personality": "冷静で理知的。常に一歩引いた視点から物事を見る。",
+      "memoryFragment": "僕はこの中で唯一、参加者じゃない。",
+      "isMemoryTrue": true,
+      "autoGrantedMemory": false,
+      "turnDialogue": [
+        "…どこかで会ったことがある気がする。",
+        "その記憶、俺のものじゃないが…確かに見覚えがある。",
+        "すべてのピースが揃えば、きっと外へ出られるはずだ。"
+      ],
+      "hint": "テオは施設の外から来た人物である可能性がある。"
+    },
+    {
+      "characterName": "ミナト",
+      "memoryReactionType": "Good",
+      "personality": "陽気で人懐っこいが、時折核心を突くような発言をする。",
+      "memoryFragment": "昔、ここで誰かと話した気がするんだ。",
+      "isMemoryTrue": true,
+      "autoGrantedMemory": false,
+      "turnDialogue": [
+        "あはは、なんか変な気分〜！",
+        "その話…ちょっと心に引っかかるな。",
+        "うん、なんとなくわかる気がする。ありがとう！"
+      ],
+      "hint": "ミナトは断片的な記憶の中で他人の存在を感じている。"
+    },
+    {
+      "characterName": "リン",
+      "memoryReactionType": "Bad",
+      "personality": "感情の起伏が激しく、疑い深い。",
+      "memoryFragment": "全員嘘をついてるんじゃないの…？",
+      "isMemoryTrue": false,
+      "autoGrantedMemory": false,
+      "turnDialogue": [
+        "ふざけないで。そんなの信じられるわけない。",
+        "私を騙そうとしてるの？",
+        "あんた、何か隠してるでしょ。"
+      ],
+      "hint": "リンの記憶は歪められた情報である可能性がある。"
+    },
+    {
+      "characterName": "ユウ",
+      "memoryReactionType": "Good",
+      "personality": "穏やかで控えめ。誰にも強く言えないタイプ。",
+      "memoryFragment": "小さい頃、誰かに守られた記憶がある。",
+      "isMemoryTrue": true,
+      "autoGrantedMemory": false,
+      "turnDialogue": [
+        "ごめん、あまりよく覚えてないけど…",
+        "その話、少しだけ思い出せそうな気がする。",
+        "ありがとう、なんだか安心したよ。"
+      ],
+      "hint": "ユウの記憶は他のキャラと関連している可能性がある。"
+    },
+    {
+      "characterName": "アイ",
+      "memoryReactionType": "None",
+      "personality": "無感情で寡黙。何かを失っているような雰囲気。",
+      "memoryFragment": "………………（何も思い出せない）",
+      "isMemoryTrue": false,
+      "autoGrantedMemory": false,
+      "turnDialogue": [
+        "……。",
+        "私には…何も…ない。",
+        "記憶…それは誰のもの？"
+      ],
+      "hint": "アイは自分の記憶が空白であることに困惑している。"
     }
   ]
 }

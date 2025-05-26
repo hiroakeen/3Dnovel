@@ -63,4 +63,6 @@ public class TurnState_EndingPhase : ITurnState
             _ => "_‚ÌºF•¨Œê‚ÍÃ‚©‚É–‹‚ð•Â‚¶‚½B"
         };
     }
+
+
 }
