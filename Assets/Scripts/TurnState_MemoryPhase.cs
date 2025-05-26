@@ -1,17 +1,19 @@
+using UnityEngine;
+
 public class TurnState_MemoryPhase : ITurnState
 {
     private int useCount = 0;
 
     public void OnStateEnter()
     {
-        useCount = 0; // ← 念のためリセット
+        useCount = 0; // 念のためリセット
         UIManager.Instance.ShowTurnMessage($"ターン {GameManager.CurrentTurn}：記憶を渡そう（3回まで）");
     }
 
-    public void NotifyMemoryUsed(CharacterMemoryData from, CharacterMemoryData to)
+    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to)
     {
         useCount++;
-        UnityEngine.Debug.Log($"[MemoryPhase] 記憶使用: {from.characterName} → {to.characterName}（{useCount}/3）");
+        Debug.Log($"[MemoryPhase] 記憶使用: {from.name} → {to.name}（{useCount}/3）");
 
         GameManager.Instance.AddDecisionLog(new TurnDecision(GameManager.CurrentTurn, from, to));
 
@@ -34,7 +36,7 @@ public class TurnState_MemoryPhase : ITurnState
 
     public void OnStateExit() { }
 
-    public void NotifyCharacterTalked(CharacterMemoryData character) { }
-    public void NotifyTalkFinished(CharacterMemoryData character) { }
+    public void NotifyCharacterTalked(CharacterDataJson character) { }
 
+    public void NotifyTalkFinished(CharacterDataJson character) { }
 }

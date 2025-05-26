@@ -17,7 +17,7 @@ public class InitialMemoryAssigner : MonoBehaviour
 
     private void AssignInitialMemories(PlayerMemoryInventory inventory)
     {
-        var playerCharacter = inventory.PlayerCharacterData;
+        var playerCharacter = inventory.playerCharacterId;
         if (playerCharacter == null)
         {
             Debug.LogWarning("❗ PlayerCharacterData が設定されていません。");
@@ -31,7 +31,7 @@ public class InitialMemoryAssigner : MonoBehaviour
         List<MemoryData> playerMemories = new List<MemoryData>();
         foreach (var memory in allMemories)
         {
-            if (memory.ownerCharacter == playerCharacter)
+            if (memory.ownerCharacterId == playerCharacter)
             {
                 playerMemories.Add(memory);
             }

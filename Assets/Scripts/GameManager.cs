@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("キャラクター登録")]
-    [SerializeField] private List<CharacterMemoryData> allCharacters;
+    [Header("キャラクター登録（JSON方式）")]
+    [SerializeField] private JsonCharacterLoader characterLoader;
 
     private List<TurnDecision> decisionLogs = new();
 
@@ -15,14 +15,15 @@ public class GameManager : MonoBehaviour
 
     private bool isGameplayStarted = false;
 
-   
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        LoadCharacterMemoryData();
+        if (characterLoader == null)
+        {
+            characterLoader = FindAnyObjectByType<JsonCharacterLoader>();
+        }
     }
 
     /// <summary>
@@ -38,27 +39,15 @@ public class GameManager : MonoBehaviour
         currentTurn = 1;
     }
 
-
-    /// <summary>
-    /// 指定フォルダからCharacterMemoryDataを自動読み込み
-    /// </summary>
-    private void LoadCharacterMemoryData()
+    public List<CharacterDataJson> GetAllCharacters()
     {
-        allCharacters = new List<CharacterMemoryData>();
-        CharacterMemoryData[] loaded = Resources.LoadAll<CharacterMemoryData>("Story/Characters");
-        allCharacters.AddRange(loaded);
-        Debug.Log($"読み込んだキャラクター数: {allCharacters.Count}");
-    }
-
-    public List<CharacterMemoryData> GetAllCharacters()
-    {
-        return new List<CharacterMemoryData>(allCharacters);
+        return characterLoader != null ? new List<CharacterDataJson>(characterLoader.LoadedCharacters) : new List<CharacterDataJson>();
     }
 
     public void AddDecisionLog(TurnDecision decision)
     {
         decisionLogs.Add(decision);
-        Debug.Log($"[ログ記録] Turn {decision.turn}: {decision.selectedMemoryOwner.characterName}の記憶を{decision.targetCharacter.characterName}に使用");
+        Debug.Log($"[ログ記録] Turn {decision.turn}: {decision.selectedMemoryOwner.name}の記憶を{decision.targetCharacter.name}に使用");
     }
 
     public List<TurnDecision> GetDecisionLogs()
@@ -81,5 +70,5 @@ public class GameManager : MonoBehaviour
     {
         return currentTurn;
     }
-}
 
+}
