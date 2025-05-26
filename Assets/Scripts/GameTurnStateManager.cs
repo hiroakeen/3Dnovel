@@ -1,13 +1,11 @@
 using UnityEngine;
 
-public enum GameTurnState { TalkPhase, MemoryPhase }
-
 public class GameTurnStateManager : MonoBehaviour
 {
     public static GameTurnStateManager Instance { get; private set; }
-    public GameTurnState CurrentState { get; private set; } = GameTurnState.TalkPhase;
 
-    private int talkCount = 0;
+    private ITurnState currentState;
+    private GameTurnState currentPhase; // ★ 追加：現在のフェーズを保持
 
     private void Awake()
     {
@@ -15,10 +13,35 @@ public class GameTurnStateManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void RegisterTalk()
+    void Start()
     {
-        talkCount++;
-        if (talkCount >= 3)
-            CurrentState = GameTurnState.MemoryPhase;
+        GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
     }
+
+    public void SetState(GameTurnState newState)
+    {
+        currentState?.OnStateExit();
+
+        currentPhase = newState; 
+
+        switch (newState)
+        {
+            case GameTurnState.TalkPhase:
+                currentState = new TurnState_TalkPhase();
+                break;
+            case GameTurnState.MemoryPhase:
+                currentState = new TurnState_MemoryPhase();
+                break;
+            case GameTurnState.EndingPhase:
+                currentState = new TurnState_EndingPhase();
+                break;
+        }
+
+        currentState.OnStateEnter();
+    }
+
+    public ITurnState GetCurrentState() => currentState;
+
+    // 現在の列挙フェーズを返すプロパティ（TalkTrigger から使える）
+    public GameTurnState CurrentState => currentPhase;
 }

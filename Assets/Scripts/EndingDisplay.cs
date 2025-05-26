@@ -11,7 +11,7 @@ public class EndingDisplay : MonoBehaviour
 
     private void Start()
     {
-        string id = EndingResultHolder.endingId;
+        string id = EndingManager.LastEndingId;
         EndingData data = Resources.Load<EndingData>($"EndingData/{id}");
 
         if (data != null)

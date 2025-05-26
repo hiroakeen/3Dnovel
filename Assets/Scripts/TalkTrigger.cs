@@ -156,21 +156,35 @@ public class TalkTrigger : MonoBehaviour
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
         UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
 
-        var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
-        var memory = FindAnyObjectByType<PlayerMemoryInventory>()?.FindMemoryByText(memoryContent);
+        var memory = Object.FindFirstObjectByType<PlayerMemoryInventory>()?.FindMemoryByText(memoryContent);
+        var currentState = GameTurnStateManager.Instance.GetCurrentState();
 
-        if (activeState != null && characterData != null && memory != null)
+        if (currentState != null && characterData != null && memory != null)
         {
-            activeState.NotifyMemoryUsed(memory.ownerCharacter, characterData);
+            currentState.NotifyMemoryUsed(memory.ownerCharacter, characterData);
         }
     }
+
 
     private void NotifyTalked()
     {
-        var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
-        if (activeState != null && characterData != null)
+        var currentState = GameTurnStateManager.Instance.GetCurrentState();
+        if (currentState != null && characterData != null)
         {
-            activeState.NotifyCharacterTalked(characterData);
+            currentState.NotifyCharacterTalked(characterData);
         }
     }
+
+    public void EndTalk()
+    {
+        // NPCの移動再開
+        var walker = GetComponent<SimpleNPCWalker>();
+        walker?.SetTalking(false);
+
+        // 最後に話し終わった通知（セリフ表示後）
+        var currentState = GameTurnStateManager.Instance.GetCurrentState();
+        currentState?.NotifyTalkFinished(characterData);
+    }
+
+
 }

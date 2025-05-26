@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +20,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform memoryButtonParent;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI turnMessageText;
+    [SerializeField] private GameObject narrationPanel;
+    [SerializeField] private TextMeshProUGUI narrationText;
+    [SerializeField] private Button narrationNextButton;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
     private PlayerMemoryInventory playerMemoryInventory;
+
 
     private void Awake()
     {
@@ -58,6 +64,13 @@ public class UIManager : MonoBehaviour
 
         gameplayPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
+
+        // ‰ï˜b‘ŠŽè‚ª‚¢‚½ê‡ATalkTrigger ‚É’Ê’m
+        if (currentTalkTrigger != null)
+        {
+            currentTalkTrigger.EndTalk();
+            currentTalkTrigger = null;
+        }
     }
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
@@ -114,5 +127,33 @@ public class UIManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+
+    public void ShowTurnMessage(string message)
+    {
+        if (turnMessageText != null)
+        {
+            turnMessageText.text = message;
+            turnMessageText.gameObject.SetActive(true);
+        }
+    }
+    public void ShowNarration(string message, Action onComplete)
+    {
+        if (playerController != null)
+            playerController.PauseControl();
+
+        narrationPanel?.SetActive(true);
+        narrationText.text = message;
+
+        narrationNextButton.onClick.RemoveAllListeners();
+        narrationNextButton.onClick.AddListener(() =>
+        {
+            narrationPanel?.SetActive(false);
+            if (playerController != null)
+                playerController.ResumeControl();
+
+            onComplete?.Invoke();
+        });
     }
 }

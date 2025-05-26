@@ -15,26 +15,33 @@ public class NPC : MonoBehaviour
         string npcName = characterData.characterName;
         var expected = characterData.expectedMemory;
 
+        // プレイヤーの記憶を取得
+        var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
+
+        // 状態を取得（現在のITurnState）
+        var turnState = GameTurnStateManager.Instance.GetCurrentState();
+
         if (expected != null && memory == expected)
         {
-            // 正解！
+            // 正解！リアクション
             UIManager.Instance.ShowDialogue($"{npcName} に正しい記憶を渡した！");
 
-            // 記憶を削除
-            var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
             inventory?.RemoveMemory(memory);
 
-            // ターン終了を通知
-            var turnState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
             turnState?.NotifyMemoryUsed(memory.ownerCharacter, characterData);
         }
         else
         {
-            // 不正解：何も起きない（再挑戦可能）
+            // 不正解（記録なし、リアクションのみ）
             UIManager.Instance.ShowDialogue($"{npcName} は記憶を受け取ったが、反応がない……");
 
-            // UIは自動的に閉じられてOK（MemoryGiveUIControllerがClose()を呼ぶ）
-            // → ターンは継続、何もしない
+            // 必要に応じてここで false でもログ記録したければ以下を呼ぶ（要件次第）
+            // GameManager.Instance.AddDecisionLog(new TurnDecision(GameManager.CurrentTurn, memory.ownerCharacter, characterData));
         }
     }
+    public CharacterMemoryData GetCharacterData()
+    {
+        return characterData;
+    }
+
 }

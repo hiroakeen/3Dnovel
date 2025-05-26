@@ -17,7 +17,7 @@ public class EndingSceneController : MonoBehaviour
 
     void Start()
     {
-        string endingId = EndingResultHolder.endingId;
+        string endingId = EndingManager.LastEndingId;
         var data = GetEndingDataById(endingId);
 
         if (data != null)

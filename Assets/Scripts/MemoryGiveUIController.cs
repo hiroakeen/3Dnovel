@@ -6,7 +6,7 @@ public class MemoryGiveUIController : MonoBehaviour
 {
     [Header("UI参照")]
     [SerializeField] private GameObject panel;
-    [SerializeField] private Transform memoryGrid; // 9マスのGridにMemoryItemプレハブを配置
+    [SerializeField] private Transform memoryGrid;
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject memoryItemPrefab;
 
@@ -33,10 +33,10 @@ public class MemoryGiveUIController : MonoBehaviour
 
     private void PopulateGrid()
     {
-        var inventory = FindAnyObjectByType<PlayerMemoryInventory>();
+        var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
         if (inventory == null) return;
 
-        var memories = inventory.GetAllMemories(); // ここで毎回取得
+        var memories = inventory.GetAllMemories();
 
         var slots = memoryGrid.GetComponentsInChildren<Button>(true);
         for (int i = 0; i < slots.Length; i++)
@@ -60,28 +60,31 @@ public class MemoryGiveUIController : MonoBehaviour
         }
     }
 
-
     private void GiveMemory(MemoryData selectedMemory)
     {
-        // 渡した記憶が期待されたものかを確認
-        if (targetCharacter.expectedMemory != null &&
-            selectedMemory == targetCharacter.expectedMemory)
+        Close();
+
+        var npc = FindMatchingNPC(targetCharacter);
+        if (npc != null)
         {
-            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} に正しい記憶を渡した！");
-            // TODO: 正しい反応やフラグ処理をここに
+            npc.ReceiveMemory(selectedMemory);
         }
         else
         {
-            UIManager.Instance.ShowDialogue($"{targetCharacter.characterName} に記憶を渡したが、反応はなかった…");
+            Debug.LogWarning("該当NPCが見つかりませんでした");
         }
+    }
 
-        Close();
-
-        // 状態更新
-        var activeState = FindAnyObjectByType<GameStateManager>()?.GetCurrentState() as TurnState;
-        if (activeState != null)
+    private NPC FindMatchingNPC(CharacterMemoryData data)
+    {
+        var allNPCs = Object.FindObjectsByType<NPC>(FindObjectsSortMode.None);
+        foreach (var npc in allNPCs)
         {
-            activeState.NotifyMemoryUsed(selectedMemory.ownerCharacter, targetCharacter);
+            if (npc.name == data.name || npc.GetCharacterData() == data)
+            {
+                return npc;
+            }
         }
+        return null;
     }
 }
