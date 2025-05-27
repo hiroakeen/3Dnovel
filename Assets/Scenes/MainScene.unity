@@ -566,6 +566,10 @@ PrefabInstance:
       value: "\u8A18\u61B6\u2026\uFF1F\u305D\u308C\u304C\u4F55\u304B\u3001\u308F\u304B\u3089\u306A\u3044\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: ai
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.turnDialogues.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3590,6 +3594,10 @@ PrefabInstance:
       value: "\u3042\u308A\u304C\u3068\u3046\u3001\u5C11\u3057\u601D\u3044\u51FA\u305B\u305F\u6C17\u304C\u3059\u308B\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: yuu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.turnDialogues.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -4360,6 +4368,10 @@ PrefabInstance:
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.reactionSuccessJP
       value: "\u2026\u2026\u3061\u3087\u3063\u3068\u3060\u3051\u4FE1\u3058\u3066\u3042\u3052\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: rin
       objectReference: {fileID: 0}
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.turnDialogues.Array.size
@@ -6817,6 +6829,10 @@ PrefabInstance:
       value: "\u3053\u308C\u3067\u3001\u4FFA\u306B\u3082\u5E0C\u671B\u304C\u898B\u3048\u3066\u304D\u305F\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: theo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.turnDialogues.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -7109,6 +7125,10 @@ PrefabInstance:
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.reactionSuccessJP
       value: "\u3046\u3093\u3001\u308F\u304B\u308B\u6C17\u304C\u3059\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: minato
       objectReference: {fileID: 0}
     - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
       propertyPath: characterData.turnDialogues.Array.size
@@ -7744,7 +7764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 563.04175, y: -61.85945}
+  m_AnchoredPosition: {x: 563.04175, y: -61.859497}
   m_SizeDelta: {x: -1053.915, y: -148.97519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988288378
