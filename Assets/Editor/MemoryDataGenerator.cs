@@ -34,24 +34,26 @@ public class MemoryDataGenerator : MonoBehaviour
 
         foreach (var character in wrapper.characters)
         {
-            string memoryId = character.grantedOnTalkMemoryId;
-            if (string.IsNullOrEmpty(memoryId))
+            foreach (var entry in character.grantedMemoriesPerTurn)
             {
-                Debug.LogWarning($"キャラ {character.name} に grantedOnTalkMemoryId がありません。スキップします。");
-                continue;
+                string memoryId = entry.memoryId;
+                if (string.IsNullOrEmpty(memoryId))
+                {
+                    Debug.LogWarning($"キャラ {character.name} のターン {entry.turn} に memoryId がありません。スキップします。");
+                    continue;
+                }
+
+                MemoryData asset = ScriptableObject.CreateInstance<MemoryData>();
+                asset.id = memoryId;
+                asset.memoryText = character.memoryFragmentJP; // 必要ならターンごとに分けてもOK
+                asset.ownerCharacterId = character.id;
+
+                string assetPath = Path.Combine(outputFolder, memoryId + ".asset");
+                AssetDatabase.CreateAsset(asset, assetPath);
+                created++;
             }
-
-            MemoryData asset = ScriptableObject.CreateInstance<MemoryData>();
-            asset.id = memoryId;
-            asset.memoryText = character.memoryFragmentJP;
-            asset.ownerCharacterId = character.id;
-            asset.memoryImage = null;
-            asset.ownerCharacter = null;
-
-            string assetPath = Path.Combine(outputFolder, memoryId + ".asset");
-            AssetDatabase.CreateAsset(asset, assetPath);
-            created++;
         }
+
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
@@ -71,6 +73,13 @@ public class MemoryDataGenerator : MonoBehaviour
         public string id;
         public string name;
         public string memoryFragmentJP;
-        public string grantedOnTalkMemoryId;
+        public List<GrantedMemoryPerTurn> grantedMemoriesPerTurn;
+    }
+
+    [System.Serializable]
+    public class GrantedMemoryPerTurn
+    {
+        public int turn;
+        public string memoryId;
     }
 }

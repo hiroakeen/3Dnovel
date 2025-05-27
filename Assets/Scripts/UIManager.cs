@@ -75,7 +75,10 @@ public class UIManager : MonoBehaviour
 
         // 記憶が3つになったあと、まだナレーションを出していなければここで表示
         var inventory = GameObject.FindFirstObjectByType<PlayerMemoryInventory>();
-        if (!hasShownMemoryNarration && inventory != null && inventory.GetAllMemories().Count >= 3)
+        int memoryCount = inventory?.GetAllMemories().Count ?? 0;
+
+        if (!hasShownMemoryNarration && (memoryCount == 3 || memoryCount == 6))
+
         {
             hasShownMemoryNarration = true;
 
