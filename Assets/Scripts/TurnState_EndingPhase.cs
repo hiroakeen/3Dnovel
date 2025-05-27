@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 記憶の評価に応じて TRUE / GOOD / BAD エンディングを判定
+/// 記憶の評価に応じて TRUE / GOOD / BAD エンディングを判定（改訂版）
 /// </summary>
 public class TurnState_EndingPhase : ITurnState
 {
@@ -17,27 +17,34 @@ public class TurnState_EndingPhase : ITurnState
 
         foreach (var log in logs)
         {
-            if (log.targetCharacter.memoryReactionType == MemoryReactionType.True)
-                trueCount++;
-            else if (log.targetCharacter.memoryReactionType == MemoryReactionType.Good)
-                goodCount++;
+            switch (log.targetCharacter.memoryReactionType)
+            {
+                case MemoryReactionType.True:
+                    trueCount++;
+                    break;
+                case MemoryReactionType.Good:
+                    goodCount++;
+                    break;
+            }
         }
 
+        int totalCorrect = trueCount + goodCount;
+
         string endingId;
-        if (trueCount >= 3)
+        if (trueCount == 3)
         {
-            endingId = "TRUE_END"; // 全員脱出
+            endingId = "TRUE_END"; // 完全救出（真エンド）
         }
-        else if (goodCount >= 1 || trueCount >= 1)
+        else if (totalCorrect >= 2)
         {
-            endingId = "GOOD_END"; // プレイヤー or 誰か1人と脱出
+            endingId = "GOOD_END"; // 一部救出（2回以上成功）
         }
         else
         {
             endingId = "BAD_END"; // 全滅
         }
 
-        Debug.Log($"[評価結果] Ending ID: {endingId} (True: {trueCount}, Good: {goodCount})");
+        Debug.Log($"[評価結果] Ending ID: {endingId} (True: {trueCount}, Good: {goodCount}, Total: {totalCorrect})");
 
         UIManager.Instance.ShowNarration(
             GetNarrationForEnding(endingId),
@@ -63,6 +70,4 @@ public class TurnState_EndingPhase : ITurnState
             _ => "神の声：物語は静かに幕を閉じた。"
         };
     }
-
-
 }

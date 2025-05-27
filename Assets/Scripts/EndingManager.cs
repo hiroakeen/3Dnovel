@@ -1,18 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// エンディング処理を一元管理するマネージャー
-/// エンディングIDによって適切なシーンに遷移し、後から参照できるよう保存も行う
-/// </summary>
 public class EndingManager : MonoBehaviour
 {
     public static EndingManager Instance { get; private set; }
-
-    /// <summary>
-    /// 遷移済みのエンディングID（後でUIに表示したい場合などに利用可能）
-    /// </summary>
-    public static string LastEndingId { get; private set; }
 
     private void Awake()
     {
@@ -20,39 +11,17 @@ public class EndingManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    /// <summary>
-    /// 指定されたエンディングIDに応じてエンディングシーンを読み込む
-    /// </summary>
     public void LoadEndingScene(string endingId)
     {
-        Debug.Log($"[EndingManager] エンディング遷移: {endingId}");
-        LastEndingId = endingId;
-
-        string sceneName = GetSceneNameFromEndingId(endingId);
-        if (string.IsNullOrEmpty(sceneName))
+        string sceneName = endingId switch
         {
-            Debug.LogError($"[EndingManager] 未知のエンディングID: {endingId}");
-            return;
-        }
+            "TRUE_END" => "EndingScene_TRUE",
+            "GOOD_END" => "EndingScene_GOOD",
+            "BAD_END" => "EndingScene_BAD",
+            _ => "EndingScene_BAD"
+        };
 
+        Debug.Log($"[EndingManager] エンディングシーンへ移動: {sceneName}");
         SceneManager.LoadScene(sceneName);
     }
-
-    /// <summary>
-    /// エンディングIDから遷移するべきシーン名を返す
-    /// </summary>
-    private string GetSceneNameFromEndingId(string id)
-    {
-        return id switch
-        {
-            "TRUE" => "TrueEndingScene",
-            "GOOD" => "NormalEndingScene",
-            "FALSE" => "FalseEndingScene",
-            "NEUTRAL" => "NeutralEndingScene",
-            "BAD" => "BadEndingScene",
-            _ => null
-        };
-    }
-
-
 }
