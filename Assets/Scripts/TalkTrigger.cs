@@ -109,7 +109,18 @@ public class TalkTrigger : MonoBehaviour
         string dialogueLine = characterData.GetDialogueForCurrentTurn(lang);
 
         bool isMemoryUseTarget = characterData.isMemoryUseTarget;
-        MemoryData memoryToGrant = MemoryManager.Instance?.FindMemoryById(characterData.autoGrantedMemoryId);
+
+        // ✅ 現在のターンに応じた記憶IDを取得
+        int currentTurn = GameManager.Instance.GetTurn();
+        string memoryIdToGrant = characterData.grantedMemoriesPerTurn
+            ?.Find(entry => entry.turn == currentTurn)?.memoryId;
+
+        MemoryData memoryToGrant = null;
+
+        if (!string.IsNullOrEmpty(memoryIdToGrant))
+        {
+            memoryToGrant = MemoryManager.Instance?.FindMemoryById(memoryIdToGrant);
+        }
 
         var walker = GetComponent<SimpleNPCWalker>();
         walker?.SetTalking(true);
@@ -122,7 +133,9 @@ public class TalkTrigger : MonoBehaviour
                 inventory.AddMemory(memoryToGrant);
                 MemoryManager.Instance?.AddMemory(memoryToGrant);
 
-                UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）");
+                UIManager.Instance.ShowDialogue(
+                    $"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）"
+                );
 
                 NotifyTalked();
                 return;
@@ -138,25 +151,10 @@ public class TalkTrigger : MonoBehaviour
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
 
-        if (!string.IsNullOrEmpty(characterData.grantedOnTalkMemoryId))
-        {
-            var memory = MemoryManager.Instance?.FindMemoryById(characterData.grantedOnTalkMemoryId);
-            var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
-            if (memory != null && inventory != null && !inventory.GetAllMemories().Contains(memory))
-            {
-                inventory.AddMemory(memory);
-                MemoryManager.Instance?.AddMemory(memory);
-
-                UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memory.memoryText} を思い出した）");
-
-                NotifyTalked();
-                return;
-            }
-        }
-
-
         NotifyTalked();
     }
+
+
 
     public void GiveMemoryToNPC(CharacterDataJson target)
     {

@@ -34,7 +34,20 @@
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
       "isMemoryTrue": true,
-      "grantedOnTalkMemoryId": "memory_theo"
+      "grantedMemoriesPerTurn": [
+        {
+          "turn": 1,
+          "memoryId": "theo_t1"
+        },
+        {
+          "turn": 2,
+          "memoryId": "theo_t2"
+        },
+        {
+          "turn": 3,
+          "memoryId": "theo_t3"
+        }
+      ]
     },
     {
       "id": "minato",
@@ -70,7 +83,20 @@
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
       "isMemoryTrue": true,
-      "grantedOnTalkMemoryId": "memory_minato"
+      "grantedMemoriesPerTurn": [
+        {
+          "turn": 1,
+          "memoryId": "minato_t1"
+        },
+        {
+          "turn": 2,
+          "memoryId": "minato_t2"
+        },
+        {
+          "turn": 3,
+          "memoryId": "minato_t3"
+        }
+      ]
     },
     {
       "id": "rin",
@@ -106,7 +132,20 @@
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
       "isMemoryTrue": false,
-      "grantedOnTalkMemoryId": "memory_rin"
+      "grantedMemoriesPerTurn": [
+        {
+          "turn": 1,
+          "memoryId": "rin_t1"
+        },
+        {
+          "turn": 2,
+          "memoryId": "rin_t2"
+        },
+        {
+          "turn": 3,
+          "memoryId": "rin_t3"
+        }
+      ]
     },
     {
       "id": "yuu",
@@ -142,7 +181,20 @@
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
       "isMemoryTrue": true,
-      "grantedOnTalkMemoryId": "memory_yuu"
+      "grantedMemoriesPerTurn": [
+        {
+          "turn": 1,
+          "memoryId": "yuu_t1"
+        },
+        {
+          "turn": 2,
+          "memoryId": "yuu_t2"
+        },
+        {
+          "turn": 3,
+          "memoryId": "yuu_t3"
+        }
+      ]
     },
     {
       "id": "ai",
@@ -178,7 +230,20 @@
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
       "isMemoryTrue": false,
-      "grantedOnTalkMemoryId": "memory_ai"
+      "grantedMemoriesPerTurn": [
+        {
+          "turn": 1,
+          "memoryId": "ai_t1"
+        },
+        {
+          "turn": 2,
+          "memoryId": "ai_t2"
+        },
+        {
+          "turn": 3,
+          "memoryId": "ai_t3"
+        }
+      ]
     }
   ]
 }

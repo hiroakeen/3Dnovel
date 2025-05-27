@@ -89,8 +89,20 @@ public class CharacterDataJson
         return "…………?";
     }
 
-}
+    [System.Serializable]
+    public class MemoryGrantEntry
+    {
+        public int turn;
+        public string memoryId;
+    }
 
+    public List<MemoryGrantEntry> grantedMemoriesPerTurn;
+
+
+}
+/// <summary>
+/// 以下、多言語対応
+/// </summary>
 
 [System.Serializable]
 public class LocalizedStringJson

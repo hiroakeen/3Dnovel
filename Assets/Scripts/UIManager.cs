@@ -178,5 +178,13 @@ public class UIManager : MonoBehaviour
     {
         UIManager.Instance.ShowNarration($"謎の声：{turn}ターン目が始まった。", null);
     }
+    public void SetTurnMessage(string message)
+    {
+        if (turnMessageText != null)
+        {
+            turnMessageText.text = message;
+            turnMessageText.gameObject.SetActive(true);
+        }
+    }
 
 }

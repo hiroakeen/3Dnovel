@@ -8,14 +8,19 @@ public class LanguageToggleUI : MonoBehaviour
 
     private void Start()
     {
-        // 初期設定（ドロップダウンの表示言語）
+        if (languageDropdown == null)
+        {
+            Debug.LogError("LanguageDropdown が設定されていません！");
+            return;
+        }
+
         languageDropdown.ClearOptions();
         languageDropdown.AddOptions(new System.Collections.Generic.List<string> { "日本語", "English" });
 
-        // 現在の言語をUIに反映
         languageDropdown.value = LocalizationManager.Instance.GetCurrentLanguage() == Language.Japanese ? 0 : 1;
         languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
     }
+
 
     private void OnLanguageChanged(int index)
     {
