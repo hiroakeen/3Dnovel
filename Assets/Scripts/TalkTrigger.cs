@@ -178,13 +178,40 @@ public class TalkTrigger : MonoBehaviour
             currentState.NotifyMemoryUsed(memory.GetOwnerCharacter(), characterData);
             inventory.RemoveMemory(memory);
 
-            UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
+            // ✅ リアクションセリフ選択
+            string reactionLine = "……？";
+
+            switch (characterData.memoryReactionType)
+            {
+                case MemoryReactionType.True:
+                    reactionLine = characterData.reactionTrueJP;
+                    break;
+                case MemoryReactionType.Good:
+                    reactionLine = characterData.reactionSuccessJP;
+                    break;
+                case MemoryReactionType.Bad:
+                    reactionLine = characterData.reactionFailJP;
+                    break;
+                case MemoryReactionType.None:
+                default:
+                    reactionLine = "……？";
+                    break;
+            }
+
+            // ✅ NPCのセリフとして表示
+            UIManager.Instance.ShowDialogue(
+                $"{npcName} に「{memoryContent}」を使った。\n{npcName}：{reactionLine}"
+            );
 
             GameTurnStateManager.Instance.SetMemoryUsedThisTurn();
-
-            // ここだけ変更：外部コントローラーに委譲！
             TurnFlowController.Instance.AdvanceToNextTurn();
         }
+    }
+
+
+    public CharacterDataJson GetCharacterData()
+    {
+        return characterData;
     }
 
 

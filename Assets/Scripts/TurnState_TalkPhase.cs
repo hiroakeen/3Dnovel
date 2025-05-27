@@ -5,6 +5,7 @@ public class TurnState_TalkPhase : ITurnState
 {
     private HashSet<string> talkedCharacterNames = new();
     private bool narrationShown = false;
+    private List<CharacterDataJson> talkedCharacters = new();
 
     public void OnStateEnter()
     {
@@ -12,13 +13,26 @@ public class TurnState_TalkPhase : ITurnState
         narrationShown = false;
     }
 
+
     public void NotifyCharacterTalked(CharacterDataJson character)
     {
-        if (talkedCharacterNames.Contains(character.name)) return;
+        if (!talkedCharacters.Contains(character))
+        {
+            talkedCharacters.Add(character);
+        }
 
-        talkedCharacterNames.Add(character.name);
-        Debug.Log($"[TalkPhase] {character.name} に話しかけた（{talkedCharacterNames.Count}/3）");
+        Debug.Log($"[TalkPhase] 話しかけた人数: {talkedCharacters.Count}");
+
+        if (talkedCharacters.Count >= 3)
+        {
+            // ナレーション経由で遷移
+            UIManager.Instance.ShowNarration(
+                "謎の声：記憶を渡す時間だ。",
+                () => GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase)
+            );
+        }
     }
+
 
     public void NotifyTalkFinished(CharacterDataJson character)
     {
@@ -32,6 +46,12 @@ public class TurnState_TalkPhase : ITurnState
             );
         }
     }
+
+    public void ResetTalkLog()
+    {
+        talkedCharacters.Clear();
+    }
+
 
     public void OnStateExit() { }
 

@@ -3,6 +3,7 @@
 public class NPC : MonoBehaviour
 {
     [SerializeField] private CharacterDataJson characterData;
+    [SerializeField] private TalkTrigger talkTrigger;
 
     public void ReceiveMemory(MemoryData memory)
     {
@@ -53,6 +54,6 @@ public class NPC : MonoBehaviour
 
     public CharacterDataJson GetCharacterData()
     {
-        return characterData;
+        return talkTrigger != null ? talkTrigger.GetCharacterData() : null;
     }
 }

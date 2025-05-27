@@ -55,4 +55,13 @@ public class GameTurnStateManager : MonoBehaviour
     {
         hasUsedMemoryThisTurn = true;
     }
+
+    public void ResetTalkPhaseState()
+    {
+        if (currentState is TurnState_TalkPhase talkPhase)
+        {
+            talkPhase.ResetTalkLog();
+        }
+    }
+
 }

@@ -64,28 +64,19 @@ public class MemoryGiveUIController : MonoBehaviour
     {
         Close();
 
-        var npc = FindMatchingNPC(targetCharacter);
-        if (npc != null)
+        // ここで対象のTalkTriggerを直接探す（id一致で）
+        var allTalkTriggers = Object.FindObjectsByType<TalkTrigger>(FindObjectsSortMode.None);
+        foreach (var trigger in allTalkTriggers)
         {
-            npc.ReceiveMemory(selectedMemory);
-        }
-        else
-        {
-            Debug.LogWarning("該当NPCが見つかりませんでした");
-        }
-    }
-
-    private NPC FindMatchingNPC(CharacterDataJson data)
-    {
-        var allNPCs = Object.FindObjectsByType<NPC>(FindObjectsSortMode.None);
-        foreach (var npc in allNPCs)
-        {
-            var npcData = npc.GetCharacterData();
-            if (npcData != null && npcData.name == data.name)
+            if (trigger.GetCharacterData()?.id == targetCharacter.id)
             {
-                return npc;
+                trigger.UseMemory(selectedMemory.memoryText);
+                return;
             }
         }
-        return null;
+
+        // 該当しない場合でも反応（無反応演出）
+        UIManager.Instance.ShowDialogue($"{targetCharacter.name} に「{selectedMemory.memoryText}」を使った。\n{targetCharacter.name}：……？");
+        TurnFlowController.Instance.AdvanceToNextTurn();
     }
 }

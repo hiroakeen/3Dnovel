@@ -174,5 +174,9 @@ public class UIManager : MonoBehaviour
     {
         hasShownMemoryNarration = false;
     }
+    public void ShowTurnStartMessage(int turn)
+    {
+        UIManager.Instance.ShowNarration($"謎の声：{turn}ターン目が始まった。", null);
+    }
 
 }
