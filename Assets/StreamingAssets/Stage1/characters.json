@@ -15,13 +15,26 @@
       "reactionFailJP": "……その記憶は俺には届かない。",
       "reactionFailEN": "...That memory doesn't reach me.",
       "turnDialogues": [
-        { "turn": 0, "dialogueJP": "…どこかで会ったことがある気がする。", "dialogueEN": "I feel like we've met before..." },
-        { "turn": 1, "dialogueJP": "その記憶、俺のものじゃないが…確かに見覚えがある。", "dialogueEN": "That memory isn't mine, but I remember it." },
-        { "turn": 2, "dialogueJP": "すべてのピースが揃えば、きっと外へ出られるはずだ。", "dialogueEN": "If all the pieces come together, we can get out." }
+        {
+          "turn": 0,
+          "dialogueJP": "…どこかで会ったことがある気がする。",
+          "dialogueEN": "I feel like we've met before..."
+        },
+        {
+          "turn": 1,
+          "dialogueJP": "その記憶、俺のものじゃないが…確かに見覚えがある。",
+          "dialogueEN": "That memory isn't mine, but I remember it."
+        },
+        {
+          "turn": 2,
+          "dialogueJP": "すべてのピースが揃えば、きっと外へ出られるはずだ。",
+          "dialogueEN": "If all the pieces come together, we can get out."
+        }
       ],
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
-      "isMemoryTrue": true
+      "isMemoryTrue": true,
+      "grantedOnTalkMemoryId": "memory_theo"
     },
     {
       "id": "minato",
@@ -38,13 +51,26 @@
       "reactionFailJP": "んー、ちょっと違うかも？",
       "reactionFailEN": "Hmm, maybe that's not quite it?",
       "turnDialogues": [
-        { "turn": 0, "dialogueJP": "あはは、なんか変な気分〜！", "dialogueEN": "Haha, this feels kind of weird!" },
-        { "turn": 1, "dialogueJP": "その話…ちょっと心に引っかかるな。", "dialogueEN": "That story... it's nagging at me." },
-        { "turn": 2, "dialogueJP": "うん、なんとなくわかる気がする。ありがとう！", "dialogueEN": "Yeah, I think I get it. Thanks!" }
+        {
+          "turn": 0,
+          "dialogueJP": "あはは、なんか変な気分〜！",
+          "dialogueEN": "Haha, this feels kind of weird!"
+        },
+        {
+          "turn": 1,
+          "dialogueJP": "その話…ちょっと心に引っかかるな。",
+          "dialogueEN": "That story... it's nagging at me."
+        },
+        {
+          "turn": 2,
+          "dialogueJP": "うん、なんとなくわかる気がする。ありがとう！",
+          "dialogueEN": "Yeah, I think I get it. Thanks!"
+        }
       ],
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
-      "isMemoryTrue": true
+      "isMemoryTrue": true,
+      "grantedOnTalkMemoryId": "memory_minato"
     },
     {
       "id": "rin",
@@ -61,13 +87,26 @@
       "reactionFailJP": "あんた、何か隠してるでしょ。",
       "reactionFailEN": "You're hiding something, aren't you?",
       "turnDialogues": [
-        { "turn": 0, "dialogueJP": "ふざけないで。そんなの信じられるわけない。", "dialogueEN": "Don't joke. I can't believe that." },
-        { "turn": 1, "dialogueJP": "私を騙そうとしてるの？", "dialogueEN": "Are you trying to trick me?" },
-        { "turn": 2, "dialogueJP": "あんた、何か隠してるでしょ。", "dialogueEN": "You're hiding something, aren't you?" }
+        {
+          "turn": 0,
+          "dialogueJP": "ふざけないで。そんなの信じられるわけない。",
+          "dialogueEN": "Don't joke. I can't believe that."
+        },
+        {
+          "turn": 1,
+          "dialogueJP": "私を騙そうとしてるの？",
+          "dialogueEN": "Are you trying to trick me?"
+        },
+        {
+          "turn": 2,
+          "dialogueJP": "あんた、何か隠してるでしょ。",
+          "dialogueEN": "You're hiding something, aren't you?"
+        }
       ],
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
-      "isMemoryTrue": false
+      "isMemoryTrue": false,
+      "grantedOnTalkMemoryId": "memory_rin"
     },
     {
       "id": "yuu",
@@ -84,13 +123,26 @@
       "reactionFailJP": "……まだ、よくわからない。",
       "reactionFailEN": "...I still don't really get it.",
       "turnDialogues": [
-        { "turn": 0, "dialogueJP": "ごめん、あまりよく覚えてないけど…", "dialogueEN": "Sorry, I don't really remember well..." },
-        { "turn": 1, "dialogueJP": "その話、少しだけ思い出せそうな気がする。", "dialogueEN": "That story... I might remember something." },
-        { "turn": 2, "dialogueJP": "ありがとう、なんだか安心したよ。", "dialogueEN": "Thanks, I feel a little relieved." }
+        {
+          "turn": 0,
+          "dialogueJP": "ごめん、あまりよく覚えてないけど…",
+          "dialogueEN": "Sorry, I don't really remember well..."
+        },
+        {
+          "turn": 1,
+          "dialogueJP": "その話、少しだけ思い出せそうな気がする。",
+          "dialogueEN": "That story... I might remember something."
+        },
+        {
+          "turn": 2,
+          "dialogueJP": "ありがとう、なんだか安心したよ。",
+          "dialogueEN": "Thanks, I feel a little relieved."
+        }
       ],
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
-      "isMemoryTrue": true
+      "isMemoryTrue": true,
+      "grantedOnTalkMemoryId": "memory_yuu"
     },
     {
       "id": "ai",
@@ -107,13 +159,26 @@
       "reactionFailJP": "……私には関係ない。",
       "reactionFailEN": "…It has nothing to do with me.",
       "turnDialogues": [
-        { "turn": 0, "dialogueJP": "……。", "dialogueEN": "……." },
-        { "turn": 1, "dialogueJP": "私には…何も…ない。", "dialogueEN": "I have... nothing..." },
-        { "turn": 2, "dialogueJP": "記憶…それは誰のもの？", "dialogueEN": "Memory... whose is it?" }
+        {
+          "turn": 0,
+          "dialogueJP": "……。",
+          "dialogueEN": "……."
+        },
+        {
+          "turn": 1,
+          "dialogueJP": "私には…何も…ない。",
+          "dialogueEN": "I have... nothing..."
+        },
+        {
+          "turn": 2,
+          "dialogueJP": "記憶…それは誰のもの？",
+          "dialogueEN": "Memory... whose is it?"
+        }
       ],
       "autoGrantedMemoryId": "",
       "expectedMemoryId": "",
-      "isMemoryTrue": false
+      "isMemoryTrue": false,
+      "grantedOnTalkMemoryId": "memory_ai"
     }
   ]
 }

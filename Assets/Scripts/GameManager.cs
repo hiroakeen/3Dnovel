@@ -35,13 +35,27 @@ public class GameManager : MonoBehaviour
         isGameplayStarted = true;
 
         Debug.Log("ゲーム本編スタート！");
-
         currentTurn = 1;
     }
 
+    /// <summary>
+    /// 登録済みキャラ全員を取得（コピー渡し）
+    /// </summary>
     public List<CharacterDataJson> GetAllCharacters()
     {
-        return characterLoader != null ? new List<CharacterDataJson>(characterLoader.LoadedCharacters) : new List<CharacterDataJson>();
+        return characterLoader != null
+            ? new List<CharacterDataJson>(characterLoader.LoadedCharacters)
+            : new List<CharacterDataJson>();
+    }
+
+    /// <summary>
+    /// キャラIDからデータを取得
+    /// </summary>
+    public CharacterDataJson FindCharacterById(string id)
+    {
+        return characterLoader != null
+            ? characterLoader.LoadedCharacters.Find(c => c.id == id)
+            : null;
     }
 
     public void AddDecisionLog(TurnDecision decision)
@@ -70,5 +84,4 @@ public class GameManager : MonoBehaviour
     {
         return currentTurn;
     }
-
 }

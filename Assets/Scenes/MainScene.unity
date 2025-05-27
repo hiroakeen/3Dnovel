@@ -313,6 +313,163 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
+--- !u!1001 &45324485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 853852724}
+    m_Modifications:
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_Name
+      value: "NPC_\u30C6\u30AA"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: memoryGiveUI
+      value: 
+      objectReference: {fileID: 597714880}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: actionButtonText
+      value: 
+      objectReference: {fileID: 223726232}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.id
+      value: theo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: talkActionButton
+      value: 
+      objectReference: {fileID: 1420537589}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.name
+      value: "\u30C6\u30AA"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.roleType
+      value: npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailEN
+      value: ...That memory doesn't reach me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailJP
+      value: "\u2026\u2026\u305D\u306E\u8A18\u61B6\u306F\u4FFA\u306B\u306F\u5C4A\u304B\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueEN
+      value: ...So it was true after all.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueJP
+      value: "\u2026\u2026\u3084\u3063\u3071\u308A\u3001\u305D\u3046\u3060\u3063\u305F\u306E\u304B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentEN
+      value: I'm the only one here who's not a participant.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentJP
+      value: "\u50D5\u306F\u3053\u306E\u4E2D\u3067\u552F\u4E00\u3001\u53C2\u52A0\u8005\u3058\u3083\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.isMemoryUseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessEN
+      value: Now I see a glimmer of hope.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessJP
+      value: "\u3053\u308C\u3067\u3001\u4FFA\u306B\u3082\u5E0C\u671B\u304C\u898B\u3048\u3066\u304D\u305F\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: memory_theo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].turn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].turn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
+      value: I feel like we've met before...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
+      value: "\u2026\u3069\u3053\u304B\u3067\u4F1A\u3063\u305F\u3053\u3068\u304C\u3042\u308B\u6C17\u304C\u3059\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
+      value: That memory isn't mine, but I remember it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
+      value: "\u305D\u306E\u8A18\u61B6\u3001\u4FFA\u306E\u3082\u306E\u3058\u3083\u306A\u3044\u304C\u2026\u78BA\u304B\u306B\u898B\u899A\u3048\u304C\u3042\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
+      value: If all the pieces come together, we can get out.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
+      value: "\u3059\u3079\u3066\u306E\u30D4\u30FC\u30B9\u304C\u63C3\u3048\u3070\u3001\u304D\u3063\u3068\u5916\u3078\u51FA\u3089\u308C\u308B\u306F\u305A\u3060\u3002"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!224 &51292185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
@@ -420,11 +577,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
---- !u!4 &67795821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-  m_PrefabInstance: {fileID: 1107278540}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &70824856
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +688,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91225660}
   m_CullTransparentMesh: 1
+--- !u!4 &109862874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+  m_PrefabInstance: {fileID: 810696270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &161908588 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
@@ -698,6 +855,11 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!4 &210122249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+  m_PrefabInstance: {fileID: 1783317901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &223726232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2386291355839851165, guid: 9408e1b8cb5060340834c3c7ca634868, type: 3}
@@ -811,6 +973,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
+--- !u!4 &317580014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+  m_PrefabInstance: {fileID: 810939682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,168 +1544,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358084152}
   m_CullTransparentMesh: 1
+--- !u!4 &360036398 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+  m_PrefabInstance: {fileID: 45324485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &366460127 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
   m_PrefabInstance: {fileID: 308821045}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &382252278
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1889278010}
-    m_Modifications:
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_Name
-      value: "NPC_\u30EA\u30F3"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: memoryGiveUI
-      value: 
-      objectReference: {fileID: 597714880}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: actionButtonText
-      value: 
-      objectReference: {fileID: 223726232}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.id
-      value: rin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: talkActionButton
-      value: 
-      objectReference: {fileID: 1420537589}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.name
-      value: "\u30EA\u30F3"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.roleType
-      value: npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailEN
-      value: You're hiding something, aren't you?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailJP
-      value: "\u3042\u3093\u305F\u3001\u4F55\u304B\u96A0\u3057\u3066\u308B\u3067\u3057\u3087\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueEN
-      value: Don't mess with me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueJP
-      value: "\u3075\u3056\u3051\u306A\u3044\u3067\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentEN
-      value: Isn't everyone lying here...?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentJP
-      value: "\u5168\u54E1\u5618\u3092\u3064\u3044\u3066\u308B\u3093\u3058\u3083\u306A\u3044\u306E\u2026\uFF1F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.isMemoryUseTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessEN
-      value: ...I'll trust you just a little.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessJP
-      value: "\u2026\u2026\u3061\u3087\u3063\u3068\u3060\u3051\u4FE1\u3058\u3066\u3042\u3052\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].turn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].turn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
-      value: Don't joke. I can't believe that.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
-      value: "\u3075\u3056\u3051\u306A\u3044\u3067\u3002\u305D\u3093\u306A\u306E\u4FE1\u3058\u3089\u308C\u308B\u308F\u3051\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
-      value: Are you trying to trick me?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
-      value: "\u79C1\u3092\u9A19\u305D\u3046\u3068\u3057\u3066\u308B\u306E\uFF1F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
-      value: You're hiding something, aren't you?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
-      value: "\u3042\u3093\u305F\u3001\u4F55\u304B\u96A0\u3057\u3066\u308B\u3067\u3057\u3087\u3002"
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
---- !u!4 &418709487 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-  m_PrefabInstance: {fileID: 553146548}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &461452166
 PrefabInstance:
@@ -2183,159 +2197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536198291}
   m_CullTransparentMesh: 1
---- !u!1001 &553146548
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1889278010}
-    m_Modifications:
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_Name
-      value: "NPC_\u30E6\u30A6"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: memoryGiveUI
-      value: 
-      objectReference: {fileID: 597714880}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: actionButtonText
-      value: 
-      objectReference: {fileID: 223726232}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.id
-      value: yuu
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: talkActionButton
-      value: 
-      objectReference: {fileID: 1420537589}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.name
-      value: "\u30E6\u30A6"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.roleType
-      value: npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailEN
-      value: ...I still don't really get it.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailJP
-      value: "\u2026\u2026\u307E\u3060\u3001\u3088\u304F\u308F\u304B\u3089\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueEN
-      value: ...That was from back then.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueJP
-      value: "\u2026\u2026\u3042\u306E\u3068\u304D\u306E\u3053\u3068\u3060\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentEN
-      value: I remember being protected by someone when I was little.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentJP
-      value: "\u5C0F\u3055\u3044\u9803\u3001\u8AB0\u304B\u306B\u5B88\u3089\u308C\u305F\u8A18\u61B6\u304C\u3042\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.isMemoryUseTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessEN
-      value: Thanks, I think I remembered a bit.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessJP
-      value: "\u3042\u308A\u304C\u3068\u3046\u3001\u5C11\u3057\u601D\u3044\u51FA\u305B\u305F\u6C17\u304C\u3059\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].turn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].turn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
-      value: Sorry, I don't really remember well...
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
-      value: "\u3054\u3081\u3093\u3001\u3042\u307E\u308A\u3088\u304F\u899A\u3048\u3066\u306A\u3044\u3051\u3069\u2026"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
-      value: That story... I might remember something.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
-      value: "\u305D\u306E\u8A71\u3001\u5C11\u3057\u3060\u3051\u601D\u3044\u51FA\u305B\u305D\u3046\u306A\u6C17\u304C\u3059\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
-      value: Thanks, I feel a little relieved.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
-      value: "\u3042\u308A\u304C\u3068\u3046\u3001\u306A\u3093\u3060\u304B\u5B89\u5FC3\u3057\u305F\u3088\u3002"
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1001 &582230006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2486,11 +2347,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
   m_PrefabInstance: {fileID: 45022207}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &618731621 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-  m_PrefabInstance: {fileID: 1459264189}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641726339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,11 +2483,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641726339}
   m_CullTransparentMesh: 1
---- !u!4 &679765025 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-  m_PrefabInstance: {fileID: 1137901433}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &742107655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,7 +2513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterLoader: {fileID: 1069166446}
-  currentTurn: 1
+  currentTurn: 0
 --- !u!4 &742107657
 Transform:
   m_ObjectHideFlags: 0
@@ -2682,6 +2533,11 @@ Transform:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
   m_PrefabInstance: {fileID: 461452166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &755486121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+  m_PrefabInstance: {fileID: 1363964898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &807680675
 GameObject:
@@ -2792,6 +2648,320 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807680675}
   m_CullTransparentMesh: 1
+--- !u!1001 &810696270
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 853852724}
+    m_Modifications:
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_Name
+      value: "NPC_\u30DF\u30CA\u30C8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: memoryGiveUI
+      value: 
+      objectReference: {fileID: 597714880}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: actionButtonText
+      value: 
+      objectReference: {fileID: 223726232}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.id
+      value: minato
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: talkActionButton
+      value: 
+      objectReference: {fileID: 1420537589}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.name
+      value: "\u30DF\u30CA\u30C8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.roleType
+      value: npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailEN
+      value: Hmm, maybe that's not quite it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailJP
+      value: "\u3093\u30FC\u3001\u3061\u3087\u3063\u3068\u9055\u3046\u304B\u3082\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueEN
+      value: Ah, that's my memory!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueJP
+      value: "\u3042\u3001\u305D\u308C\u3001\u4FFA\u306E\u8A18\u61B6\u3060\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentEN
+      value: I feel like I talked to someone here before.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentJP
+      value: "\u6614\u3001\u3053\u3053\u3067\u8AB0\u304B\u3068\u8A71\u3057\u305F\u6C17\u304C\u3059\u308B\u3093\u3060\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.isMemoryUseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessEN
+      value: Yeah, that makes sense to me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessJP
+      value: "\u3046\u3093\u3001\u308F\u304B\u308B\u6C17\u304C\u3059\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: memory_minato
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].turn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].turn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
+      value: Haha, this feels kind of weird!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
+      value: "\u3042\u306F\u306F\u3001\u306A\u3093\u304B\u5909\u306A\u6C17\u5206\u301C\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
+      value: That story... it's nagging at me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
+      value: "\u305D\u306E\u8A71\u2026\u3061\u3087\u3063\u3068\u5FC3\u306B\u5F15\u3063\u304B\u304B\u308B\u306A\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
+      value: Yeah, I think I get it. Thanks!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
+      value: "\u3046\u3093\u3001\u306A\u3093\u3068\u306A\u304F\u308F\u304B\u308B\u6C17\u304C\u3059\u308B\u3002\u3042\u308A\u304C\u3068\u3046\uFF01"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+--- !u!1001 &810939682
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 853852724}
+    m_Modifications:
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_Name
+      value: "NPC_\u30EA\u30F3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: memoryGiveUI
+      value: 
+      objectReference: {fileID: 597714880}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: actionButtonText
+      value: 
+      objectReference: {fileID: 223726232}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.id
+      value: rin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: talkActionButton
+      value: 
+      objectReference: {fileID: 1420537589}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.name
+      value: "\u30EA\u30F3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.roleType
+      value: npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailEN
+      value: You're hiding something, aren't you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailJP
+      value: "\u3042\u3093\u305F\u3001\u4F55\u304B\u96A0\u3057\u3066\u308B\u3067\u3057\u3087\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueEN
+      value: Don't mess with me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueJP
+      value: "\u3075\u3056\u3051\u306A\u3044\u3067\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentEN
+      value: Isn't everyone lying here...?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentJP
+      value: "\u5168\u54E1\u5618\u3092\u3064\u3044\u3066\u308B\u3093\u3058\u3083\u306A\u3044\u306E\u2026\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.isMemoryUseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessEN
+      value: ...I'll trust you just a little.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessJP
+      value: "\u2026\u2026\u3061\u3087\u3063\u3068\u3060\u3051\u4FE1\u3058\u3066\u3042\u3052\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: memory_rin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].turn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].turn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
+      value: Don't joke. I can't believe that.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
+      value: "\u3075\u3056\u3051\u306A\u3044\u3067\u3002\u305D\u3093\u306A\u306E\u4FE1\u3058\u3089\u308C\u308B\u308F\u3051\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
+      value: Are you trying to trick me?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
+      value: "\u79C1\u3092\u9A19\u305D\u3046\u3068\u3057\u3066\u308B\u306E\uFF1F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
+      value: You're hiding something, aren't you?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
+      value: "\u3042\u3093\u305F\u3001\u4F55\u304B\u96A0\u3057\u3066\u308B\u3067\u3057\u3087\u3002"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1 &832137621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,11 +3137,47 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 2044293145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &853852723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853852724}
+  m_Layer: 0
+  m_Name: GeneratedNPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853852724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853852723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 360036398}
+  - {fileID: 109862874}
+  - {fileID: 317580014}
+  - {fileID: 210122249}
+  - {fileID: 755486121}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &861640596
@@ -3577,11 +3783,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
   m_PrefabInstance: {fileID: 1747298911}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &952757969 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-  m_PrefabInstance: {fileID: 382252278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1001227813 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
@@ -3905,7 +4106,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2044293145}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1068819627
 GameObject:
@@ -4085,159 +4286,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1107278540
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1889278010}
-    m_Modifications:
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_Name
-      value: "NPC_\u30C6\u30AA"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: memoryGiveUI
-      value: 
-      objectReference: {fileID: 597714880}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: actionButtonText
-      value: 
-      objectReference: {fileID: 223726232}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.id
-      value: theo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: talkActionButton
-      value: 
-      objectReference: {fileID: 1420537589}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.name
-      value: "\u30C6\u30AA"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.roleType
-      value: npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailEN
-      value: ...That memory doesn't reach me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailJP
-      value: "\u2026\u2026\u305D\u306E\u8A18\u61B6\u306F\u4FFA\u306B\u306F\u5C4A\u304B\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueEN
-      value: ...So it was true after all.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueJP
-      value: "\u2026\u2026\u3084\u3063\u3071\u308A\u3001\u305D\u3046\u3060\u3063\u305F\u306E\u304B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentEN
-      value: I'm the only one here who's not a participant.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentJP
-      value: "\u50D5\u306F\u3053\u306E\u4E2D\u3067\u552F\u4E00\u3001\u53C2\u52A0\u8005\u3058\u3083\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.isMemoryUseTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessEN
-      value: Now I see a glimmer of hope.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessJP
-      value: "\u3053\u308C\u3067\u3001\u4FFA\u306B\u3082\u5E0C\u671B\u304C\u898B\u3048\u3066\u304D\u305F\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].turn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].turn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
-      value: I feel like we've met before...
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
-      value: "\u2026\u3069\u3053\u304B\u3067\u4F1A\u3063\u305F\u3053\u3068\u304C\u3042\u308B\u6C17\u304C\u3059\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
-      value: That memory isn't mine, but I remember it.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
-      value: "\u305D\u306E\u8A18\u61B6\u3001\u4FFA\u306E\u3082\u306E\u3058\u3083\u306A\u3044\u304C\u2026\u78BA\u304B\u306B\u898B\u899A\u3048\u304C\u3042\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
-      value: If all the pieces come together, we can get out.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
-      value: "\u3059\u3079\u3066\u306E\u30D4\u30FC\u30B9\u304C\u63C3\u3048\u3070\u3001\u304D\u3063\u3068\u5916\u3078\u51FA\u3089\u308C\u308B\u306F\u305A\u3060\u3002"
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1 &1135877553
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,159 +4364,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135877553}
   m_CullTransparentMesh: 1
---- !u!1001 &1137901433
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1889278010}
-    m_Modifications:
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_Name
-      value: "NPC_\u30DF\u30CA\u30C8"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: memoryGiveUI
-      value: 
-      objectReference: {fileID: 597714880}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: actionButtonText
-      value: 
-      objectReference: {fileID: 223726232}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.id
-      value: minato
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: talkActionButton
-      value: 
-      objectReference: {fileID: 1420537589}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.name
-      value: "\u30DF\u30CA\u30C8"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.roleType
-      value: npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailEN
-      value: Hmm, maybe that's not quite it?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailJP
-      value: "\u3093\u30FC\u3001\u3061\u3087\u3063\u3068\u9055\u3046\u304B\u3082\uFF1F"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueEN
-      value: Ah, that's my memory!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueJP
-      value: "\u3042\u3001\u305D\u308C\u3001\u4FFA\u306E\u8A18\u61B6\u3060\uFF01"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentEN
-      value: I feel like I talked to someone here before.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentJP
-      value: "\u6614\u3001\u3053\u3053\u3067\u8AB0\u304B\u3068\u8A71\u3057\u305F\u6C17\u304C\u3059\u308B\u3093\u3060\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.isMemoryUseTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessEN
-      value: Yeah, that makes sense to me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessJP
-      value: "\u3046\u3093\u3001\u308F\u304B\u308B\u6C17\u304C\u3059\u308B\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].turn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].turn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
-      value: Haha, this feels kind of weird!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
-      value: "\u3042\u306F\u306F\u3001\u306A\u3093\u304B\u5909\u306A\u6C17\u5206\u301C\uFF01"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
-      value: That story... it's nagging at me.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
-      value: "\u305D\u306E\u8A71\u2026\u3061\u3087\u3063\u3068\u5FC3\u306B\u5F15\u3063\u304B\u304B\u308B\u306A\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
-      value: Yeah, I think I get it. Thanks!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
-      value: "\u3046\u3093\u3001\u306A\u3093\u3068\u306A\u304F\u308F\u304B\u308B\u6C17\u304C\u3059\u308B\u3002\u3042\u308A\u304C\u3068\u3046\uFF01"
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1001 &1155773310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5209,6 +5104,163 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
+--- !u!1001 &1363964898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 853852724}
+    m_Modifications:
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_Name
+      value: "NPC_\u30A2\u30A4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: memoryGiveUI
+      value: 
+      objectReference: {fileID: 597714880}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: actionButtonText
+      value: 
+      objectReference: {fileID: 223726232}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.id
+      value: ai
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: talkActionButton
+      value: 
+      objectReference: {fileID: 1420537589}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.name
+      value: "\u30A2\u30A4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.roleType
+      value: npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailEN
+      value: "\u2026It has nothing to do with me."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailJP
+      value: "\u2026\u2026\u79C1\u306B\u306F\u95A2\u4FC2\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueEN
+      value: ......
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueJP
+      value: "\u2026\u2026\u2026\u2026\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentEN
+      value: ............(Nothing comes to mind)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentJP
+      value: "\u2026\u2026\u2026\u2026\u2026\u2026\uFF08\u4F55\u3082\u601D\u3044\u51FA\u305B\u306A\u3044\uFF09"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.isMemoryUseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessEN
+      value: Memory...? I don't know what that is.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessJP
+      value: "\u8A18\u61B6\u2026\uFF1F\u305D\u308C\u304C\u4F55\u304B\u3001\u308F\u304B\u3089\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: memory_ai
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].turn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].turn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
+      value: "\u2026\u2026."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
+      value: "\u2026\u2026\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
+      value: I have... nothing...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
+      value: "\u79C1\u306B\u306F\u2026\u4F55\u3082\u2026\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
+      value: Memory... whose is it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
+      value: "\u8A18\u61B6\u2026\u305D\u308C\u306F\u8AB0\u306E\u3082\u306E\uFF1F"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1 &1373584036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5817,159 +5869,6 @@ MonoBehaviour:
   memoryGrid: {fileID: 807680676}
   cancelButton: {fileID: 1068819629}
   memoryItemPrefab: {fileID: 188336618754833359, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
---- !u!1001 &1459264189
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1889278010}
-    m_Modifications:
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: m_Name
-      value: "NPC_\u30A2\u30A4"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: memoryGiveUI
-      value: 
-      objectReference: {fileID: 597714880}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: actionButtonText
-      value: 
-      objectReference: {fileID: 223726232}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.id
-      value: ai
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: talkActionButton
-      value: 
-      objectReference: {fileID: 1420537589}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.name
-      value: "\u30A2\u30A4"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.roleType
-      value: npc
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailEN
-      value: "\u2026It has nothing to do with me."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionFailJP
-      value: "\u2026\u2026\u79C1\u306B\u306F\u95A2\u4FC2\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueEN
-      value: ......
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionTrueJP
-      value: "\u2026\u2026\u2026\u2026\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentEN
-      value: ............(Nothing comes to mind)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.memoryFragmentJP
-      value: "\u2026\u2026\u2026\u2026\u2026\u2026\uFF08\u4F55\u3082\u601D\u3044\u51FA\u305B\u306A\u3044\uFF09"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.isMemoryUseTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessEN
-      value: Memory...? I don't know what that is.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.reactionSuccessJP
-      value: "\u8A18\u61B6\u2026\uFF1F\u305D\u308C\u304C\u4F55\u304B\u3001\u308F\u304B\u3089\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].turn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].turn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
-      value: "\u2026\u2026."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
-      value: "\u2026\u2026\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
-      value: I have... nothing...
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
-      value: "\u79C1\u306B\u306F\u2026\u4F55\u3082\u2026\u306A\u3044\u3002"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
-      value: Memory... whose is it?
-      objectReference: {fileID: 0}
-    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
-      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
-      value: "\u8A18\u61B6\u2026\u305D\u308C\u306F\u8AB0\u306E\u3082\u306E\uFF1F"
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1 &1512865120
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,7 +6739,7 @@ MonoBehaviour:
   narrationPanel: {fileID: 1135877553}
   narrationText: {fileID: 1243198094}
   narrationNextButton: {fileID: 1401849823}
-  messageTable: {fileID: 0}
+  messageTable: {fileID: 11400000, guid: 9a8edfd939443f1478da4c5d6fbb7e7b, type: 2}
 --- !u!4 &1771155654
 Transform:
   m_ObjectHideFlags: 0
@@ -6964,6 +6863,163 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2044293145}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1783317901
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 853852724}
+    m_Modifications:
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377792413708902979, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265291257414755712, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: m_Name
+      value: "NPC_\u30E6\u30A6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: memoryGiveUI
+      value: 
+      objectReference: {fileID: 597714880}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: actionButtonText
+      value: 
+      objectReference: {fileID: 223726232}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.id
+      value: yuu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: talkActionButton
+      value: 
+      objectReference: {fileID: 1420537589}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.name
+      value: "\u30E6\u30A6"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.roleType
+      value: npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailEN
+      value: ...I still don't really get it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionFailJP
+      value: "\u2026\u2026\u307E\u3060\u3001\u3088\u304F\u308F\u304B\u3089\u306A\u3044\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueEN
+      value: ...That was from back then.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionTrueJP
+      value: "\u2026\u2026\u3042\u306E\u3068\u304D\u306E\u3053\u3068\u3060\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentEN
+      value: I remember being protected by someone when I was little.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.memoryFragmentJP
+      value: "\u5C0F\u3055\u3044\u9803\u3001\u8AB0\u304B\u306B\u5B88\u3089\u308C\u305F\u8A18\u61B6\u304C\u3042\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.isMemoryUseTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessEN
+      value: Thanks, I think I remembered a bit.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.reactionSuccessJP
+      value: "\u3042\u308A\u304C\u3068\u3046\u3001\u5C11\u3057\u601D\u3044\u51FA\u305B\u305F\u6C17\u304C\u3059\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.grantedOnTalkMemoryId
+      value: memory_yuu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].turn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].turn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueEN
+      value: Sorry, I don't really remember well...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[0].dialogueJP
+      value: "\u3054\u3081\u3093\u3001\u3042\u307E\u308A\u3088\u304F\u899A\u3048\u3066\u306A\u3044\u3051\u3069\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueEN
+      value: That story... I might remember something.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[1].dialogueJP
+      value: "\u305D\u306E\u8A71\u3001\u5C11\u3057\u3060\u3051\u601D\u3044\u51FA\u305B\u305D\u3046\u306A\u6C17\u304C\u3059\u308B\u3002"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueEN
+      value: Thanks, I feel a little relieved.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165138310911619592, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
+      propertyPath: characterData.turnDialogues.Array.data[2].dialogueJP
+      value: "\u3042\u308A\u304C\u3068\u3046\u3001\u306A\u3093\u3060\u304B\u5B89\u5FC3\u3057\u305F\u3088\u3002"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3aa55cc14733fe5439bec5128be47431, type: 3}
 --- !u!1 &1813723894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7278,42 +7334,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
   m_PrefabInstance: {fileID: 917974779}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1889278009
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1889278010}
-  m_Layer: 0
-  m_Name: GeneratedNPCs
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1889278010
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889278009}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 67795821}
-  - {fileID: 679765025}
-  - {fileID: 952757969}
-  - {fileID: 418709487}
-  - {fileID: 618731621}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1898096034 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
@@ -7691,6 +7711,8 @@ Transform:
   - {fileID: 1910682787}
   - {fileID: 1782039354}
   - {fileID: 1573042370}
+  - {fileID: 1056983099}
+  - {fileID: 832575519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065959722
@@ -8194,14 +8216,12 @@ SceneRoots:
   - {fileID: 1771155654}
   - {fileID: 898444789}
   - {fileID: 1264356830}
+  - {fileID: 1069166447}
+  - {fileID: 597714881}
+  - {fileID: 1595118856}
   - {fileID: 870670046}
   - {fileID: 492539770}
   - {fileID: 70824857}
-  - {fileID: 1056983099}
-  - {fileID: 832575519}
   - {fileID: 2044293145}
   - {fileID: 1569580280}
-  - {fileID: 1069166447}
-  - {fileID: 1889278010}
-  - {fileID: 597714881}
-  - {fileID: 1595118856}
+  - {fileID: 853852724}

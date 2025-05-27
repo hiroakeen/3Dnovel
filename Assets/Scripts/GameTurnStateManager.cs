@@ -1,11 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class GameTurnStateManager : MonoBehaviour
 {
     public static GameTurnStateManager Instance { get; private set; }
 
     private ITurnState currentState;
-    private GameTurnState currentPhase; // š ’Ç‰ÁFŒ»İ‚ÌƒtƒF[ƒY‚ğ•Û
+    private GameTurnState currentPhase;
+
+    private bool hasUsedMemoryThisTurn = false; //ã“ã®ã‚¿ãƒ¼ãƒ³ã§è¨˜æ†¶ã‚’ä½¿ã£ãŸã‹ã©ã†ã‹
 
     private void Awake()
     {
@@ -13,16 +15,16 @@ public class GameTurnStateManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
-        GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
+        SetState(GameTurnState.TalkPhase);
     }
 
     public void SetState(GameTurnState newState)
     {
         currentState?.OnStateExit();
 
-        currentPhase = newState; 
+        currentPhase = newState;
 
         switch (newState)
         {
@@ -31,6 +33,7 @@ public class GameTurnStateManager : MonoBehaviour
                 break;
             case GameTurnState.MemoryPhase:
                 currentState = new TurnState_MemoryPhase();
+                hasUsedMemoryThisTurn = false; //è¨˜æ†¶ä½¿ç”¨ãƒ•ãƒ©ã‚°ã‚’ãƒªã‚»ãƒƒãƒˆ
                 break;
             case GameTurnState.EndingPhase:
                 currentState = new TurnState_EndingPhase();
@@ -42,6 +45,14 @@ public class GameTurnStateManager : MonoBehaviour
 
     public ITurnState GetCurrentState() => currentState;
 
-    // Œ»İ‚Ì—ñ‹“ƒtƒF[ƒY‚ğ•Ô‚·ƒvƒƒpƒeƒBiTalkTrigger ‚©‚çg‚¦‚éj
     public GameTurnState CurrentState => currentPhase;
+
+    // ä½¿ç”¨å¯å¦ã‚’å•ã†
+    public bool CanUseMemoryThisTurn() => !hasUsedMemoryThisTurn;
+
+    // ä½¿ç”¨å¾Œã«ãƒ•ãƒ©ã‚°ã‚’ç«‹ã¦ã‚‹
+    public void SetMemoryUsedThisTurn()
+    {
+        hasUsedMemoryThisTurn = true;
+    }
 }

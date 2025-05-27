@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7e3da359017d240aa92c8deaf9bb00, type: 3}
+  m_Name: memory_ai
+  m_EditorClassIdentifier: 
+  id: memory_ai
+  memoryText: "\u2026\u2026\u2026\u2026\u2026\u2026\uFF08\u4F55\u3082\u601D\u3044\u51FA\u305B\u306A\u3044\uFF09"
+  memoryImage: {fileID: 0}
+  ownerCharacterId: ai
+  ownerCharacter:
+    id: 
+    name: 
+    roleType: 
+    isMemoryUseTarget: 0
+    memoryFragmentJP: 
+    memoryFragmentEN: 
+    memoryReactionType: 0
+    reactionTrueJP: 
+    reactionTrueEN: 
+    reactionSuccessJP: 
+    reactionSuccessEN: 
+    reactionFailJP: 
+    reactionFailEN: 
+    turnDialogues: []
+    grantedOnTalkMemoryId: 
+    autoGrantedMemoryId: 
+    expectedMemoryId: 

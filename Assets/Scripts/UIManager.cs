@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject narrationPanel;
     [SerializeField] private TextMeshProUGUI narrationText;
     [SerializeField] private Button narrationNextButton;
-    [SerializeField] private TurnMessageTable messageTable;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
@@ -81,10 +80,9 @@ public class UIManager : MonoBehaviour
             hasShownMemoryNarration = true;
 
             ShowNarration(
-                "謎の声：手に入れた記憶がそろった……渡す時間だ。",
+                "謎の声：３つの記憶を手に入れたな……１人を選んで渡す時間だ。",
                 () =>
                 {
-                    UIManager.Instance.SetTurnMessage("ひとりを選んで、手に入れた記憶を渡そう！");
                     GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase);
                 });
         }
@@ -175,21 +173,6 @@ public class UIManager : MonoBehaviour
     public void ResetMemoryNarrationFlag()
     {
         hasShownMemoryNarration = false;
-    }
-    public void SetTurnMessage(string message)
-    {
-        if (turnMessageText != null)
-        {
-            turnMessageText.text = message;
-            turnMessageText.gameObject.SetActive(true);
-        }
-    }
-
-    public void SetTurnMessageByKeyWithTurn(TurnMessageKey key, int turn)
-    {
-        string msg = messageTable?.GetMessage(key);
-        if (!string.IsNullOrEmpty(msg))
-            SetTurnMessage(msg.Replace("{N}", turn.ToString()));
     }
 
 }

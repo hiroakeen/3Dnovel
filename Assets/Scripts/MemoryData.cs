@@ -1,16 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Memory/MemoryData")]
 public class MemoryData : ScriptableObject
 {
     public string id;
-
     [TextArea] public string memoryText;
     public Sprite memoryImage;
 
-    [Header("‚±‚Ì‹L‰¯‚Ì‚¿åiƒLƒƒƒ‰IDj")]
+    [Header("ã“ã®è¨˜æ†¶ã®æŒã¡ä¸»ï¼ˆã‚­ãƒ£ãƒ©IDï¼‰")]
     public string ownerCharacterId;
-    public CharacterDataJson ownerCharacter;  // ƒLƒƒƒ‰QÆ
 
+    [HideInInspector]
+    public CharacterDataJson ownerCharacter; // â† æ®‹ã™ãªã‚‰ã“ã“ã¯ä½¿ã£ã¦ã‚‚OK
 
+    // å¿…è¦ãªã¨ãã«ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹é–¢æ•°
+    public CharacterDataJson GetOwnerCharacter()
+    {
+        return GameManager.Instance?.FindCharacterById(ownerCharacterId);
+    }
 }

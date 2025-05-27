@@ -10,8 +10,6 @@ public class TurnState_TalkPhase : ITurnState
     {
         talkedCharacterNames.Clear();
         narrationShown = false;
-
-        UIManager.Instance.SetTurnMessageByKeyWithTurn(TurnMessageKey.TurnStart, GameManager.CurrentTurn);
     }
 
     public void NotifyCharacterTalked(CharacterDataJson character)

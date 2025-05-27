@@ -138,6 +138,23 @@ public class TalkTrigger : MonoBehaviour
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
 
+        if (!string.IsNullOrEmpty(characterData.grantedOnTalkMemoryId))
+        {
+            var memory = MemoryManager.Instance?.FindMemoryById(characterData.grantedOnTalkMemoryId);
+            var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
+            if (memory != null && inventory != null && !inventory.GetAllMemories().Contains(memory))
+            {
+                inventory.AddMemory(memory);
+                MemoryManager.Instance?.AddMemory(memory);
+
+                UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}\n（{memory.memoryText} を思い出した）");
+
+                NotifyTalked();
+                return;
+            }
+        }
+
+
         NotifyTalked();
     }
 
@@ -151,16 +168,26 @@ public class TalkTrigger : MonoBehaviour
     {
         string npcName = characterData != null ? characterData.name : "NPC";
         Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
-        UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
 
-        var memory = Object.FindFirstObjectByType<PlayerMemoryInventory>()?.FindMemoryByText(memoryContent);
+        var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
+        var memory = inventory?.FindMemoryByText(memoryContent);
         var currentState = GameTurnStateManager.Instance.GetCurrentState();
 
         if (currentState != null && characterData != null && memory != null)
         {
-            currentState.NotifyMemoryUsed(memory.ownerCharacter, characterData);
+            currentState.NotifyMemoryUsed(memory.GetOwnerCharacter(), characterData);
+            inventory.RemoveMemory(memory);
+
+            UIManager.Instance.ShowDialogue($"{npcName} に「{memoryContent}」を使った。");
+
+            GameTurnStateManager.Instance.SetMemoryUsedThisTurn();
+
+            // ここだけ変更：外部コントローラーに委譲！
+            TurnFlowController.Instance.AdvanceToNextTurn();
         }
     }
+
+
 
     private void NotifyTalked()
     {

@@ -62,7 +62,8 @@ public class CharacterDataJson
 
     public List<LocalizedTurnDialogueJson> turnDialogues;
 
-    // ✅ 追加
+    public string grantedOnTalkMemoryId;
+
     public string autoGrantedMemoryId;
 
     public string expectedMemoryId;
