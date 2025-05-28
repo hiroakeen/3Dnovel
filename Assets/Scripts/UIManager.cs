@@ -121,7 +121,7 @@ public class UIManager : MonoBehaviour
 
                     if (currentTalkTrigger != null)
                     {
-                        currentTalkTrigger.UseMemory(memory.memoryText);
+                        currentTalkTrigger.UseMemory(memory);
                         GameTurnStateManager.Instance.RegisterMemoryGiven(currentTalkTrigger.CharacterId);
                         currentTalkTrigger = null;
                     }

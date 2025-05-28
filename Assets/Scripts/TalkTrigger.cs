@@ -141,17 +141,8 @@ public class TalkTrigger : MonoBehaviour
             UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}", () =>
             {
                 NotifyTalked();
-                EndTalk(); // ✅ ShowDialogue終了後にEndTalkを呼ぶ
+                EndTalk();
             });
-        }
-    
-        if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
-        {
-            UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
-        }
-        else
-        {
-            UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}");
         }
 
         NotifyTalked();
@@ -163,17 +154,19 @@ public class TalkTrigger : MonoBehaviour
         memoryGiveUI.Open(target);
     }
 
-    public void UseMemory(string memoryContent)
+    public void UseMemory(MemoryData memory)
     {
-        if (characterData == null) return;
+        if (characterData == null || memory == null) return;
 
         string npcName = characterData.name;
-        Debug.Log($"{npcName} に記憶を使用：{memoryContent}");
+        Debug.Log($"{npcName} に記憶を使用：{memory.memoryText}");
 
         var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
-        var memory = inventory?.FindMemoryByText(memoryContent);
-
-        if (memory == null) return;
+        if (inventory == null || !inventory.GetAllMemories().Contains(memory))
+        {
+            Debug.LogWarning("記憶が手元に存在しません");
+            return;
+        }
 
         inventory.RemoveMemory(memory);
         MemoryManager.Instance.RecordMemoryUsage(memory, characterData.id);
@@ -187,10 +180,9 @@ public class TalkTrigger : MonoBehaviour
         };
 
         UIManager.Instance.ShowDialogue(
-            $"{npcName} に「{memoryContent}」を使った。\n{npcName}：{reactionLine}",
+            $"{npcName} に「{memory.memoryText}」を使った。\n{npcName}：{reactionLine}",
             () =>
             {
-                // ✅ このキャラには渡した、と記録（5人渡し終えたら自動進行）
                 GameTurnStateManager.Instance.RegisterMemoryGiven(characterData.id);
             });
     }

@@ -66,6 +66,19 @@ public class MemoryManager : MonoBehaviour
         if (correct >= 10) return "GoodEnding";
         return "BadEnding";
     }
+
+    public void AutoGrantMemoriesForTurn(int turn)
+    {
+        foreach (var memory in allMemories)
+        {
+            if (memory.autoGrantedMemory && memory.autoGrantedTurn == turn)
+            {
+                AddMemory(memory);
+                Debug.Log($"[記憶配布] ターン{turn}：{memory.id} を取得");
+            }
+        }
+    }
+
 }
 
 // ✅ 使用履歴を保存する内部クラス

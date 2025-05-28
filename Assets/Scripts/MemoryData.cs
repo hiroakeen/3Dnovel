@@ -12,6 +12,10 @@ public class MemoryData : ScriptableObject
 
     public CharacterDataJson ownerCharacter;
 
+    // ✅ 自動配布に必要なフィールド
+    public bool autoGrantedMemory = false;
+    public int autoGrantedTurn = 0;
+
     public bool IsCorrectReceiver(string targetCharacterId)
     {
         return targetCharacterId == correctReceiverCharacterId;

@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("ƒLƒƒƒ‰ƒNƒ^[“o˜^iJSON•û®j")]
+    [Header("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ç™»éŒ²ï¼ˆJSONæ–¹å¼ï¼‰")]
     [SerializeField] private JsonCharacterLoader characterLoader;
 
     private List<TurnDecision> decisionLogs = new();
@@ -27,18 +27,18 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒiƒŒ[ƒVƒ‡ƒ“I—¹Œã‚ÉŒÄ‚Î‚ê‚éAƒQ[ƒ€–{•Ò‚ÌŠJnˆ—
+    /// ãƒŠãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†å¾Œã«å‘¼ã°ã‚Œã‚‹ã€ã‚²ãƒ¼ãƒ æœ¬ç·¨ã®é–‹å§‹å‡¦ç†
     /// </summary>
     public void StartGameplay()
     {
         if (isGameplayStarted) return;
         isGameplayStarted = true;
 
-        Debug.Log("ƒQ[ƒ€–{•ÒƒXƒ^[ƒgI");
+        Debug.Log("ã‚²ãƒ¼ãƒ æœ¬ç·¨ã‚¹ã‚¿ãƒ¼ãƒˆï¼");
         currentTurn = 1;
 
         NarrationPlayer.Instance.PlayNarration(
-            "“ä‚ÌºF‹L‰¯‚ğW‚ßA’N‚©‚É“n‚¹‚ÎoŒû‚ªŒ©‚¦‚é‚©‚à‚µ‚ê‚È‚¢c",
+            "è¬ã®å£°ï¼šè¨˜æ†¶ã‚’é›†ã‚ã€èª°ã‹ã«æ¸¡ã›ã°å‡ºå£ãŒè¦‹ãˆã‚‹ã‹ã‚‚ã—ã‚Œãªã„â€¦",
             () =>
             {
                 GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// “o˜^Ï‚İƒLƒƒƒ‰‘Sˆõ‚ğæ“¾iƒRƒs[“n‚µj
+    /// ç™»éŒ²æ¸ˆã¿ã‚­ãƒ£ãƒ©å…¨å“¡ã‚’å–å¾—ï¼ˆã‚³ãƒ”ãƒ¼æ¸¡ã—ï¼‰
     /// </summary>
     public List<CharacterDataJson> GetAllCharacters()
     {
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒLƒƒƒ‰ID‚©‚çƒf[ƒ^‚ğæ“¾
+    /// ã‚­ãƒ£ãƒ©IDã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
     /// </summary>
     public CharacterDataJson FindCharacterById(string id)
     {
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     public void AddDecisionLog(TurnDecision decision)
     {
         decisionLogs.Add(decision);
-        Debug.Log($"[ƒƒO‹L˜^] Turn {decision.turn}: {decision.selectedMemoryOwner.name}‚Ì‹L‰¯‚ğ{decision.targetCharacter.name}‚Ég—p");
+        Debug.Log($"[ãƒ­ã‚°è¨˜éŒ²] Turn {decision.turn}: {decision.selectedMemoryOwner.name}ã®è¨˜æ†¶ã‚’{decision.targetCharacter.name}ã«ä½¿ç”¨");
     }
 
     public List<TurnDecision> GetDecisionLogs()
@@ -81,14 +81,14 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒGƒ“ƒfƒBƒ“ƒOƒ^ƒCƒviTRUE / GOOD / BADj
+    /// ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚¿ã‚¤ãƒ—ï¼ˆTRUE / GOOD / BADï¼‰
     /// </summary>
     private string currentEndingType = "UNKNOWN";
 
     public void SetEndingType(string type)
     {
         currentEndingType = type;
-        Debug.Log($"[GameManager] ƒGƒ“ƒfƒBƒ“ƒOƒ^ƒCƒv‚ğİ’è: {type}");
+        Debug.Log($"[GameManager] ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚¿ã‚¤ãƒ—ã‚’è¨­å®š: {type}");
     }
 
     public string GetEndingType()
@@ -107,20 +107,31 @@ public class GameManager : MonoBehaviour
     {
         currentTurn = turn;
 
+        // ä¾‹ï¼šGameManager.cs ã® SetTurn(int turn) ã®ä¸­ãªã©
+        MemoryManager.Instance.AutoGrantMemoriesForTurn(turn);
+        foreach (var mem in MemoryManager.Instance.GetCollectedMemories())
+        {
+            var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
+        }
+
         if (turn > 1)
         {
-            // NarrationPlayer ‚ğg‚Á‚ÄƒiƒŒ[ƒVƒ‡ƒ“‚ğÄ¶
+            // ãƒŠãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³è¡¨ç¤ºï¼ˆNarrationPlayerçµŒç”±ï¼‰
             NarrationPlayer.Instance.PlayNarration(
-                $"“ä‚ÌºF‘æ{turn}ƒ^[ƒ“‚ªn‚Ü‚Á‚½B",
+                $"è¬ã®å£°ï¼šç¬¬{turn}ã‚¿ãƒ¼ãƒ³ãŒå§‹ã¾ã£ãŸã€‚",
                 () => GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase)
             );
         }
         else
         {
-            // ‰‰ñ‚ÍƒiƒŒ[ƒVƒ‡ƒ“Player‚ÌStart()‚ÅŠù‚É•\¦Ï‚İ
+            // åˆå›ã¯ãƒŠãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³Playerã®Start()ã§è¡¨ç¤ºæ¸ˆã¿
             GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
         }
+
+
     }
+
+
 
 
 
@@ -132,7 +143,7 @@ public class GameManager : MonoBehaviour
     public void IncrementTurn()
     {
         currentTurn++;
-        Debug.Log($"[ƒ^[ƒ“is] Œ»İ‚Ìƒ^[ƒ“: {currentTurn}");
+        Debug.Log($"[ã‚¿ãƒ¼ãƒ³é€²è¡Œ] ç¾åœ¨ã®ã‚¿ãƒ¼ãƒ³: {currentTurn}");
     }
 
 }

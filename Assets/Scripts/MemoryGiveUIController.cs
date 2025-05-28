@@ -73,7 +73,7 @@ public class MemoryGiveUIController : MonoBehaviour
         {
             if (trigger.GetCharacterData()?.id == targetCharacter.id)
             {
-                trigger.UseMemory(selectedMemory.memoryText);
+                trigger.UseMemory(selectedMemory);
                 return;
             }
         }
