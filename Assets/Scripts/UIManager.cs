@@ -23,14 +23,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button dialogueNextButton;
     [SerializeField] private TextMeshProUGUI turnMessageText;
-    [SerializeField] private GameObject narrationPanel;
-    [SerializeField] private TextMeshProUGUI narrationText;
-    [SerializeField] private Button narrationNextButton;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
     private PlayerMemoryInventory playerMemoryInventory;
-    private bool hasShownMemoryNarration = false;
 
     private void Awake()
     {
@@ -126,7 +122,7 @@ public class UIManager : MonoBehaviour
                     if (currentTalkTrigger != null)
                     {
                         currentTalkTrigger.UseMemory(memory.memoryText);
-                        GameTurnStateManager.Instance.RegisterMemoryGiven(currentTalkTrigger.CharacterId); // 修正ポイント
+                        GameTurnStateManager.Instance.RegisterMemoryGiven(currentTalkTrigger.CharacterId);
                         currentTalkTrigger = null;
                     }
 
@@ -153,48 +149,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowNarration(string message, Action onComplete)
-    {
-        if (narrationPanel == null || narrationText == null || narrationNextButton == null)
-        {
-            Debug.LogError("UIManager: ナレーションUIの参照が不足しています");
-            return;
-        }
-
-        if (playerController != null)
-            playerController.PauseControl();
-
-        narrationPanel.SetActive(true);
-        narrationText.text = message;
-
-        StartCoroutine(ShowNarrationRoutine(onComplete));
-    }
-
-    private IEnumerator ShowNarrationRoutine(Action onComplete)
-    {
-        yield return new WaitForSecondsRealtime(0.1f); // ★ 修正：1フレーム以上確実に待つ
-
-        Time.timeScale = 0;
-
-        narrationNextButton.onClick.RemoveAllListeners();
-        narrationNextButton.onClick.AddListener(() =>
-        {
-            narrationPanel.SetActive(false);
-            Time.timeScale = 1;
-
-            if (playerController != null)
-                playerController.ResumeControl();
-
-            onComplete?.Invoke();
-        });
-    }
-
-
-    public void ShowTurnStartMessage(int turn)
-    {
-        ShowNarration($"謎の声：{turn}ターン目が始まった。", null);
-    }
-
     public void SetTurnMessage(string message)
     {
         if (turnMessageText != null)
@@ -203,10 +157,4 @@ public class UIManager : MonoBehaviour
             turnMessageText.gameObject.SetActive(true);
         }
     }
-
-    public void ResetMemoryNarrationFlag()
-    {
-        hasShownMemoryNarration = false;
-    }
-
 }

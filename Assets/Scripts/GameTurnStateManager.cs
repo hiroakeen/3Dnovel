@@ -32,7 +32,7 @@ public class GameTurnStateManager : MonoBehaviour
                 break;
             case GameTurnState.MemoryPhase:
                 currentState = new TurnState_MemoryPhase();
-                ResetMemoryGivenTracking(); // 🧠 新仕様：記憶渡し履歴をリセット
+                ResetMemoryGivenTracking(); 
                 break;
             case GameTurnState.EndingPhase:
                 currentState = new TurnState_EndingPhase();
@@ -61,22 +61,29 @@ public class GameTurnStateManager : MonoBehaviour
 
     public void RegisterMemoryGiven(string characterId)
     {
-        if (givenCharacterIdsThisTurn.Contains(characterId)) return;
-
-        givenCharacterIdsThisTurn.Add(characterId);
-
-        Debug.Log($"[記憶使用] {characterId} に記憶を渡した（{givenCharacterIdsThisTurn.Count}/5）");
-
-        if (givenCharacterIdsThisTurn.Count >= 5)
+        if (!givenCharacterIdsThisTurn.Contains(characterId))
         {
-            UIManager.Instance.ShowNarration(
-                "謎の声：すべての者に記憶を渡し終えたようだ…次のターンに進もう。",
-                () =>
-                {
-                    TurnFlowController.Instance.AdvanceToNextTurn();
-                });
+            givenCharacterIdsThisTurn.Add(characterId);
+            Debug.Log($"[記憶使用] {characterId} に記憶を渡した ({givenCharacterIdsThisTurn.Count}/5)");
+
+            if (givenCharacterIdsThisTurn.Count >= 5)
+            {
+                Debug.Log("[記憶使用] 全員に渡し終えた → 次のフェーズへ");
+                ProceedToNextPhase();
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"[重複] {characterId} に既に渡しています");
         }
     }
+
+
+    public void ProceedToNextPhase()
+    {
+        TurnFlowController.Instance.AdvanceToNextTurn();
+    }
+
 
     public bool HasAlreadyReceivedMemory(string characterId)
     {

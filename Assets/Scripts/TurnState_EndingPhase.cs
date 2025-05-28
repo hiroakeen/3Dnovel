@@ -37,7 +37,7 @@ public class TurnState_EndingPhase : ITurnState
         }
         else if (totalCorrect >= 2)
         {
-            endingId = "GOOD_END"; // ˆê•”‹~oi2‰ñˆÈã¬Œ÷j
+            endingId = "GOOD_END"; 
         }
         else
         {
@@ -46,7 +46,7 @@ public class TurnState_EndingPhase : ITurnState
 
         Debug.Log($"[•]‰¿Œ‹‰Ê] Ending ID: {endingId} (True: {trueCount}, Good: {goodCount}, Total: {totalCorrect})");
 
-        UIManager.Instance.ShowNarration(
+        NarrationPlayer.Instance.PlayNarration(
             GetNarrationForEnding(endingId),
             onComplete: () => EndingManager.Instance.LoadEndingScene(endingId)
         );

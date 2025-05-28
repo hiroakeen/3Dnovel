@@ -8,7 +8,6 @@ public class MemoryData : ScriptableObject
     public string ownerCharacterId;
     public string correctReceiverCharacterId;
 
-    // ✅ ← 追加：UIに表示する用の画像（省略可）
     public Sprite memoryImage;
 
     public CharacterDataJson ownerCharacter;

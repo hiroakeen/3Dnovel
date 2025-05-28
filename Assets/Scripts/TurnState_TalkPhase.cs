@@ -20,7 +20,7 @@ public class TurnState_TalkPhase : ITurnState
 
         totalNPCs = GameManager.Instance.GetAllCharacters().Count;
 
-        UIManager.Instance.ShowNarration(
+        NarrationPlayer.Instance.PlayNarration(
             $"謎の声：第{currentTurn}ターン、記憶を集める時間だ。",
             null
         );
@@ -46,7 +46,7 @@ public class TurnState_TalkPhase : ITurnState
             narrationShown = true;
             Debug.Log("[TalkPhase] ナレーション表示＆記憶フェーズへ");
 
-            UIManager.Instance.ShowNarration(
+            NarrationPlayer.Instance.PlayNarration(
                 "謎の声：記憶は十分に集まった。次は誰に渡すか、決める時だ。",
                 () => GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase)
             );

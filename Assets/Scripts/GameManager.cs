@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("ゲーム本編スタート！");
         currentTurn = 1;
 
-        UIManager.Instance.ShowNarration(
+        NarrationPlayer.Instance.PlayNarration(
             "謎の声：記憶を集め、誰かに渡せば出口が見えるかもしれない…",
             () =>
             {
@@ -107,20 +107,21 @@ public class GameManager : MonoBehaviour
     {
         currentTurn = turn;
 
-        // 2ターン目以降にナレーション
         if (turn > 1)
         {
-            UIManager.Instance.ShowNarration(
+            // NarrationPlayer を使ってナレーションを再生
+            NarrationPlayer.Instance.PlayNarration(
                 $"謎の声：第{turn}ターンが始まった。",
                 () => GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase)
             );
         }
         else
         {
-            // 初回なら直接フェーズに進む（ナレーションはStartGameplayですでに表示済み）
+            // 初回はナレーションPlayerのStart()で既に表示済み
             GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
         }
     }
+
 
 
     public int GetTurn()

@@ -20,8 +20,8 @@ public class TurnState_MemoryPhase : ITurnState
 
         Debug.Log($"yMemoryPhasezŠJŽnF‹L‰¯‚ð {totalNPCs} l‚É“n‚·");
 
-        UIManager.Instance.ShowNarration(
-            "“ä‚ÌºFW‚ß‚½‹L‰¯‚ð’N‚É“n‚·H‚·‚×‚Ä‚ªŒq‚ª‚ê‚ÎŠó–]‚ÍŒ»‚ê‚éB",
+        NarrationPlayer.Instance.PlayNarration(
+            "W‚ß‚½‹L‰¯‚ð’N‚É“n‚·H‚·‚×‚Ä‚ªŒq‚ª‚ê‚ÎŠó–]‚ÍŒ»‚ê‚éB",
             onComplete: null
         );
 
@@ -42,7 +42,7 @@ public class TurnState_MemoryPhase : ITurnState
 
             if (currentTurn >= 3)
             {
-                UIManager.Instance.ShowNarration("_‚ÌºFÅŒã‚Ì‹L‰¯‚ª“n‚³‚ê‚½BŒ‹––‚ðŒ}‚¦‚éŽž‚¾B", () =>
+                NarrationPlayer.Instance.PlayNarration("“ä‚ÌºFÅŒã‚Ì‹L‰¯‚ª“n‚³‚ê‚½BŒ‹––‚ðŒ}‚¦‚éŽž‚¾B", () =>
                 {
                     GameTurnStateManager.Instance.SetState(GameTurnState.EndingPhase);
                 });
