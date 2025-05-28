@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [Header("UI Panels")]
-    [SerializeField] private GameObject gameplayPanel;    
+    [SerializeField] private GameObject gameplayPanel;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject memorySelectPanel;
     [SerializeField] private GameObject grayOverlayPanel;
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform memoryButtonParent;
 
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Button dialogueNextButton;
     [SerializeField] private TextMeshProUGUI turnMessageText;
     [SerializeField] private GameObject narrationPanel;
     [SerializeField] private TextMeshProUGUI narrationText;
@@ -28,7 +30,6 @@ public class UIManager : MonoBehaviour
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
     private PlayerMemoryInventory playerMemoryInventory;
-
     private bool hasShownMemoryNarration = false;
 
     private void Awake()
@@ -49,14 +50,27 @@ public class UIManager : MonoBehaviour
         useMemoryButton?.SetActive(false);
     }
 
-    public void ShowDialogue(string dialogueLine)
+    public void ShowDialogue(string dialogueLine, Action onComplete)
     {
         if (playerController != null) playerController.PauseControl();
 
         gameplayPanel?.SetActive(false);
         dialoguePanel?.SetActive(true);
-
         dialogueText.text = dialogueLine;
+
+        dialogueNextButton.gameObject.SetActive(true);
+        dialogueNextButton.onClick.RemoveAllListeners();
+        dialogueNextButton.onClick.AddListener(() =>
+        {
+            HideDialogue();
+            dialogueNextButton.gameObject.SetActive(false);
+            onComplete?.Invoke();
+        });
+    }
+
+    public void ShowDialogue(string dialogueLine)
+    {
+        ShowDialogue(dialogueLine, null);
     }
 
     public void HideDialogue()
@@ -66,28 +80,10 @@ public class UIManager : MonoBehaviour
         gameplayPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
 
-        // 会話相手がいた場合、TalkTrigger に通知
         if (currentTalkTrigger != null)
         {
             currentTalkTrigger.EndTalk();
             currentTalkTrigger = null;
-        }
-
-        // 記憶が3つになったあと、まだナレーションを出していなければここで表示
-        var inventory = GameObject.FindFirstObjectByType<PlayerMemoryInventory>();
-        int memoryCount = inventory?.GetAllMemories().Count ?? 0;
-
-        if (!hasShownMemoryNarration && (memoryCount == 3 || memoryCount == 6))
-
-        {
-            hasShownMemoryNarration = true;
-
-            ShowNarration(
-                "謎の声：３つの記憶を手に入れたな……１人を選んで渡す時間だ。",
-                () =>
-                {
-                    GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase);
-                });
         }
     }
 
@@ -130,6 +126,7 @@ public class UIManager : MonoBehaviour
                     if (currentTalkTrigger != null)
                     {
                         currentTalkTrigger.UseMemory(memory.memoryText);
+                        GameTurnStateManager.Instance.RegisterMemoryGiven(currentTalkTrigger.CharacterId); // 修正ポイント
                         currentTalkTrigger = null;
                     }
 
@@ -147,7 +144,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     public void ShowTurnMessage(string message)
     {
         if (turnMessageText != null)
@@ -156,31 +152,49 @@ public class UIManager : MonoBehaviour
             turnMessageText.gameObject.SetActive(true);
         }
     }
+
     public void ShowNarration(string message, Action onComplete)
     {
-        if (playerController != null) playerController.PauseControl(); // プレイヤー停止
-        Time.timeScale = 0; // 一時停止（演出用）
+        if (narrationPanel == null || narrationText == null || narrationNextButton == null)
+        {
+            Debug.LogError("UIManager: ナレーションUIの参照が不足しています");
+            return;
+        }
 
-        narrationPanel?.SetActive(true);
+        if (playerController != null)
+            playerController.PauseControl();
+
+        narrationPanel.SetActive(true);
         narrationText.text = message;
+
+        StartCoroutine(ShowNarrationRoutine(onComplete));
+    }
+
+    private IEnumerator ShowNarrationRoutine(Action onComplete)
+    {
+        yield return new WaitForSecondsRealtime(0.1f); // ★ 修正：1フレーム以上確実に待つ
+
+        Time.timeScale = 0;
 
         narrationNextButton.onClick.RemoveAllListeners();
         narrationNextButton.onClick.AddListener(() =>
         {
-            narrationPanel?.SetActive(false);
-            if (playerController != null) playerController.ResumeControl();
-            Time.timeScale = 1; // 再開
+            narrationPanel.SetActive(false);
+            Time.timeScale = 1;
+
+            if (playerController != null)
+                playerController.ResumeControl();
+
             onComplete?.Invoke();
         });
     }
-    public void ResetMemoryNarrationFlag()
-    {
-        hasShownMemoryNarration = false;
-    }
+
+
     public void ShowTurnStartMessage(int turn)
     {
-        UIManager.Instance.ShowNarration($"謎の声：{turn}ターン目が始まった。", null);
+        ShowNarration($"謎の声：{turn}ターン目が始まった。", null);
     }
+
     public void SetTurnMessage(string message)
     {
         if (turnMessageText != null)
@@ -188,6 +202,11 @@ public class UIManager : MonoBehaviour
             turnMessageText.text = message;
             turnMessageText.gameObject.SetActive(true);
         }
+    }
+
+    public void ResetMemoryNarrationFlag()
+    {
+        hasShownMemoryNarration = false;
     }
 
 }

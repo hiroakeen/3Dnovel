@@ -31,8 +31,6 @@
           "dialogueEN": "If all the pieces come together, we can get out."
         }
       ],
-      "autoGrantedMemoryId": "",
-      "expectedMemoryId": "",
       "isMemoryTrue": true,
       "grantedMemoriesPerTurn": [
         {
@@ -80,8 +78,6 @@
           "dialogueEN": "Yeah, I think I get it. Thanks!"
         }
       ],
-      "autoGrantedMemoryId": "",
-      "expectedMemoryId": "",
       "isMemoryTrue": true,
       "grantedMemoriesPerTurn": [
         {
@@ -129,8 +125,6 @@
           "dialogueEN": "You're hiding something, aren't you?"
         }
       ],
-      "autoGrantedMemoryId": "",
-      "expectedMemoryId": "",
       "isMemoryTrue": false,
       "grantedMemoriesPerTurn": [
         {
@@ -178,8 +172,6 @@
           "dialogueEN": "Thanks, I feel a little relieved."
         }
       ],
-      "autoGrantedMemoryId": "",
-      "expectedMemoryId": "",
       "isMemoryTrue": true,
       "grantedMemoriesPerTurn": [
         {
@@ -227,8 +219,6 @@
           "dialogueEN": "Memory... whose is it?"
         }
       ],
-      "autoGrantedMemoryId": "",
-      "expectedMemoryId": "",
       "isMemoryTrue": false,
       "grantedMemoriesPerTurn": [
         {

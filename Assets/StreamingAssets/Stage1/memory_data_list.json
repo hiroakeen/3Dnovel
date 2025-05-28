@@ -1,0 +1,94 @@
+{
+  "memories": [
+    {
+      "id": "theo_t1",
+      "memoryText": "僕はこの中で唯一、参加者じゃない。",
+      "ownerCharacterId": "theo",
+      "correctReceiverCharacterId": "theo"
+    },
+    {
+      "id": "theo_t2",
+      "memoryText": "僕はこの中で唯一、参加者じゃない。",
+      "ownerCharacterId": "theo",
+      "correctReceiverCharacterId": "theo"
+    },
+    {
+      "id": "theo_t3",
+      "memoryText": "僕はこの中で唯一、参加者じゃない。",
+      "ownerCharacterId": "theo",
+      "correctReceiverCharacterId": "theo"
+    },
+    {
+      "id": "minato_t1",
+      "memoryText": "昔、ここで誰かと話した気がするんだ。",
+      "ownerCharacterId": "minato",
+      "correctReceiverCharacterId": "minato"
+    },
+    {
+      "id": "minato_t2",
+      "memoryText": "昔、ここで誰かと話した気がするんだ。",
+      "ownerCharacterId": "minato",
+      "correctReceiverCharacterId": "minato"
+    },
+    {
+      "id": "minato_t3",
+      "memoryText": "昔、ここで誰かと話した気がするんだ。",
+      "ownerCharacterId": "minato",
+      "correctReceiverCharacterId": "minato"
+    },
+    {
+      "id": "rin_t1",
+      "memoryText": "全員嘘をついてるんじゃないの…？",
+      "ownerCharacterId": "rin",
+      "correctReceiverCharacterId": "rin"
+    },
+    {
+      "id": "rin_t2",
+      "memoryText": "全員嘘をついてるんじゃないの…？",
+      "ownerCharacterId": "rin",
+      "correctReceiverCharacterId": "rin"
+    },
+    {
+      "id": "rin_t3",
+      "memoryText": "全員嘘をついてるんじゃないの…？",
+      "ownerCharacterId": "rin",
+      "correctReceiverCharacterId": "rin"
+    },
+    {
+      "id": "yuu_t1",
+      "memoryText": "小さい頃、誰かに守られた記憶がある。",
+      "ownerCharacterId": "yuu",
+      "correctReceiverCharacterId": "yuu"
+    },
+    {
+      "id": "yuu_t2",
+      "memoryText": "小さい頃、誰かに守られた記憶がある。",
+      "ownerCharacterId": "yuu",
+      "correctReceiverCharacterId": "yuu"
+    },
+    {
+      "id": "yuu_t3",
+      "memoryText": "小さい頃、誰かに守られた記憶がある。",
+      "ownerCharacterId": "yuu",
+      "correctReceiverCharacterId": "yuu"
+    },
+    {
+      "id": "ai_t1",
+      "memoryText": "………………（何も思い出せない）",
+      "ownerCharacterId": "ai",
+      "correctReceiverCharacterId": "ai"
+    },
+    {
+      "id": "ai_t2",
+      "memoryText": "………………（何も思い出せない）",
+      "ownerCharacterId": "ai",
+      "correctReceiverCharacterId": "ai"
+    },
+    {
+      "id": "ai_t3",
+      "memoryText": "………………（何も思い出せない）",
+      "ownerCharacterId": "ai",
+      "correctReceiverCharacterId": "ai"
+    }
+  ]
+}

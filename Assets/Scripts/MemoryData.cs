@@ -5,15 +5,19 @@ public class MemoryData : ScriptableObject
 {
     public string id;
     [TextArea] public string memoryText;
+    public string ownerCharacterId;
+    public string correctReceiverCharacterId;
+
+    // ✅ ← 追加：UIに表示する用の画像（省略可）
     public Sprite memoryImage;
 
-    [Header("この記憶の持ち主（キャラID）")]
-    public string ownerCharacterId;
+    public CharacterDataJson ownerCharacter;
 
-    [HideInInspector]
-    public CharacterDataJson ownerCharacter; // ← 残すならここは使ってもOK
+    public bool IsCorrectReceiver(string targetCharacterId)
+    {
+        return targetCharacterId == correctReceiverCharacterId;
+    }
 
-    // 必要なときにキャラデータを取得する関数
     public CharacterDataJson GetOwnerCharacter()
     {
         return GameManager.Instance?.FindCharacterById(ownerCharacterId);

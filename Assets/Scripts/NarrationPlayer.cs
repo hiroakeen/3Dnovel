@@ -39,8 +39,11 @@ public class NarrationPlayer : MonoBehaviour
 
     void ShowLine(int index)
     {
-        StartCoroutine(TypeText(narrationData.lines[index].text));
+        string line = narrationData.lines[index].text;
+        Debug.Log($"[Narration] Showing line: {line}");
+        StartCoroutine(TypeText(line));
     }
+
 
     IEnumerator TypeText(string fullText)
     {

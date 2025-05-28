@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameTurnStateManager : MonoBehaviour
 {
@@ -6,8 +7,6 @@ public class GameTurnStateManager : MonoBehaviour
 
     private ITurnState currentState;
     private GameTurnState currentPhase;
-
-    private bool hasUsedMemoryThisTurn = false; //このターンで記憶を使ったかどうか
 
     private void Awake()
     {
@@ -33,7 +32,7 @@ public class GameTurnStateManager : MonoBehaviour
                 break;
             case GameTurnState.MemoryPhase:
                 currentState = new TurnState_MemoryPhase();
-                hasUsedMemoryThisTurn = false; //記憶使用フラグをリセット
+                ResetMemoryGivenTracking(); // 🧠 新仕様：記憶渡し履歴をリセット
                 break;
             case GameTurnState.EndingPhase:
                 currentState = new TurnState_EndingPhase();
@@ -44,17 +43,7 @@ public class GameTurnStateManager : MonoBehaviour
     }
 
     public ITurnState GetCurrentState() => currentState;
-
     public GameTurnState CurrentState => currentPhase;
-
-    // 使用可否を問う
-    public bool CanUseMemoryThisTurn() => !hasUsedMemoryThisTurn;
-
-    // 使用後にフラグを立てる
-    public void SetMemoryUsedThisTurn()
-    {
-        hasUsedMemoryThisTurn = true;
-    }
 
     public void ResetTalkPhaseState()
     {
@@ -64,4 +53,38 @@ public class GameTurnStateManager : MonoBehaviour
         }
     }
 
+    // ========================================
+    // 🧠 新仕様：1ターンに5人へ記憶を渡すと自動進行
+    // ========================================
+
+    private HashSet<string> givenCharacterIdsThisTurn = new();
+
+    public void RegisterMemoryGiven(string characterId)
+    {
+        if (givenCharacterIdsThisTurn.Contains(characterId)) return;
+
+        givenCharacterIdsThisTurn.Add(characterId);
+
+        Debug.Log($"[記憶使用] {characterId} に記憶を渡した（{givenCharacterIdsThisTurn.Count}/5）");
+
+        if (givenCharacterIdsThisTurn.Count >= 5)
+        {
+            UIManager.Instance.ShowNarration(
+                "謎の声：すべての者に記憶を渡し終えたようだ…次のターンに進もう。",
+                () =>
+                {
+                    TurnFlowController.Instance.AdvanceToNextTurn();
+                });
+        }
+    }
+
+    public bool HasAlreadyReceivedMemory(string characterId)
+    {
+        return givenCharacterIdsThisTurn.Contains(characterId);
+    }
+
+    public void ResetMemoryGivenTracking()
+    {
+        givenCharacterIdsThisTurn.Clear();
+    }
 }

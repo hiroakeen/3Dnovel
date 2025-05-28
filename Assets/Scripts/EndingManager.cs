@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndingManager : MonoBehaviour
@@ -13,19 +13,36 @@ public class EndingManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 手動でエンディングシーンを指定して遷移する（従来機能）
+    /// </summary>
     public void LoadEndingScene(string endingId)
     {
-        Debug.Log($"[EndingManager] �G���f�B���O�J��: {endingId}");
+        Debug.Log($"[EndingManager] エンディング遷移: {endingId}");
         LastEndingId = endingId;
 
         string sceneName = GetSceneNameFromEndingId(endingId);
         if (string.IsNullOrEmpty(sceneName))
         {
-            Debug.LogError($"[EndingManager] ���m�̃G���f�B���OID: {endingId}");
+            Debug.LogError($"[EndingManager] 未知のエンディングID: {endingId}");
             return;
         }
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    /// ✅ 新機能：記憶の正解数に基づいて自動的にエンディングシーンへ遷移
+    public void LoadAutoEnding()
+    {
+        string resultType = MemoryManager.Instance.GetEndingResultType();
+        string endingId = resultType switch
+        {
+            "TrueEnding" => "TRUE_END",
+            "GoodEnding" => "GOOD_END",
+            _ => "BAD_END"
+        };
+
+        LoadEndingScene(endingId);
     }
 
     private string GetSceneNameFromEndingId(string id)

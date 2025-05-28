@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: ai_t1
   memoryText: "\u2026\u2026\u2026\u2026\u2026\u2026\uFF08\u4F55\u3082\u601D\u3044\u51FA\u305B\u306A\u3044\uFF09"
-  memoryImage: {fileID: 0}
   ownerCharacterId: ai
+  correctReceiverCharacterId: ai
+  memoryImage: {fileID: 0}
   ownerCharacter:
     id: 
     name: 

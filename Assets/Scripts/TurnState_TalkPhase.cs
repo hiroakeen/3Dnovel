@@ -2,52 +2,61 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 会話フェーズ：3人と会話し終えたら記憶フェーズへ移行
+/// 会話フェーズ：全員と会話し終えたら記憶フェーズへ移行
 /// </summary>
 public class TurnState_TalkPhase : ITurnState
 {
-    private HashSet<string> talkedCharacterNames = new();
+    private HashSet<string> talkedCharacterIds = new();
     private bool narrationShown = false;
+    private int totalNPCs;
 
     public void OnStateEnter()
     {
-        talkedCharacterNames.Clear();
+        talkedCharacterIds.Clear();
         narrationShown = false;
 
-        Debug.Log("【TalkPhase】開始：プレイヤーは3人と話すことができます。");
-        UIManager.Instance.SetTurnMessage($"第{GameManager.Instance.GetTurn()}ターン：誰に話しかける？");
+        int currentTurn = GameManager.Instance.GetTurn();
+        Debug.Log($"【TalkPhase】開始：第{currentTurn}ターン、プレイヤーは全員と話すことができます。");
+
+        totalNPCs = GameManager.Instance.GetAllCharacters().Count;
+
+        UIManager.Instance.ShowNarration(
+            $"謎の声：第{currentTurn}ターン、記憶を集める時間だ。",
+            null
+        );
     }
 
     public void NotifyCharacterTalked(CharacterDataJson character)
     {
-        // 話しかけたキャラのIDを記録（重複防止）
-        if (!talkedCharacterNames.Contains(character.id))
+        if (talkedCharacterIds.Add(character.id))
         {
-            talkedCharacterNames.Add(character.id);
-            Debug.Log($"[TalkPhase] 話しかけた: {character.name}（合計: {talkedCharacterNames.Count}人）");
+            Debug.Log($"[TalkPhase] 話しかけた: {character.name}（{talkedCharacterIds.Count}/{totalNPCs}）");
         }
     }
 
     public void NotifyTalkFinished(CharacterDataJson character)
     {
-        // 会話終了後、3人目ならナレーションを表示して記憶フェーズへ遷移
-        if (talkedCharacterNames.Count >= 3 && !narrationShown)
+        Debug.Log($"[TalkFinished] {character.name} との会話終了");
+
+        // 全員と話したら記憶フェーズへ移行
+        Debug.Log($"現在の会話人数: {talkedCharacterIds.Count}/{totalNPCs}");
+
+        if (talkedCharacterIds.Count >= totalNPCs && !narrationShown)
         {
             narrationShown = true;
+            Debug.Log("[TalkPhase] ナレーション表示＆記憶フェーズへ");
 
             UIManager.Instance.ShowNarration(
-                "謎の声：手に入れた記憶を渡す時間だ。",
-                () =>
-                {
-                    UIManager.Instance.SetTurnMessage("ひとりを選んで、記憶を渡そう！");
-                    GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase);
-                });
+                "謎の声：記憶は十分に集まった。次は誰に渡すか、決める時だ。",
+                () => GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase)
+            );
         }
     }
 
+
     public void ResetTalkLog()
     {
-        talkedCharacterNames.Clear();
+        talkedCharacterIds.Clear();
         narrationShown = false;
     }
 

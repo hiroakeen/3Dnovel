@@ -36,7 +36,18 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("ゲーム本編スタート！");
         currentTurn = 1;
+
+        UIManager.Instance.ShowNarration(
+            "謎の声：記憶を集め、誰かに渡せば出口が見えるかもしれない…",
+            () =>
+            {
+                GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
+            });
     }
+
+
+
+
 
     /// <summary>
     /// 登録済みキャラ全員を取得（コピー渡し）
@@ -69,19 +80,58 @@ public class GameManager : MonoBehaviour
         return new List<TurnDecision>(decisionLogs);
     }
 
+    /// <summary>
+    /// エンディングタイプ（TRUE / GOOD / BAD）
+    /// </summary>
+    private string currentEndingType = "UNKNOWN";
+
+    public void SetEndingType(string type)
+    {
+        currentEndingType = type;
+        Debug.Log($"[GameManager] エンディングタイプを設定: {type}");
+    }
+
+    public string GetEndingType()
+    {
+        return currentEndingType;
+    }
+
     public void ResetGame()
     {
         decisionLogs.Clear();
         currentTurn = 1;
+        currentEndingType = "UNKNOWN";
     }
 
     public void SetTurn(int turn)
     {
         currentTurn = turn;
+
+        // 2ターン目以降にナレーション
+        if (turn > 1)
+        {
+            UIManager.Instance.ShowNarration(
+                $"謎の声：第{turn}ターンが始まった。",
+                () => GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase)
+            );
+        }
+        else
+        {
+            // 初回なら直接フェーズに進む（ナレーションはStartGameplayですでに表示済み）
+            GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
+        }
     }
+
 
     public int GetTurn()
     {
         return currentTurn;
     }
+
+    public void IncrementTurn()
+    {
+        currentTurn++;
+        Debug.Log($"[ターン進行] 現在のターン: {currentTurn}");
+    }
+
 }

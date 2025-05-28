@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NarrationData", menuName = "Story/Narration Data")]
+[CreateAssetMenu(menuName = "Narration/NarrationData")]
 public class NarrationData : ScriptableObject
 {
-    public List<NarrationLine> lines = new();
+    public List<NarrationLine> lines;
 }
+

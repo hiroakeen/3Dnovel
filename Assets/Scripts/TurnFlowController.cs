@@ -17,35 +17,34 @@ public class TurnFlowController : MonoBehaviour
     /// </summary>
     public void AdvanceToNextTurn()
     {
-        // ターン数を進める
         int nextTurn = GameManager.Instance.GetTurn() + 1;
         GameManager.Instance.SetTurn(nextTurn);
 
         Debug.Log($"[ターン進行] → ターン {nextTurn}");
 
-        // 内部状態をリセット
         GameTurnStateManager.Instance.ResetTalkPhaseState();
-
-        // 🔄 UI側の記憶ナレーションフラグもリセット（重要）
         UIManager.Instance.ResetMemoryNarrationFlag();
 
-        // 最大ターンを超えたら終了
         if (nextTurn > maxTurn)
         {
             Debug.Log("[ターン進行] 最終ターンを超えたためエンディングへ");
+
+            // ✅ 正答数に応じたエンディングタイプをログ出力 or 保存
+            string endingType = MemoryManager.Instance.GetEndingResultType();
+            Debug.Log($"[エンディング判定] 結果: {endingType}");
+
+            // 必要に応じて GameManager に渡すなどもOK
+            GameManager.Instance.SetEndingType(endingType);
+
             GameTurnStateManager.Instance.SetState(GameTurnState.EndingPhase);
             return;
         }
 
-        // ナレーション経由で TalkPhase に戻す
         UIManager.Instance.ShowNarration(
             $"謎の声：{nextTurn}ターン目が始まる。",
             () => GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase)
         );
     }
-
-
-
 
     public void ForceToEnding()
     {

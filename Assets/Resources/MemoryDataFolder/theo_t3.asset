@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: theo_t3
   memoryText: "\u50D5\u306F\u3053\u306E\u4E2D\u3067\u552F\u4E00\u3001\u53C2\u52A0\u8005\u3058\u3083\u306A\u3044\u3002"
-  memoryImage: {fileID: 0}
   ownerCharacterId: theo
+  correctReceiverCharacterId: theo
+  memoryImage: {fileID: 0}
   ownerCharacter:
     id: 
     name: 

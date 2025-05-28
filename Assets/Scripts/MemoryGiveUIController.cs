@@ -64,7 +64,10 @@ public class MemoryGiveUIController : MonoBehaviour
     {
         Close();
 
-        // ここで対象のTalkTriggerを直接探す（id一致で）
+        // ✅ 正解判定と記録
+        MemoryManager.Instance.RecordMemoryUsage(selectedMemory, targetCharacter.id);
+
+        // ✅ 該当キャラが見つかればTalk演出を呼ぶ
         var allTalkTriggers = Object.FindObjectsByType<TalkTrigger>(FindObjectsSortMode.None);
         foreach (var trigger in allTalkTriggers)
         {
@@ -75,8 +78,11 @@ public class MemoryGiveUIController : MonoBehaviour
             }
         }
 
-        // 該当しない場合でも反応（無反応演出）
+        // ✅ TalkTriggerがない場合でも反応はさせる（不正解演出）
         UIManager.Instance.ShowDialogue($"{targetCharacter.name} に「{selectedMemory.memoryText}」を使った。\n{targetCharacter.name}：……？");
+
+        // ✅ ターン進行（TalkTrigger経由でも呼ばれているなら重複防止してもOK）
         TurnFlowController.Instance.AdvanceToNextTurn();
     }
+
 }
