@@ -37,7 +37,7 @@ public class TurnState_EndingPhase : ITurnState
 
         NarrationPlayer.Instance.PlayNarration(
             GetNarrationForEnding(endingId),
-            onComplete: () => EndingManager.Instance.LoadEndingScene("EndingScene")
+            onComplete: () => EndingManager.Instance.LoadEndingScene(endingId)
         );
     }
 
