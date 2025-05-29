@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Animator))]
 public class SimpleNPCWalker : MonoBehaviour
 {
     [Header("移動設定")]
@@ -16,12 +17,14 @@ public class SimpleNPCWalker : MonoBehaviour
     private Vector3 startPosition;
 
     private Vector3 currentDirection;
-    private bool isMoving = false;
     private bool isTalking = false;
+
+    private Animator animator;
 
     private void Start()
     {
         startPosition = transform.position;
+        animator = GetComponent<Animator>();
         StartCoroutine(WalkRoutine());
     }
 
@@ -31,32 +34,14 @@ public class SimpleNPCWalker : MonoBehaviour
         {
             if (isTalking)
             {
+                SetAnimationSpeed(0f);
                 yield return null;
                 continue;
             }
 
             PickNewDirection();
 
-            // 移動フェーズ
-            isMoving = true;
-            float timer = 0f;
-            while (timer < moveDuration)
-            {
-                if (isTalking) break;
-
-                // 範囲外なら強制ストップ
-                Vector3 nextPos = transform.position + currentDirection * moveSpeed * Time.deltaTime;
-                if (Vector3.Distance(startPosition, nextPos) > moveRange)
-                {
-                    break;
-                }
-
-                transform.Translate(currentDirection * moveSpeed * Time.deltaTime);
-                timer += Time.deltaTime;
-                yield return null;
-            }
-            isMoving = false;
-
+          
             // 停止フェーズ
             float wait = 0f;
             while (wait < waitDuration)
@@ -99,5 +84,17 @@ public class SimpleNPCWalker : MonoBehaviour
     public void SetTalking(bool talking)
     {
         isTalking = talking;
+        if (talking)
+        {
+            SetAnimationSpeed(0f);
+        }
+    }
+
+    private void SetAnimationSpeed(float speed)
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", speed);
+        }
     }
 }
