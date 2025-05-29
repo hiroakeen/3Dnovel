@@ -169,6 +169,10 @@ public class BuzzGameAutoGenerator : MonoBehaviour
         foreach (var mem in wrapper.memories)
         {
             var asset = ScriptableObject.CreateInstance<MemoryData>();
+
+            // 明示的に HideFlags を解除
+            asset.hideFlags = HideFlags.None;
+
             asset.id = mem.id;
             asset.memoryText = mem.memoryText;
             asset.ownerCharacterId = mem.ownerCharacterId;
@@ -181,6 +185,7 @@ public class BuzzGameAutoGenerator : MonoBehaviour
             AssetDatabase.CreateAsset(asset, path);
             created++;
         }
+
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
