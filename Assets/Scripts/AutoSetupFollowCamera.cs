@@ -1,32 +1,39 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Unity.Cinemachine;
 
 public class AutoSetupFollowCamera : MonoBehaviour
 {
-    [Header("ƒvƒŒƒCƒ„[‚ÌTransform‚ğw’è")]
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Vector3 cameraOffset = new Vector3(0, 2, -5);
+    [SerializeField] private float damping = 0.5f;
 
     void Start()
     {
         if (playerTransform == null)
         {
-            Debug.LogError("ƒvƒŒƒCƒ„[Transform‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.LogError("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼TransformãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             return;
         }
 
+        // ä»®æƒ³ã‚«ãƒ¡ãƒ©ã®ç”Ÿæˆ
         GameObject vcamGO = new GameObject("CM Follow Camera");
         var vcam = vcamGO.AddComponent<CinemachineCamera>();
         vcam.Follow = playerTransform;
         vcam.LookAt = playerTransform;
 
-        // CinemachineFollow ‚Í Transform ‚©‚ç‚Ì‘Š‘ÎƒIƒtƒZƒbƒg‚Å’Ç]
-        var follow = vcamGO.AddComponent<CinemachineFollow>();
-        follow.FollowOffset = cameraOffset;
+        // ä½ç½®è¿½å¾“
+        var posComposer = vcamGO.AddComponent<CinemachinePositionComposer>();
+        posComposer.CameraDistance = cameraOffset.magnitude;
+        posComposer.TargetOffset = new Vector2(cameraOffset.x, cameraOffset.y);
+        posComposer.Damping.x = damping;
+        posComposer.Damping.y = damping;
+        posComposer.Damping.z = damping;
 
-        // CinemachineRotationComposer ‚Í‹ü‚Ì’Ç]İ’è
-        vcamGO.AddComponent<CinemachineRotationComposer>();
+        //// å›è»¢åˆ¶å¾¡ã«ã¯ Recomposer ã‚’ä½¿ã†
+        //var recomposer = vcamGO.AddComponent<CinemachineRotationComposer>();
+        //recomposer.m_RecenterToTargetHeading.m_enabled = true;
+        //recomposer.m_RecenterToTargetHeading.m_RecenteringTime = 1.0f;
 
-        Debug.Log("Cinemachine Camera ‚ğ Unity 6 ‘Î‰Œ`®‚Å©“®İ’è‚µ‚Ü‚µ‚½B");
+        Debug.Log("Unity6å¯¾å¿œã‚«ãƒ¡ãƒ©ï¼šãªã‚ã‚‰ã‹ä½ç½®ãƒ»å›è»¢è¿½å¾“ã‚’è‡ªå‹•ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã—ã¾ã—ãŸã€‚");
     }
 }

@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 208214806}
   - component: {fileID: 208214808}
   - component: {fileID: 208214804}
+  - component: {fileID: 208214809}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -729,6 +730,25 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &208214809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208214802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0544e7b14d134a1449e61175446cfb95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyAfter: 3
+  Tilt: 0
+  Pan: 0
+  Dutch: 0
+  ZoomScale: 1
+  FollowAttachment: 1
+  LookAtAttachment: 1
 --- !u!224 &228589878 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1136026226456013072, guid: 5bebe5f397262ea46897d30d2d25d5c6, type: 3}
@@ -4807,6 +4827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 492539770}
   cameraOffset: {x: 0, y: 2, z: -5}
+  damping: 0.5
 --- !u!1 &1374765843
 GameObject:
   m_ObjectHideFlags: 0
