@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83e61fc705560d645a624b48fbaeac11
+guid: 04adca20d7751ab46a860c735849f18a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blog_0
+      name: ButtonStart_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 232
+        y: 231
+        width: 1064
+        height: 556
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08bc2fd7732396043b7c6d93842c3df3
-      internalID: 32576848
+      spriteID: 46b6e085244b9b643b92b794d6003c50
+      internalID: 1539181028
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d6570addef590624792add0afee54186
+    spriteID: 2513303477b83544499b1f9c7c5dc5eb
     internalID: 0
     vertices: []
     indices: 
@@ -158,7 +158,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Blog_0: 32576848
+      ButtonStart_0: 1539181028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
