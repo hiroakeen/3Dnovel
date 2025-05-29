@@ -1,4 +1,4 @@
-using UnityEditor;
+ï»¿using UnityEditor;
 using UnityEngine;
 using System.IO;
 using System.Linq;
@@ -6,20 +6,38 @@ using System.Collections.Generic;
 using System.Reflection;
 
 /// <summary>
-/// ƒoƒYƒQ[ƒ€—p‚ÌEditor©“®¶¬ƒc[ƒ‹iNPC¶¬EƒLƒƒƒ‰Š„‚è“–‚ÄE‹L‰¯¶¬j
+/// ãƒã‚ºã‚²ãƒ¼ãƒ ç”¨ã®Editorè‡ªå‹•ç”Ÿæˆãƒ„ãƒ¼ãƒ«ï¼ˆNPCç”Ÿæˆãƒ»ã‚­ãƒ£ãƒ©å‰²ã‚Šå½“ã¦ãƒ»è¨˜æ†¶ç”Ÿæˆï¼‰
 /// </summary>
 public class BuzzGameAutoGenerator : MonoBehaviour
 {
+    private static readonly Dictionary<string, string> defaultReactionsCorrect = new()
+    {
+        {"theo", "â€¦â€¦ãã‚Œã§ã€åƒ•ã«ä½•ã‚’ä¼ãˆãŸã„ã®ï¼Ÿ"},
+        {"minato", "ã“ã‚Œã€ã©ã“ã‹ã§è¦‹ãŸæ°—ãŒã™ã‚‹ï¼"},
+        {"rin", "â€¦â€¦ã“ã‚Œã¯â€¦â€¦ã€‚ç§ã®ã“ã¨ï¼Ÿã€"},
+        {"yuu", "ã‚ã£â€¦â€¦æ€ã„å‡ºã—ãŸã‹ã‚‚ã—ã‚Œãªã„â€¦â€¦ï¼"},
+        {"ai", "â€¦â€¦ã“ã‚ŒãŒã€ç§ï¼Ÿ"}
+    };
+
+    private static readonly Dictionary<string, string> defaultReactionsIncorrect = new()
+    {
+        {"theo", "å›ã€ä½•ã‹å‹˜é•ã„ã—ã¦ã„ãªã„ï¼Ÿ"},
+        {"minato", "ã†ãƒ¼ã‚“â€¦â€¦ã¡ã‚‡ã£ã¨é•ã†ã‹ã‚‚ã€‚"},
+        {"rin", "å˜˜ã€‚ãã‚“ãªè¨˜æ†¶ã€çŸ¥ã‚‰ãªã„ã€‚"},
+        {"yuu", "ã“ã‚Œã¯â€¦â€¦ç§ã˜ã‚ƒãªã„ã¨æ€ã†ã€‚"},
+        {"ai", "â€¦â€¦â€¦â€¦â€¦â€¦ï¼ˆåå¿œãŒãªã„ï¼‰"}
+    };
+
     // ===============================================================
-    // NPC¶¬
+    // NPCç”Ÿæˆ
     // ===============================================================
-    [MenuItem("Tools/ƒoƒYƒQ[ƒ€/1. JSON‚©‚çNPC‚ğ¶¬")]
+    [MenuItem("Tools/ãƒã‚ºã‚²ãƒ¼ãƒ /1. JSONã‹ã‚‰NPCã‚’ç”Ÿæˆ")]
     public static void GenerateNPCsFromJson()
     {
         var loader = Object.FindAnyObjectByType<JsonCharacterLoader>();
         if (loader == null)
         {
-            Debug.LogError("JsonCharacterLoader ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñBScene ‚É”z’u‚³‚ê‚Ä‚¢‚Ü‚·‚©H");
+            Debug.LogError("JsonCharacterLoader ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚Scene ã«é…ç½®ã•ã‚Œã¦ã„ã¾ã™ã‹ï¼Ÿ");
             return;
         }
 
@@ -28,14 +46,23 @@ public class BuzzGameAutoGenerator : MonoBehaviour
 
         if (loader.LoadedCharacters == null || loader.LoadedCharacters.Count == 0)
         {
-            Debug.LogError("ƒLƒƒƒ‰ƒNƒ^[‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚Ü‚¹‚ñBcharacters.json ‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B");
+            Debug.LogError("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ã¾ã›ã‚“ã€‚characters.json ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚");
             return;
+        }
+
+        foreach (var character in loader.LoadedCharacters)
+        {
+            if (string.IsNullOrEmpty(character.reactionCorrectJP) && defaultReactionsCorrect.TryGetValue(character.id, out var correct))
+                character.reactionCorrectJP = correct;
+
+            if (string.IsNullOrEmpty(character.reactionIncorrectJP) && defaultReactionsIncorrect.TryGetValue(character.id, out var incorrect))
+                character.reactionIncorrectJP = incorrect;
         }
 
         string[] guids = AssetDatabase.FindAssets("NPC_Base t:prefab");
         if (guids.Length == 0)
         {
-            Debug.LogError("NPC_Base ƒvƒŒƒnƒu‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñBAssets/Prefabs ‚É‚ ‚è‚Ü‚·‚©H");
+            Debug.LogError("NPC_Base ãƒ—ãƒ¬ãƒãƒ–ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚Assets/Prefabs ã«ã‚ã‚Šã¾ã™ã‹ï¼Ÿ");
             return;
         }
 
@@ -75,19 +102,19 @@ public class BuzzGameAutoGenerator : MonoBehaviour
             created++;
         }
 
-        Debug.Log($"{created} ‘Ì‚Ì NPC ‚ğ¶¬‚µ‚Ü‚µ‚½B");
+        Debug.Log($"{created} ä½“ã® NPC ã‚’ç”Ÿæˆã—ã¾ã—ãŸã€‚");
     }
 
     // ===============================================================
-    // ƒLƒƒƒ‰ƒf[ƒ^Š„‚è“–‚Ä
+    // ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿å‰²ã‚Šå½“ã¦
     // ===============================================================
-    [MenuItem("Tools/ƒoƒYƒQ[ƒ€/2. NPC‚ÉƒLƒƒƒ‰ƒf[ƒ^‚ğŠ„‚è“–‚Ä")]
+    [MenuItem("Tools/ãƒã‚ºã‚²ãƒ¼ãƒ /2. NPCã«ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿ã‚’å‰²ã‚Šå½“ã¦")]
     public static void AssignCharacterDataToAllTalkTriggers()
     {
         JsonCharacterLoader loader = Object.FindAnyObjectByType<JsonCharacterLoader>();
         if (loader == null || loader.LoadedCharacters == null)
         {
-            Debug.LogError("JsonCharacterLoader ‚ªŒ©‚Â‚©‚ç‚È‚¢A‚Ü‚½‚ÍƒLƒƒƒ‰ƒf[ƒ^–¢ƒ[ƒh‚Å‚·B");
+            Debug.LogError("JsonCharacterLoader ãŒè¦‹ã¤ã‹ã‚‰ãªã„ã€ã¾ãŸã¯ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿æœªãƒ­ãƒ¼ãƒ‰ã§ã™ã€‚");
             return;
         }
 
@@ -107,31 +134,31 @@ public class BuzzGameAutoGenerator : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"ƒLƒƒƒ‰‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: {name}");
+                Debug.LogWarning($"ã‚­ãƒ£ãƒ©ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: {name}");
             }
         }
 
-        Debug.Log($"ƒLƒƒƒ‰ƒf[ƒ^‚ğ {count} ŒŠ„‚è“–‚Ä‚Ü‚µ‚½B");
+        Debug.Log($"ã‚­ãƒ£ãƒ©ãƒ‡ãƒ¼ã‚¿ã‚’ {count} ä»¶å‰²ã‚Šå½“ã¦ã¾ã—ãŸã€‚");
     }
 
     // ===============================================================
-    // MemoryData¶¬
+    // MemoryDataç”Ÿæˆ
     // ===============================================================
-    [MenuItem("Tools/ƒoƒYƒQ[ƒ€/3. MemoryData ‚ğ characters.json ‚©‚ç¶¬")]
-    public static void GenerateMemoryDataFromJson()
+    [MenuItem("Tools/ãƒã‚ºã‚²ãƒ¼ãƒ /3. MemoryData ã‚’ memory_data_list.json ã‹ã‚‰ç”Ÿæˆ")]
+    public static void GenerateMemoryDataFromMemoryJson()
     {
-        string jsonPath = Path.Combine(Application.streamingAssetsPath, "Stage1", "characters.json");
+        string jsonPath = Path.Combine(Application.streamingAssetsPath, "Stage1", "memory_data_list.json");
         if (!File.Exists(jsonPath))
         {
-            Debug.LogError("characters.json ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + jsonPath);
+            Debug.LogError("memory_data_list.json ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + jsonPath);
             return;
         }
 
         string json = File.ReadAllText(jsonPath);
-        CharacterListWrapper wrapper = JsonUtility.FromJson<CharacterListWrapper>(json);
-        if (wrapper == null || wrapper.characters == null)
+        MemoryListWrapper wrapper = JsonUtility.FromJson<MemoryListWrapper>(json);
+        if (wrapper == null || wrapper.memories == null)
         {
-            Debug.LogError("JSON‚Ìƒp[ƒX‚É¸”s‚µ‚Ü‚µ‚½B\‘¢‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B");
+            Debug.LogError("JSONã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ã¾ã—ãŸã€‚æ§‹é€ ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚");
             return;
         }
 
@@ -139,49 +166,54 @@ public class BuzzGameAutoGenerator : MonoBehaviour
         if (!Directory.Exists(outputFolder)) Directory.CreateDirectory(outputFolder);
 
         int created = 0;
-        foreach (var character in wrapper.characters)
+        foreach (var mem in wrapper.memories)
         {
-            foreach (var entry in character.grantedMemoriesPerTurn)
-            {
-                if (string.IsNullOrEmpty(entry.memoryId)) continue;
+            var asset = ScriptableObject.CreateInstance<MemoryData>();
+            asset.id = mem.id;
+            asset.memoryText = mem.memoryText;
+            asset.ownerCharacterId = mem.ownerCharacterId;
+            asset.correctReceiverCharacterId = mem.correctReceiverCharacterId;
+            asset.autoGrantedTurn = ParseTurnFromId(mem.id);
+            asset.autoGrantedMemory = true;
+            asset.originalOwner = null;
 
-                var asset = ScriptableObject.CreateInstance<MemoryData>();
-                asset.id = entry.memoryId;
-                asset.memoryText = character.memoryFragmentJP;
-                asset.ownerCharacterId = character.id;
-                asset.correctReceiverCharacterId = character.id; // Vd—lF‚¿å = ³‰ğó‚¯è
-
-                string path = Path.Combine(outputFolder, entry.memoryId + ".asset");
-                AssetDatabase.CreateAsset(asset, path);
-                created++;
-            }
+            string path = Path.Combine(outputFolder, mem.id + ".asset");
+            AssetDatabase.CreateAsset(asset, path);
+            created++;
         }
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        Debug.Log($"MemoryData ‚ğ {created} Œ¶¬‚µ‚Ü‚µ‚½B");
+        Debug.Log($"MemoryData ã‚’ {created} ä»¶ç”Ÿæˆã—ã¾ã—ãŸã€‚");
     }
 
-    // JSON\‘¢—p“à•”ƒNƒ‰ƒXiMemoryData¶¬—pj
+    private static int ParseTurnFromId(string id)
+    {
+        if (id.EndsWith("_t1")) return 1;
+        if (id.EndsWith("_t2")) return 2;
+        if (id.EndsWith("_t3")) return 3;
+        return 0; 
+    }
+
+
+    [System.Serializable]
+    public class MemoryListWrapper
+    {
+        public List<MemoryJsonData> memories;
+    }
+
+    [System.Serializable]
+    public class MemoryJsonData
+    {
+        public string id;
+        public string memoryText;
+        public string ownerCharacterId;
+        public string correctReceiverCharacterId;
+    }
+
     [System.Serializable]
     public class CharacterListWrapper
     {
         public List<CharacterDataJson> characters;
-    }
-
-    [System.Serializable]
-    public class CharacterDataJson
-    {
-        public string id;
-        public string name;
-        public string memoryFragmentJP;
-        public List<GrantedMemoryPerTurn> grantedMemoriesPerTurn;
-    }
-
-    [System.Serializable]
-    public class GrantedMemoryPerTurn
-    {
-        public int turn;
-        public string memoryId;
     }
 }

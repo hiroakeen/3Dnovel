@@ -117,7 +117,6 @@ public class UIManager : MonoBehaviour
                 {
                     memorySelectPanel.SetActive(false);
                     useMemoryButton.SetActive(false);
-                    playerMemoryInventory.RemoveMemory(memory);
 
                     if (currentTalkTrigger != null)
                     {
@@ -126,8 +125,10 @@ public class UIManager : MonoBehaviour
                         currentTalkTrigger = null;
                     }
 
+                    // 最後にダイアログを閉じる
                     HideDialogue();
                 });
+
             }
         }
     }

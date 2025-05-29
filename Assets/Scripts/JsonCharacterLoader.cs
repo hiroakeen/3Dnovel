@@ -40,7 +40,6 @@ public class JsonCharacterLoader : MonoBehaviour
 
 }
 
-
 [System.Serializable]
 public class CharacterDataJson
 {
@@ -52,29 +51,22 @@ public class CharacterDataJson
     public string memoryFragmentJP;
     public string memoryFragmentEN;
 
-    public MemoryReactionType memoryReactionType;
-    public string reactionTrueJP;
-    public string reactionTrueEN;
-    public string reactionSuccessJP;
-    public string reactionSuccessEN;
-    public string reactionFailJP;
-    public string reactionFailEN;
+    public string reactionCorrectJP;
+    public string reactionCorrectEN;
+    public string reactionIncorrectJP;
+    public string reactionIncorrectEN;
 
     public List<LocalizedTurnDialogueJson> turnDialogues;
 
     public string grantedOnTalkMemoryId;
-
     public string autoGrantedMemoryId;
-
     public string expectedMemoryId;
 
-    public string GetDialogueForCurrentTurn(Language lang)
+    public string GetDialogueForCurrentTurn(int turn, Language lang)
     {
-        int turn = GameManager.CurrentTurn;
-
         if (turnDialogues == null)
         {
-            Debug.LogWarning($"[GetDialogueForCurrentTurn] turnDialogues が null です（キャラ: {name}）");
+            Debug.LogWarning($"[GetDialogueForCurrentTurn] turnDialogues が null（キャラ: {name}）");
             return "…………?";
         }
 
@@ -97,9 +89,8 @@ public class CharacterDataJson
     }
 
     public List<MemoryGrantEntry> grantedMemoriesPerTurn;
-
-
 }
+
 /// <summary>
 /// 以下、多言語対応
 /// </summary>

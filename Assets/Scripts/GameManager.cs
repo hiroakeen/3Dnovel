@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour
     {
         currentTurn = turn;
 
-        // 例：GameManager.cs の SetTurn(int turn) の中など
         MemoryManager.Instance.AutoGrantMemoriesForTurn(turn);
         foreach (var mem in MemoryManager.Instance.GetCollectedMemories())
         {
@@ -144,6 +143,57 @@ public class GameManager : MonoBehaviour
     {
         currentTurn++;
         Debug.Log($"[ターン進行] 現在のターン: {currentTurn}");
+
+        if (currentTurn > 3)
+        {
+            EvaluateEnding(); 
+        }
+        else
+        {
+            SetTurn(currentTurn); 
+        }
     }
+
+    public int GetTotalNPCCount()
+    {
+        return GetAllCharacters().Count;
+    }
+
+
+
+    /// <summary>
+    /// 記憶使用の正解数に基づいてエンディングを判定する
+    /// </summary>
+    public void EvaluateEnding()
+    {
+        List<TurnDecision> logs = GetDecisionLogs();
+        int correctCount = 0;
+
+        foreach (var log in logs)
+        {
+            if (log.usedMemory != null)
+            {
+                correctCount++;
+            }
+        }
+
+        Debug.Log($"[Ending Evaluation] 正答数: {correctCount}");
+
+        if (correctCount == 15)
+        {
+            SetEndingType("TRUE");
+        }
+        else if (correctCount >= 10)
+        {
+            SetEndingType("GOOD");
+        }
+        else
+        {
+            SetEndingType("BAD");
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
+    }
+
 
 }

@@ -28,32 +28,34 @@ public class TurnState_MemoryPhase : ITurnState
         UIManager.Instance.ShowTurnMessage($"ターン {currentTurn}：記憶を渡す（{totalNPCs}回まで）");
     }
 
-    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to)
+    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to, MemoryData memory)
     {
         memoryUsedCount++;
         Debug.Log($"[MemoryPhase] 記憶使用: {from.name} → {to.name}（{memoryUsedCount}/{totalNPCs}）");
 
-        GameManager.Instance.AddDecisionLog(new TurnDecision(GameManager.Instance.GetTurn(), from, to));
+        GameManager.Instance.AddDecisionLog(
+            new TurnDecision(GameManager.Instance.GetTurn(), from, to, memory)
+        );
 
-        // 全員に記憶を渡したら次へ
         if (memoryUsedCount >= totalNPCs)
         {
             int currentTurn = GameManager.Instance.GetTurn();
 
             if (currentTurn >= 3)
             {
-                NarrationPlayer.Instance.PlayNarration("謎の声：最後の記憶が渡された。結末を迎える時だ。", () =>
-                {
-                    GameTurnStateManager.Instance.SetState(GameTurnState.EndingPhase);
-                });
+                NarrationPlayer.Instance.PlayNarration(
+                    "謎の声：最後の記憶が渡された。結末を迎える時だ。",
+                    () => GameTurnStateManager.Instance.SetState(GameTurnState.EndingPhase)
+                );
             }
             else
             {
-                GameManager.Instance.IncrementTurn(); // ターンを進める
-                GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase); // 次のターンへ
+                GameManager.Instance.IncrementTurn(); // ★ ここで SetTurn() を呼ぶ
+                GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
             }
         }
     }
+
 
     public void OnStateExit() { }
 

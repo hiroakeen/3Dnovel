@@ -26,7 +26,8 @@ public interface ITurnState
     void NotifyCharacterTalked(CharacterDataJson character);
 
     /// <summary>記憶を渡した通知（MemoryPhase用）</summary>
-    void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to);
+    void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to, MemoryData memory);
+
 
     /// <summary>会話終了通知（ターン内で全員と話したかを管理）</summary>
     void NotifyTalkFinished(CharacterDataJson character);

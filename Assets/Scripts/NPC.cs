@@ -18,37 +18,27 @@ public class NPC : MonoBehaviour
 
         // プレイヤーの記憶を取得
         var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
-
-        // 状態を取得（現在のITurnState）
         var turnState = GameTurnStateManager.Instance.GetCurrentState();
 
+        // ✅ 記憶は常に削除（正解不正解問わず）
+        inventory?.RemoveMemory(memory);
+
+        // ✅ 正解判定：expectedMemoryId による比較
         if (!string.IsNullOrEmpty(expectedId) && memory.id == expectedId)
         {
-            // 正解！リアクション
+            // 正解リアクション
             UIManager.Instance.ShowDialogue($"{npcName} に正しい記憶を渡した！");
 
-            inventory?.RemoveMemory(memory);
-
-            // ownerCharacterId ではなく ownerCharacter を使う
-            var ownerCharacter = memory.ownerCharacter;
-
-            if (ownerCharacter != null)
+            var ownerCharacter = memory.originalOwner;
+            if (ownerCharacter != null && turnState != null)
             {
-                turnState?.NotifyMemoryUsed(ownerCharacter, characterData);
+                turnState.NotifyMemoryUsed(ownerCharacter, characterData, memory);
             }
-            else
-            {
-                Debug.LogError("MemoryData の ownerCharacter が null です");
-            }
-
         }
         else
         {
-            // 不正解（記録なし、リアクションのみ）
+            // 不正解リアクション
             UIManager.Instance.ShowDialogue($"{npcName} は記憶を受け取ったが、反応がない……");
-
-            // 任意でログ記録も可能
-            // GameManager.Instance.AddDecisionLog(new TurnDecision(GameManager.CurrentTurn, memory.ownerCharacter, characterData));
         }
     }
 

@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 記憶の評価に応じて TRUE / GOOD / BAD エンディングを判定（改訂版）
-/// </summary>
 public class TurnState_EndingPhase : ITurnState
 {
     public void OnStateEnter()
@@ -12,43 +9,35 @@ public class TurnState_EndingPhase : ITurnState
 
         List<TurnDecision> logs = GameManager.Instance.GetDecisionLogs();
 
-        int trueCount = 0;
-        int goodCount = 0;
+        int correctCount = 0;
 
         foreach (var log in logs)
         {
-            switch (log.targetCharacter.memoryReactionType)
+            if (log.usedMemory.IsCorrectReceiver(log.targetCharacter.id))
             {
-                case MemoryReactionType.True:
-                    trueCount++;
-                    break;
-                case MemoryReactionType.Good:
-                    goodCount++;
-                    break;
+                correctCount++;
             }
         }
 
-        int totalCorrect = trueCount + goodCount;
-
         string endingId;
-        if (trueCount == 3)
+        if (correctCount == 15)
         {
-            endingId = "TRUE_END"; // 完全救出（真エンド）
+            endingId = "TRUE_END"; // 全問正解
         }
-        else if (totalCorrect >= 2)
+        else if (correctCount >= 10)
         {
-            endingId = "GOOD_END"; 
+            endingId = "GOOD_END"; // 10問以上正解
         }
         else
         {
-            endingId = "BAD_END"; // 全滅
+            endingId = "BAD_END"; // その他
         }
 
-        Debug.Log($"[評価結果] Ending ID: {endingId} (True: {trueCount}, Good: {goodCount}, Total: {totalCorrect})");
+        Debug.Log($"[評価結果] Ending ID: {endingId} (Correct: {correctCount}/15)");
 
         NarrationPlayer.Instance.PlayNarration(
             GetNarrationForEnding(endingId),
-            onComplete: () => EndingManager.Instance.LoadEndingScene(endingId)
+            onComplete: () => EndingManager.Instance.LoadEndingScene("EndingScene")
         );
     }
 
@@ -56,7 +45,7 @@ public class TurnState_EndingPhase : ITurnState
 
     public void NotifyCharacterTalked(CharacterDataJson character) { }
 
-    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to) { }
+    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to, MemoryData memory) { }
 
     public void NotifyTalkFinished(CharacterDataJson character) { }
 

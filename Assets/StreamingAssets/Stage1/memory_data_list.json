@@ -1,94 +1,94 @@
 {
-  "memories": [
-    {
-      "id": "theo_t1",
-      "memoryText": "僕はこの中で唯一、参加者じゃない。",
-      "ownerCharacterId": "theo",
-      "correctReceiverCharacterId": "theo"
-    },
-    {
-      "id": "theo_t2",
-      "memoryText": "僕はこの中で唯一、参加者じゃない。",
-      "ownerCharacterId": "theo",
-      "correctReceiverCharacterId": "theo"
-    },
-    {
-      "id": "theo_t3",
-      "memoryText": "僕はこの中で唯一、参加者じゃない。",
-      "ownerCharacterId": "theo",
-      "correctReceiverCharacterId": "theo"
-    },
-    {
-      "id": "minato_t1",
-      "memoryText": "昔、ここで誰かと話した気がするんだ。",
-      "ownerCharacterId": "minato",
-      "correctReceiverCharacterId": "minato"
-    },
-    {
-      "id": "minato_t2",
-      "memoryText": "昔、ここで誰かと話した気がするんだ。",
-      "ownerCharacterId": "minato",
-      "correctReceiverCharacterId": "minato"
-    },
-    {
-      "id": "minato_t3",
-      "memoryText": "昔、ここで誰かと話した気がするんだ。",
-      "ownerCharacterId": "minato",
-      "correctReceiverCharacterId": "minato"
-    },
-    {
-      "id": "rin_t1",
-      "memoryText": "全員嘘をついてるんじゃないの…？",
-      "ownerCharacterId": "rin",
-      "correctReceiverCharacterId": "rin"
-    },
-    {
-      "id": "rin_t2",
-      "memoryText": "全員嘘をついてるんじゃないの…？",
-      "ownerCharacterId": "rin",
-      "correctReceiverCharacterId": "rin"
-    },
-    {
-      "id": "rin_t3",
-      "memoryText": "全員嘘をついてるんじゃないの…？",
-      "ownerCharacterId": "rin",
-      "correctReceiverCharacterId": "rin"
-    },
-    {
-      "id": "yuu_t1",
-      "memoryText": "小さい頃、誰かに守られた記憶がある。",
-      "ownerCharacterId": "yuu",
-      "correctReceiverCharacterId": "yuu"
-    },
-    {
-      "id": "yuu_t2",
-      "memoryText": "小さい頃、誰かに守られた記憶がある。",
-      "ownerCharacterId": "yuu",
-      "correctReceiverCharacterId": "yuu"
-    },
-    {
-      "id": "yuu_t3",
-      "memoryText": "小さい頃、誰かに守られた記憶がある。",
-      "ownerCharacterId": "yuu",
-      "correctReceiverCharacterId": "yuu"
-    },
-    {
-      "id": "ai_t1",
-      "memoryText": "………………（何も思い出せない）",
-      "ownerCharacterId": "ai",
-      "correctReceiverCharacterId": "ai"
-    },
-    {
-      "id": "ai_t2",
-      "memoryText": "………………（何も思い出せない）",
-      "ownerCharacterId": "ai",
-      "correctReceiverCharacterId": "ai"
-    },
-    {
-      "id": "ai_t3",
-      "memoryText": "………………（何も思い出せない）",
-      "ownerCharacterId": "ai",
-      "correctReceiverCharacterId": "ai"
-    }
-  ]
+    "memories": [
+        {
+            "id": "theo_t1",
+            "memoryText": "僕はこの中で唯一、参加者じゃない。",
+            "ownerCharacterId": "theo",
+            "correctReceiverCharacterId": "theo"
+        },
+        {
+            "id": "theo_t2",
+            "memoryText": "あの日、観察者としてここに来たはずだったのに……。",
+            "ownerCharacterId": "theo",
+            "correctReceiverCharacterId": "theo"
+        },
+        {
+            "id": "theo_t3",
+            "memoryText": "記録するはずだったのに、今は僕も観察されている。",
+            "ownerCharacterId": "theo",
+            "correctReceiverCharacterId": "theo"
+        },
+        {
+            "id": "minato_t1",
+            "memoryText": "昔、ここで誰かと話した気がするんだ。",
+            "ownerCharacterId": "minato",
+            "correctReceiverCharacterId": "minato"
+        },
+        {
+            "id": "minato_t2",
+            "memoryText": "その声……君じゃないか？ 昔ここで会ったことがある。",
+            "ownerCharacterId": "minato",
+            "correctReceiverCharacterId": "minato"
+        },
+        {
+            "id": "minato_t3",
+            "memoryText": "閉じ込められたのは今回が初めてじゃない気がする。",
+            "ownerCharacterId": "minato",
+            "correctReceiverCharacterId": "minato"
+        },
+        {
+            "id": "rin_t1",
+            "memoryText": "全員嘘をついてるんじゃないの…？",
+            "ownerCharacterId": "rin",
+            "correctReceiverCharacterId": "rin"
+        },
+        {
+            "id": "rin_t2",
+            "memoryText": "ここに来る前、何か大事なことを知っていた気がする。",
+            "ownerCharacterId": "rin",
+            "correctReceiverCharacterId": "rin"
+        },
+        {
+            "id": "rin_t3",
+            "memoryText": "私が嘘をついている気がしてならない。",
+            "ownerCharacterId": "rin",
+            "correctReceiverCharacterId": "rin"
+        },
+        {
+            "id": "yuu_t1",
+            "memoryText": "小さい頃、誰かに守られた記憶がある。",
+            "ownerCharacterId": "yuu",
+            "correctReceiverCharacterId": "yuu"
+        },
+        {
+            "id": "yuu_t2",
+            "memoryText": "光の中で手を引いてくれたあの人は……誰だったんだろう。",
+            "ownerCharacterId": "yuu",
+            "correctReceiverCharacterId": "yuu"
+        },
+        {
+            "id": "yuu_t3",
+            "memoryText": "この中に、あの時の誰かがいるような気がする。",
+            "ownerCharacterId": "yuu",
+            "correctReceiverCharacterId": "yuu"
+        },
+        {
+            "id": "ai_t1",
+            "memoryText": "………………（何も思い出せない）",
+            "ownerCharacterId": "ai",
+            "correctReceiverCharacterId": "ai"
+        },
+        {
+            "id": "ai_t2",
+            "memoryText": "声が聞こえた気がする。でも何を言っていたのか思い出せない。",
+            "ownerCharacterId": "ai",
+            "correctReceiverCharacterId": "ai"
+        },
+        {
+            "id": "ai_t3",
+            "memoryText": "……もしかして、私が最後のピース？",
+            "ownerCharacterId": "ai",
+            "correctReceiverCharacterId": "ai"
+        }
+    ]
 }

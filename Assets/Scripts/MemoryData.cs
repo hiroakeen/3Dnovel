@@ -7,22 +7,22 @@ public class MemoryData : ScriptableObject
     [TextArea] public string memoryText;
     public string ownerCharacterId;
     public string correctReceiverCharacterId;
-
     public Sprite memoryImage;
 
-    public CharacterDataJson ownerCharacter;
+    public CharacterDataJson originalOwner;
 
-    // ✅ 自動配布に必要なフィールド
     public bool autoGrantedMemory = false;
     public int autoGrantedTurn = 0;
 
-    public bool IsCorrectReceiver(string targetCharacterId)
-    {
-        return targetCharacterId == correctReceiverCharacterId;
-    }
+
+    public bool IsCorrectReceiver(string targetCharacterId) =>
+        targetCharacterId == correctReceiverCharacterId;
 
     public CharacterDataJson GetOwnerCharacter()
     {
         return GameManager.Instance?.FindCharacterById(ownerCharacterId);
     }
+
+
 }
+

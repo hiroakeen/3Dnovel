@@ -13,26 +13,25 @@ MonoBehaviour:
   m_Name: yuu_t3
   m_EditorClassIdentifier: 
   id: yuu_t3
-  memoryText: "\u5C0F\u3055\u3044\u9803\u3001\u8AB0\u304B\u306B\u5B88\u3089\u308C\u305F\u8A18\u61B6\u304C\u3042\u308B\u3002"
+  memoryText: "\u3053\u306E\u4E2D\u306B\u3001\u3042\u306E\u6642\u306E\u8AB0\u304B\u304C\u3044\u308B\u3088\u3046\u306A\u6C17\u304C\u3059\u308B\u3002"
   ownerCharacterId: yuu
   correctReceiverCharacterId: yuu
   memoryImage: {fileID: 0}
-  ownerCharacter:
+  originalOwner:
     id: 
     name: 
     roleType: 
     isMemoryUseTarget: 0
     memoryFragmentJP: 
     memoryFragmentEN: 
-    memoryReactionType: 0
-    reactionTrueJP: 
-    reactionTrueEN: 
-    reactionSuccessJP: 
-    reactionSuccessEN: 
-    reactionFailJP: 
-    reactionFailEN: 
+    reactionCorrectJP: 
+    reactionCorrectEN: 
+    reactionIncorrectJP: 
+    reactionIncorrectEN: 
     turnDialogues: []
     grantedOnTalkMemoryId: 
     autoGrantedMemoryId: 
     expectedMemoryId: 
     grantedMemoriesPerTurn: []
+  autoGrantedMemory: 1
+  autoGrantedTurn: 3

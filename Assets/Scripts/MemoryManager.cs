@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MemoryManager : MonoBehaviour
@@ -66,17 +68,37 @@ public class MemoryManager : MonoBehaviour
         if (correct >= 10) return "GoodEnding";
         return "BadEnding";
     }
+    public MemoryData FindAutoGrantedMemory(string characterId, int turn)
+    {
+        return allMemories.FirstOrDefault(m =>
+            m.autoGrantedMemory &&
+            m.ownerCharacterId == characterId &&
+            m.autoGrantedTurn == turn);
+    }
+
+
 
     public void AutoGrantMemoriesForTurn(int turn)
     {
-        foreach (var memory in allMemories)
+
+        // 例：あるNPCがこのターンにプレイヤーへ渡す記憶を決める
+        foreach (var character in GameManager.Instance.GetAllCharacters())
         {
-            if (memory.autoGrantedMemory && memory.autoGrantedTurn == turn)
+            string memoryId = character.grantedMemoriesPerTurn
+                ?.Find(entry => entry.turn == turn)
+                ?.memoryId;
+
+            if (!string.IsNullOrEmpty(memoryId))
             {
-                AddMemory(memory);
-                Debug.Log($"[記憶配布] ターン{turn}：{memory.id} を取得");
+                var memory = MemoryManager.Instance.FindMemoryById(memoryId);
+                if (memory != null)
+                {
+                    memory.originalOwner = character;
+                    MemoryManager.Instance.AddMemory(memory);
+                }
             }
         }
+
     }
 
 }

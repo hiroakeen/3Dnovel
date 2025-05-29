@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
-/// 会話フェーズ：全員と会話し終えたら記憶フェーズへ移行
+/// 会話フェーズ：全員と話し終えたら記憶フェーズへ移行
 /// </summary>
 public class TurnState_TalkPhase : ITurnState
 {
@@ -15,13 +15,13 @@ public class TurnState_TalkPhase : ITurnState
         talkedCharacterIds.Clear();
         narrationShown = false;
 
+        totalNPCs = GameManager.Instance.GetAllCharacters().Count;
+
         int currentTurn = GameManager.Instance.GetTurn();
         Debug.Log($"【TalkPhase】開始：第{currentTurn}ターン、プレイヤーは全員と話すことができます。");
 
-        totalNPCs = GameManager.Instance.GetAllCharacters().Count;
-
         NarrationPlayer.Instance.PlayNarration(
-            $"謎の声：第{currentTurn}ターン、記憶を集める時間だ。",
+            $"記憶を集める時間だ。",
             null
         );
     }
@@ -38,8 +38,8 @@ public class TurnState_TalkPhase : ITurnState
     {
         Debug.Log($"[TalkFinished] {character.name} との会話終了");
 
-        // 全員と話したら記憶フェーズへ移行
-        Debug.Log($"現在の会話人数: {talkedCharacterIds.Count}/{totalNPCs}");
+        // 念のためここでも追加
+        talkedCharacterIds.Add(character.id);
 
         if (talkedCharacterIds.Count >= totalNPCs && !narrationShown)
         {
@@ -47,20 +47,30 @@ public class TurnState_TalkPhase : ITurnState
             Debug.Log("[TalkPhase] ナレーション表示＆記憶フェーズへ");
 
             NarrationPlayer.Instance.PlayNarration(
-                "謎の声：記憶は十分に集まった。次は誰に渡すか、決める時だ。",
+                "記憶は十分に集まった。次は誰に渡すか、決める時だ。",
                 () => GameTurnStateManager.Instance.SetState(GameTurnState.MemoryPhase)
             );
         }
+
+        if (talkedCharacterIds.Count < totalNPCs)
+        {
+            var all = GameManager.Instance.GetAllCharacters();
+            foreach (var c in all)
+            {
+                if (!talkedCharacterIds.Contains(c.id))
+                    Debug.LogWarning($"未会話キャラ: {c.name}（ID: {c.id}）");
+            }
+        }
+
     }
 
+    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to, MemoryData memory) { }
+
+    public void OnStateExit() { }
 
     public void ResetTalkLog()
     {
         talkedCharacterIds.Clear();
         narrationShown = false;
     }
-
-    public void OnStateExit() { }
-
-    public void NotifyMemoryUsed(CharacterDataJson from, CharacterDataJson to) { }
 }

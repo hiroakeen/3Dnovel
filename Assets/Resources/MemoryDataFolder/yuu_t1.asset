@@ -17,22 +17,21 @@ MonoBehaviour:
   ownerCharacterId: yuu
   correctReceiverCharacterId: yuu
   memoryImage: {fileID: 0}
-  ownerCharacter:
+  originalOwner:
     id: 
     name: 
     roleType: 
     isMemoryUseTarget: 0
     memoryFragmentJP: 
     memoryFragmentEN: 
-    memoryReactionType: 0
-    reactionTrueJP: 
-    reactionTrueEN: 
-    reactionSuccessJP: 
-    reactionSuccessEN: 
-    reactionFailJP: 
-    reactionFailEN: 
+    reactionCorrectJP: 
+    reactionCorrectEN: 
+    reactionIncorrectJP: 
+    reactionIncorrectEN: 
     turnDialogues: []
     grantedOnTalkMemoryId: 
     autoGrantedMemoryId: 
     expectedMemoryId: 
     grantedMemoriesPerTurn: []
+  autoGrantedMemory: 1
+  autoGrantedTurn: 1

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerMemoryInventory : MonoBehaviour
@@ -44,4 +45,12 @@ public class PlayerMemoryInventory : MonoBehaviour
     {
         return currentMemories.Find(m => m.memoryText == text);
     }
+
+    public List<MemoryData> GetMemoriesForCurrentTurn()
+    {
+        int currentTurn = GameManager.Instance.GetTurn();
+        return currentMemories.Where(m => m.autoGrantedTurn == currentTurn).ToList();
+    }
+
+
 }

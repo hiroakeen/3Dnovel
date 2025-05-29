@@ -32,10 +32,7 @@ public class TurnFlowController : MonoBehaviour
             return;
         }
 
-        NarrationPlayer.Instance.PlayNarration(
-            $"謎の声：{nextTurn}ターン目が始まる。",
-            () => GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase)
-        );
+        GameTurnStateManager.Instance.SetState(GameTurnState.TalkPhase);
     }
 
 

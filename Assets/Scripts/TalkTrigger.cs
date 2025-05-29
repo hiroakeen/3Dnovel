@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 
 public class TalkTrigger : MonoBehaviour
 {
@@ -15,50 +15,48 @@ public class TalkTrigger : MonoBehaviour
     [SerializeField] private MemoryGiveUIController memoryGiveUI;
 
     private bool isPlayerNear = false;
+    private GameTurnState? lastState = null;
     public string CharacterId => characterData?.id;
 
-    void Start()
-    {
-        talkActionButton?.SetActive(false);
-    }
+    void Start() => talkActionButton?.SetActive(false);
 
     void Update()
     {
         if (isPlayerNear && Input.GetButtonDown("Submit"))
-        {
             HandleInteraction();
+
+        var currentState = GameTurnStateManager.Instance.CurrentState;
+        if (isPlayerNear && currentState != lastState)
+        {
+            lastState = currentState;
+            SetupActionButton();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
         isPlayerNear = true;
+        lastState = null;
         SetupActionButton();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
         isPlayerNear = false;
         talkActionButton?.SetActive(false);
     }
 
     private void SetupActionButton()
     {
-        if (talkActionButton == null || actionButtonText == null)
-        {
-            Debug.LogError("トークUIの設定が不足しています");
-            return;
-        }
+        if (talkActionButton == null || actionButtonText == null) return;
 
         talkActionButton.SetActive(true);
         Button btn = talkActionButton.GetComponent<Button>();
         if (btn == null)
         {
-            Debug.LogError("talkActionButton に Button コンポーネントが付いていません！");
+            Debug.LogError("talkActionButton に Button がついてません");
             return;
         }
 
@@ -80,34 +78,22 @@ public class TalkTrigger : MonoBehaviour
     private void HandleInteraction()
     {
         var state = GameTurnStateManager.Instance.CurrentState;
-        if (state == GameTurnState.TalkPhase)
-        {
-            TalkToNPC();
-        }
-        else if (state == GameTurnState.MemoryPhase)
-        {
-            GiveMemoryToNPC(characterData);
-        }
+        if (state == GameTurnState.TalkPhase) TalkToNPC();
+        else if (state == GameTurnState.MemoryPhase) GiveMemoryToNPC(characterData);
     }
 
     public void TalkToNPC()
     {
         talkActionButton?.SetActive(false);
-
         if (characterData == null) return;
 
         string npcName = characterData.name;
-        string dialogueLine = characterData.GetDialogueForCurrentTurn(LocalizationManager.Instance.GetCurrentLanguage());
-        bool isMemoryUseTarget = characterData.isMemoryUseTarget;
-
-        MemoryData memoryToGrant = null;
         int currentTurn = GameManager.Instance.GetTurn();
-        string memoryIdToGrant = characterData.grantedMemoriesPerTurn?.Find(entry => entry.turn == currentTurn)?.memoryId;
+        Language lang = Language.Japanese; // ※固定 or GameManager等から取得してください
 
-        if (!string.IsNullOrEmpty(memoryIdToGrant))
-        {
-            memoryToGrant = MemoryManager.Instance?.FindMemoryById(memoryIdToGrant);
-        }
+        string dialogueLine = characterData.GetDialogueForCurrentTurn(currentTurn, lang);
+
+        var memoryToGrant = MemoryManager.Instance?.FindAutoGrantedMemory(characterData.id, currentTurn);
 
         var walker = GetComponent<SimpleNPCWalker>();
         walker?.SetTalking(true);
@@ -118,41 +104,44 @@ public class TalkTrigger : MonoBehaviour
             if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
             {
                 inventory.AddMemory(memoryToGrant);
-                MemoryManager.Instance?.AddMemory(memoryToGrant);
-
                 UIManager.Instance.ShowDialogue(
                     $"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）",
                     () =>
                     {
-                        NotifyTalked();  // ✅ ShowDialogue完了後にカウント
-                        EndTalk();       // ✅ 明示的に会話終了を呼ぶ
+                        NotifyTalked();
+                        EndTalk();
                     });
-
                 return;
             }
         }
 
-        if (isMemoryUseTarget && GameTurnStateManager.Instance.CurrentState == GameTurnState.MemoryPhase)
+        UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}", () =>
         {
-            UIManager.Instance.ShowDialogueWithMemoryOption(npcName, dialogueLine, this);
-        }
-        else
-        {
-            UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}", () =>
-            {
-                NotifyTalked();
-                EndTalk();
-            });
-        }
-
-        NotifyTalked();
+            NotifyTalked();
+            EndTalk();
+        });
     }
+
 
     public void GiveMemoryToNPC(CharacterDataJson target)
     {
         talkActionButton?.SetActive(false);
         memoryGiveUI.Open(target);
     }
+
+    private void NotifyTalked()
+    {
+        var currentState = GameTurnStateManager.Instance.GetCurrentState();
+        currentState?.NotifyCharacterTalked(characterData);
+    }
+
+    public void EndTalk()
+    {
+        GetComponent<SimpleNPCWalker>()?.SetTalking(false);
+        GameTurnStateManager.Instance.GetCurrentState()?.NotifyTalkFinished(this.characterData);
+    }
+
+    public CharacterDataJson GetCharacterData() => characterData;
 
     public void UseMemory(MemoryData memory)
     {
@@ -171,37 +160,30 @@ public class TalkTrigger : MonoBehaviour
         inventory.RemoveMemory(memory);
         MemoryManager.Instance.RecordMemoryUsage(memory, characterData.id);
 
-        string reactionLine = characterData.memoryReactionType switch
-        {
-            MemoryReactionType.True => characterData.reactionTrueJP,
-            MemoryReactionType.Good => characterData.reactionSuccessJP,
-            MemoryReactionType.Bad => characterData.reactionFailJP,
-            _ => "……？",
-        };
+        bool isCorrect = memory.IsCorrectReceiver(characterData.id);
+        string reactionLine = isCorrect
+            ? characterData.reactionCorrectJP
+            : characterData.reactionIncorrectJP;
 
         UIManager.Instance.ShowDialogue(
             $"{npcName} に「{memory.memoryText}」を使った。\n{npcName}：{reactionLine}",
             () =>
             {
                 GameTurnStateManager.Instance.RegisterMemoryGiven(characterData.id);
+
+                var decision = new TurnDecision(
+                    GameManager.Instance.GetTurn(),
+                    memory.originalOwner,
+                    characterData,
+                    memory
+                );
+                GameManager.Instance.AddDecisionLog(decision);
+
+                GameTurnStateManager.Instance.GetCurrentState()?.NotifyMemoryUsed(
+                    memory.originalOwner,
+                    characterData,
+                    memory
+                );
             });
-    }
-
-    public CharacterDataJson GetCharacterData()
-    {
-        return characterData;
-    }
-
-    private void NotifyTalked()
-    {
-        var currentState = GameTurnStateManager.Instance.GetCurrentState();
-        currentState?.NotifyCharacterTalked(characterData);
-    }
-
-    public void EndTalk()
-    {
-        GetComponent<SimpleNPCWalker>()?.SetTalking(false);
-        GameTurnStateManager.Instance.GetCurrentState()?.NotifyTalkFinished(this.characterData);
-
     }
 }
