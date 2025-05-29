@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndingSceneController : MonoBehaviour
 {
@@ -11,40 +12,27 @@ public class EndingSceneController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     [Header("データパス")]
-    [SerializeField] private string resourceFolderPath = "EndingPattern"; // Resources/EndingPattern/
+    [SerializeField] private string resourceFolderPath = "EndingPattern";
+
 
     private void Start()
     {
-        LoadAndApplyEndingData();
+        LoadAutoEnding();
     }
 
-    private void LoadAndApplyEndingData()
+    public void LoadAutoEnding()
     {
-        string endingId = GameManager.Instance.GetEndingType(); // 例: "TRUE_END"
-        if (string.IsNullOrEmpty(endingId))
+        string resultType = MemoryManager.Instance.GetEndingResultType();
+        string endingId = resultType switch
         {
-            Debug.LogError("Ending ID が取得できませんでした。");
-            return;
-        }
+            "TrueEnding" => "TRUE_END",
+            "GoodEnding" => "GOOD_END",
+            _ => "BAD_END"
+        };
 
-        // Resources/EndingPattern/TRUE_END.asset などを読み込む
-        EndingData data = Resources.Load<EndingData>($"{resourceFolderPath}/{endingId}");
-
-        if (data == null)
-        {
-            Debug.LogError($"EndingData が見つかりません: {resourceFolderPath}/{endingId}");
-            return;
-        }
-
-        // UI反映
-        if (titleText != null) titleText.text = data.title;
-        if (descriptionText != null) descriptionText.text = data.description;
-        if (backgroundImage != null && data.backgroundImage != null)
-            backgroundImage.sprite = data.backgroundImage;
-        if (audioSource != null && data.endingBGM != null)
-        {
-            audioSource.clip = data.endingBGM;
-            audioSource.Play();
-        }
+        GameManager.Instance.SetEndingType(endingId); // これを必ず追加！
+        SceneManager.LoadScene("EndingScene"); // 統一された1つのエンディングシーンへ遷移
     }
+
 }
+
