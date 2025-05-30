@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button dialogueNextButton;
     [SerializeField] private TextMeshProUGUI turnMessageText;
+    [SerializeField] private MemoryCharacterDisplay characterDisplay;
 
     private PlayerControllerManager playerController;
     private TalkTrigger currentTalkTrigger;
@@ -46,35 +47,52 @@ public class UIManager : MonoBehaviour
         useMemoryButton?.SetActive(false);
     }
 
-    public void ShowDialogue(string dialogueLine, Action onComplete)
+    public void ShowDialogue(string characterName, Sprite characterSprite, string dialogueLine, Action onComplete)
     {
         if (playerController != null) playerController.PauseControl();
 
         gameplayPanel?.SetActive(false);
         dialoguePanel?.SetActive(true);
-        dialogueText.text = dialogueLine;
+
+        // キャライラスト表示
+        characterDisplay?.Show(characterSprite, characterName);
+
+        // テキスト表示
+        dialogueText.text = "";
+        StartCoroutine(TypeText(dialogueLine, onComplete));
+    }
+
+    private IEnumerator TypeText(string dialogueLine, Action onComplete)
+    {
+        dialogueNextButton.gameObject.SetActive(false);
+
+        foreach (char c in dialogueLine)
+        {
+            dialogueText.text += c;
+            yield return new WaitForSeconds(0.03f); // 文字送り速度
+        }
 
         dialogueNextButton.gameObject.SetActive(true);
         dialogueNextButton.onClick.RemoveAllListeners();
         dialogueNextButton.onClick.AddListener(() =>
         {
             HideDialogue();
-            dialogueNextButton.gameObject.SetActive(false);
             onComplete?.Invoke();
         });
     }
 
     public void ShowDialogue(string dialogueLine)
     {
-        ShowDialogue(dialogueLine, null);
+        // キャライラストや名前は不要なときに使う簡易版
+        ShowDialogue("???", null, dialogueLine, null);
     }
 
     public void HideDialogue()
     {
-        if (playerController != null) playerController.ResumeControl();
-
+        playerController?.ResumeControl();
         gameplayPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
+        characterDisplay?.Hide();
 
         if (currentTalkTrigger != null)
         {
@@ -82,6 +100,7 @@ public class UIManager : MonoBehaviour
             currentTalkTrigger = null;
         }
     }
+
 
     public void ShowDialogueWithMemoryOption(string npcName, string dialogueLine, TalkTrigger trigger)
     {

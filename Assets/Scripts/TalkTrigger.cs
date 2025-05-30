@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class TalkTrigger : MonoBehaviour
 {
@@ -8,12 +9,23 @@ public class TalkTrigger : MonoBehaviour
     [SerializeField] private GameObject talkActionButton;
     [SerializeField] private TMP_Text actionButtonText;
 
-    [Header("このNPCのキャラデータ")]
+    [Header("NPCのキャラデータ")]
     [SerializeField] private CharacterDataJson characterData;
 
     [Header("記憶渡しUIの制御スクリプト")]
     [SerializeField] private MemoryGiveUIController memoryGiveUI;
 
+    [Header("キャラ表示UI（演出用）")]
+    [SerializeField] private MemoryCharacterDisplay memoryDisplay;
+
+    [Header("キャラの見た目データ")]
+    [SerializeField] private CharacterVisualData visualData;
+
+    [Header("セリフ")]
+    [TextArea(2, 4)]
+    [SerializeField] private string[] dialogues;
+
+    private int currentIndex = 0;
     private bool isPlayerNear = false;
     private GameTurnState? lastState = null;
     public string CharacterId => characterData?.id;
@@ -89,39 +101,28 @@ public class TalkTrigger : MonoBehaviour
 
         string npcName = characterData.name;
         int currentTurn = GameManager.Instance.GetTurn();
-        Language lang = Language.Japanese; // ※固定 or GameManager等から取得してください
+        Language lang = Language.Japanese;
 
         string dialogueLine = characterData.GetDialogueForCurrentTurn(currentTurn, lang);
-
         var memoryToGrant = MemoryManager.Instance?.FindAutoGrantedMemory(characterData.id, currentTurn);
 
-        var walker = GetComponent<SimpleNPCWalker>();
-        walker?.SetTalking(true);
-
+        string message = dialogueLine;
         if (memoryToGrant != null)
         {
             var inventory = Object.FindFirstObjectByType<PlayerMemoryInventory>();
             if (inventory != null && !inventory.GetAllMemories().Contains(memoryToGrant))
             {
                 inventory.AddMemory(memoryToGrant);
-                UIManager.Instance.ShowDialogue(
-                    $"{npcName}：{dialogueLine}\n（{memoryToGrant.memoryText} を思い出した）",
-                    () =>
-                    {
-                        NotifyTalked();
-                        EndTalk();
-                    });
-                return;
+                message += $"（{memoryToGrant.memoryText} を思い出した）";
             }
         }
 
-        UIManager.Instance.ShowDialogue($"{npcName}：{dialogueLine}", () =>
+        UIManager.Instance.ShowDialogue(npcName, visualData.characterSprite, message, () =>
         {
             NotifyTalked();
             EndTalk();
         });
     }
-
 
     public void GiveMemoryToNPC(CharacterDataJson target)
     {
@@ -137,7 +138,6 @@ public class TalkTrigger : MonoBehaviour
 
     public void EndTalk()
     {
-        GetComponent<SimpleNPCWalker>()?.SetTalking(false);
         GameTurnStateManager.Instance.GetCurrentState()?.NotifyTalkFinished(this.characterData);
     }
 
@@ -161,11 +161,11 @@ public class TalkTrigger : MonoBehaviour
         MemoryManager.Instance.RecordMemoryUsage(memory, characterData.id);
 
         bool isCorrect = memory.IsCorrectReceiver(characterData.id);
-        string reactionLine = isCorrect
-            ? characterData.reactionCorrectJP
-            : characterData.reactionIncorrectJP;
+        string reactionLine = isCorrect ? characterData.reactionCorrectJP : characterData.reactionIncorrectJP;
 
         UIManager.Instance.ShowDialogue(
+            npcName,
+            visualData.characterSprite,
             $"{npcName} に「{memory.memoryText}」を使った。\n{npcName}：{reactionLine}",
             () =>
             {
@@ -184,6 +184,21 @@ public class TalkTrigger : MonoBehaviour
                     characterData,
                     memory
                 );
+            });
+    }
+
+    public void TriggerTalk()
+    {
+        if (currentIndex >= dialogues.Length) currentIndex = 0;
+
+        UIManager.Instance.ShowDialogue(
+            visualData.characterName,
+            visualData.characterSprite,
+            dialogues[currentIndex],
+            () =>
+            {
+                currentIndex++;
+                EndTalk();
             });
     }
 }
