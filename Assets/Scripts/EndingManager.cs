@@ -31,7 +31,7 @@ public class EndingManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    /// ✅ 新機能：記憶の正解数に基づいて自動的にエンディングシーンへ遷移
+    ///新機能：記憶の正解数に基づいて自動的にエンディングシーンへ遷移
     public void LoadAutoEnding()
     {
         string resultType = MemoryManager.Instance.GetEndingResultType();
