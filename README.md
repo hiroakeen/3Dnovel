@@ -40,7 +40,7 @@
 
 | 項目       | 内容                                                     |
 | -------- | ------------------------------------------------------ |
-| 開発エンジン   | Unity 2022.3 LTS（2Dプロジェクト）                             |
+| 開発エンジン   | Unity 6.0 LTS（2Dプロジェクト）                             |
 | 言語       | C#                                                     |
 | UI       | Unity UI (Canvas, TextMeshPro, Buttonなど)               |
 | アーキテクチャ  | 状態管理 (`GameTurnStateManager` + `ITurnState`) + 分離可能な責務 |
